@@ -13,6 +13,10 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: Arial, Helvetica, sans-serif;
       background: #f5f4f0;
@@ -83,10 +87,78 @@
       color: #f5f4f0;
     }
 
+    /* COLECCIÓN */
+
+    .collection {
+      padding: 110px 45px 100px;
+      border-top: 1px solid #deddd8;
+      text-align: center;
+    }
+
+    .collection-title {
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      margin-bottom: 70px;
+    }
+
+    .collection-product {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .collection-image {
+      display: block;
+      width: 100%;
+      max-width: 850px;
+      height: auto;
+      margin: 0 auto 40px;
+    }
+
+    .collection-name {
+      font-size: clamp(50px, 8vw, 100px);
+      font-weight: 300;
+      letter-spacing: -4px;
+      margin-bottom: 20px;
+    }
+
+    .collection-description {
+      font-size: 15px;
+      letter-spacing: 1px;
+      margin-bottom: 30px;
+    }
+
+    .collection-button {
+      display: inline-block;
+      padding: 14px 30px;
+      border: 1px solid #1a1a1a;
+      color: #1a1a1a;
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    /* GALERÍA */
+
+    .gallery {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 45px;
+    }
+
+    .gallery img {
+      width: 120px;
+      height: 90px;
+      object-fit: cover;
+    }
+
     .footer {
       display: flex;
       justify-content: space-between;
-      margin-top: auto;
+      padding: 0 45px 30px;
       font-size: 11px;
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -99,7 +171,7 @@
       }
 
       .logo {
-        width: 125px;
+        width: 155px;
       }
 
       .content {
@@ -126,7 +198,41 @@
         padding: 15px 28px;
       }
 
+      .collection {
+        padding: 80px 18px 75px;
+      }
+
+      .collection-title {
+        font-size: 12px;
+        letter-spacing: 4px;
+        margin-bottom: 45px;
+      }
+
+      .collection-image {
+        margin-bottom: 30px;
+      }
+
+      .collection-name {
+        font-size: 65px;
+      }
+
+      .collection-description {
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .gallery {
+        gap: 8px;
+        margin-top: 35px;
+      }
+
+      .gallery img {
+        width: 30%;
+        height: 75px;
+      }
+
       .footer {
+        padding: 0 18px 25px;
         flex-direction: column;
         gap: 10px;
         text-align: center;
@@ -136,6 +242,8 @@
 </head>
 
 <body>
+
+  <!-- PORTADA -->
 
   <main class="hero">
 
@@ -163,18 +271,76 @@
         Minimalismo que ocupa poco espacio.
       </p>
 
-      <a href="#" class="button">
+      <a href="#coleccion" class="button">
         Ver colección
       </a>
 
     </section>
 
-    <footer class="footer">
-      <span>Cancún, México</span>
-      <span>© MANGLE</span>
-    </footer>
-
   </main>
+
+
+  <!-- COLECCIÓN -->
+
+  <section class="collection" id="coleccion">
+
+    <h2 class="collection-title">
+      Colección
+    </h2>
+
+    <div class="collection-product">
+
+      <img
+        class="collection-image"
+        src="ChatGPT%20Image%209%20ago%202026%2012_47_06.png"
+        alt="Catey — MANGLE"
+      >
+
+      <h2 class="collection-name">
+        CATEY
+      </h2>
+
+      <p class="collection-description">
+        Un mueble pensado para aprovechar cada espacio.
+      </p>
+
+      <a href="#" class="collection-button">
+        Ver producto
+      </a>
+
+      <div class="gallery">
+
+        <img
+          src="ChatGPT%20Image%209%20ago%202026%2012_47_06.png"
+          alt="Catey vista principal"
+        >
+
+        <img
+          src="ChatGPT%20Image%209%20ago%202026%2012_47_06.png"
+          alt="Catey vista adicional"
+        >
+
+        <img
+          src="ChatGPT%20Image%209%20ago%202026%2012_47_06.png"
+          alt="Catey otra vista"
+        >
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PIE -->
+
+  <footer class="footer">
+
+    <span>Cancún, México</span>
+
+    <span>© MANGLE</span>
+
+  </footer>
 
 </body>
 </html>
