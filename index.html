@@ -49,9 +49,10 @@
 
     .product-image {
       width: 100%;
-      max-width: 850px;
-      height: 52vh;
-      object-fit: cover;
+      max-width: 900px;
+      height: auto;
+      max-height: 60vh;
+      object-fit: contain;
       display: block;
       margin: 0 auto 35px;
     }
@@ -79,6 +80,12 @@
       font-size: 12px;
       letter-spacing: 3px;
       text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+
+    .button:hover {
+      background: #1a1a1a;
+      color: #f5f4f0;
     }
 
     .footer {
@@ -99,7 +106,7 @@
       }
 
       .product-image {
-        height: 42vh;
+        max-height: 50vh;
       }
 
       .footer {
