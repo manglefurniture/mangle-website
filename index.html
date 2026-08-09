@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>MANGLE — Minimal Furniture</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5f4f0;
+      color: #1a1a1a;
+      min-height: 100vh;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 35px 45px;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: 6px;
+    }
+
+    .tagline {
+      font-size: 12px;
+      letter-spacing: 3px;
+      margin-top: 6px;
+      text-transform: uppercase;
+    }
+
+    .content {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .product-name {
+      font-size: clamp(55px, 10vw, 140px);
+      font-weight: 300;
+      letter-spacing: -5px;
+      line-height: 0.9;
+      margin-bottom: 35px;
+    }
+
+    .description {
+      font-size: 16px;
+      letter-spacing: 1px;
+      margin-bottom: 35px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 15px 32px;
+      border: 1px solid #1a1a1a;
+      color: #1a1a1a;
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+
+    .button:hover {
+      background: #1a1a1a;
+      color: #f5f4f0;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding: 25px 20px;
+      }
+
+      .logo {
+        font-size: 22px;
+      }
+
+      .footer {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="hero">
+
+    <header>
+      <div class="logo">MANGLE</div>
+      <div class="tagline">Minimal Furniture</div>
+    </header>
+
+    <section class="content">
+      <h1 class="product-name">CATEY</h1>
+
+      <p class="description">
+        Minimalismo que ocupa poco espacio.
+      </p>
+
+      <a href="#" class="button">
+        Ver colección
+      </a>
+    </section>
+
+    <footer class="footer">
+      <span>Cancún, México</span>
+      <span>© MANGLE</span>
+    </footer>
+
+  </main>
+
+</body>
+</html>
