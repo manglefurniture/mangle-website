@@ -17,7 +17,6 @@
       font-family: Arial, Helvetica, sans-serif;
       background: #f5f4f0;
       color: #1a1a1a;
-      min-height: 100vh;
     }
 
     .hero {
@@ -48,18 +47,27 @@
       text-align: center;
     }
 
+    .product-image {
+      width: 100%;
+      max-width: 850px;
+      height: 52vh;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto 35px;
+    }
+
     .product-name {
-      font-size: clamp(55px, 10vw, 140px);
+      font-size: clamp(55px, 9vw, 120px);
       font-weight: 300;
       letter-spacing: -5px;
       line-height: 0.9;
-      margin-bottom: 35px;
+      margin-bottom: 25px;
     }
 
     .description {
       font-size: 16px;
       letter-spacing: 1px;
-      margin-bottom: 35px;
+      margin-bottom: 30px;
     }
 
     .button {
@@ -71,12 +79,6 @@
       font-size: 12px;
       letter-spacing: 3px;
       text-transform: uppercase;
-      transition: all 0.3s ease;
-    }
-
-    .button:hover {
-      background: #1a1a1a;
-      color: #f5f4f0;
     }
 
     .footer {
@@ -94,6 +96,10 @@
 
       .logo {
         font-size: 22px;
+      }
+
+      .product-image {
+        height: 42vh;
       }
 
       .footer {
@@ -114,6 +120,13 @@
     </header>
 
     <section class="content">
+
+      <img
+        class="product-image"
+        src="ChatGPT%20Image%209%20ago%202026%2012_47_06.png"
+        alt="Catey — MANGLE Minimal Furniture"
+      >
+
       <h1 class="product-name">CATEY</h1>
 
       <p class="description">
@@ -123,6 +136,7 @@
       <a href="#" class="button">
         Ver colección
       </a>
+
     </section>
 
     <footer class="footer">
