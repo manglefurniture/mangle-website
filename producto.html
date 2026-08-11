@@ -112,6 +112,7 @@
       padding: 16px 0;
       border-bottom: 1px solid #d8d7d2;
       font-size: 14px;
+      gap: 20px;
     }
 
     .detail span:first-child {
@@ -197,7 +198,6 @@
 
       .detail {
         font-size: 13px;
-        gap: 20px;
       }
 
       .thumbnail {
@@ -335,43 +335,100 @@
 
   <script>
 
-    const params = new URLSearchParams(window.location.search);
-    const productoId = params.get("producto");
+    /*
+      Ruta base de nuestro sitio.
+      La usamos explícitamente para evitar
+      problemas con las rutas de las imágenes.
+    */
 
-    fetch("productos.json")
-      .then(response => response.json())
+    const BASE_URL =
+      "https://manglefurniture.github.io/mangle-website/";
+
+
+    const params =
+      new URLSearchParams(window.location.search);
+
+    const productoId =
+      params.get("producto");
+
+
+    fetch(BASE_URL + "productos.json")
+      .then(response => {
+
+        if (!response.ok) {
+          throw new Error(
+            "No se pudo cargar productos.json"
+          );
+        }
+
+        return response.json();
+
+      })
+
       .then(data => {
 
-        const producto = data.productos.find(
-          item => item.id === productoId
-        );
+        const producto =
+          data.productos.find(
+            item => item.id === productoId
+          );
+
 
         if (!producto) {
-          document.body.innerHTML = "<h1>Producto no encontrado</h1>";
+
+          document.body.innerHTML =
+            "<h1>Producto no encontrado</h1>";
+
           return;
         }
 
-        document.title =
-          producto.nombre + " — MANGLE Minimal Furniture";
 
-        document.getElementById("productName").textContent =
+        /*
+          DATOS DEL PRODUCTO
+        */
+
+        document.title =
+          producto.nombre +
+          " — MANGLE Minimal Furniture";
+
+
+        document.getElementById(
+          "productName"
+        ).textContent =
           producto.nombre;
 
-        document.getElementById("description").textContent =
+
+        document.getElementById(
+          "description"
+        ).textContent =
           producto.descripcion;
 
-        document.getElementById("price").textContent =
+
+        document.getElementById(
+          "price"
+        ).textContent =
           producto.precio !== null
-            ? "$" + producto.precio.toLocaleString("es-MX") + " " + producto.moneda
+            ? "$" +
+              producto.precio.toLocaleString("es-MX") +
+              " " +
+              producto.moneda
             : "Precio por confirmar";
 
-        document.getElementById("dimensions").textContent =
-          producto.dimensiones.alto + " × " +
-          producto.dimensiones.ancho + " × " +
-          producto.dimensiones.profundidad + " " +
+
+        document.getElementById(
+          "dimensions"
+        ).textContent =
+          producto.dimensiones.alto +
+          " × " +
+          producto.dimensiones.ancho +
+          " × " +
+          producto.dimensiones.profundidad +
+          " " +
           producto.dimensiones.unidad;
 
-        document.getElementById("material").textContent =
+
+        document.getElementById(
+          "material"
+        ).textContent =
           producto.material.tipo +
           " (" +
           producto.material.espesor +
@@ -379,74 +436,149 @@
           producto.material.unidad_espesor +
           ")";
 
-        document.getElementById("finish").textContent =
+
+        document.getElementById(
+          "finish"
+        ).textContent =
           producto.material.acabado;
 
-        document.getElementById("shelves").textContent =
+
+        document.getElementById(
+          "shelves"
+        ).textContent =
           producto.almacenamiento.repisas;
 
-        document.getElementById("drawers").textContent =
+
+        document.getElementById(
+          "drawers"
+        ).textContent =
           producto.almacenamiento.cajones;
 
-        document.getElementById("doors").textContent =
+
+        document.getElementById(
+          "doors"
+        ).textContent =
           producto.almacenamiento.puertas;
 
-        document.getElementById("capacity").textContent =
+
+        document.getElementById(
+          "capacity"
+        ).textContent =
           producto.capacidad_carga.valor +
           " " +
           producto.capacidad_carga.unidad;
 
-        document.getElementById("delivery").textContent =
+
+        document.getElementById(
+          "delivery"
+        ).textContent =
           producto.entrega.modalidad;
 
-        document.getElementById("installation").textContent =
+
+        document.getElementById(
+          "installation"
+        ).textContent =
           producto.instalacion.requiere
             ? "Sí"
             : "No";
 
 
-        /* IMAGEN PRINCIPAL */
+        /*
+          GALERÍA
+        */
 
         const mainImage =
-          document.getElementById("mainImage");
+          document.getElementById(
+            "mainImage"
+          );
 
-        mainImage.src = producto.imagenes[0];
-
-        mainImage.alt =
-          producto.nombre + " — MANGLE";
-
-
-        /* GALERÍA */
 
         const thumbnails =
-          document.getElementById("thumbnails");
-
-        producto.imagenes.forEach((imagen, index) => {
-
-          const img =
-            document.createElement("img");
-
-          img.src = imagen;
-          img.alt =
-            producto.nombre +
-            " vista " +
-            (index + 1);
-
-          img.className = "thumbnail";
-
-          img.onclick = function() {
-            mainImage.src = imagen;
-          };
-
-          thumbnails.appendChild(img);
-
-        });
+          document.getElementById(
+            "thumbnails"
+          );
 
 
-        /* CARACTERÍSTICAS */
+        producto.imagenes.forEach(
+          (imagen, index) => {
+
+            /*
+              Construimos la ruta absoluta
+              de cada imagen.
+            */
+
+            const imageURL =
+              BASE_URL +
+              encodeURIComponent(imagen);
+
+
+            /*
+              Primera imagen = imagen principal
+            */
+
+            if (index === 0) {
+
+              mainImage.src =
+                imageURL;
+
+              mainImage.alt =
+                producto.nombre +
+                " — MANGLE";
+
+            }
+
+
+            /*
+              Creamos miniatura
+            */
+
+            const img =
+              document.createElement("img");
+
+
+            img.src =
+              imageURL;
+
+
+            img.alt =
+              producto.nombre +
+              " vista " +
+              (index + 1);
+
+
+            img.className =
+              "thumbnail";
+
+
+            /*
+              Al tocar miniatura,
+              cambia la imagen principal.
+            */
+
+            img.onclick =
+              function() {
+
+                mainImage.src =
+                  imageURL;
+
+              };
+
+
+            thumbnails.appendChild(img);
+
+          }
+        );
+
+
+        /*
+          CARACTERÍSTICAS
+        */
 
         const featuresList =
-          document.getElementById("featuresList");
+          document.getElementById(
+            "featuresList"
+          );
+
 
         producto.caracteristicas.forEach(
           caracteristica => {
@@ -454,8 +586,10 @@
             const li =
               document.createElement("li");
 
+
             li.textContent =
               caracteristica;
+
 
             featuresList.appendChild(li);
 
@@ -463,22 +597,28 @@
         );
 
 
-        /* WHATSAPP */
+        /*
+          WHATSAPP
+        */
 
         const mensaje =
           "Hola, me interesa el producto " +
           producto.nombre +
           " de MANGLE.";
 
+
         const whatsappURL =
           "https://wa.me/?text=" +
           encodeURIComponent(mensaje);
 
+
         document.getElementById(
           "whatsappButton"
-        ).href = whatsappURL;
+        ).href =
+          whatsappURL;
 
       })
+
 
       .catch(error => {
 
