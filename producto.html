@@ -43,8 +43,19 @@
       margin: 0 auto;
     }
 
+    /* GALERÍA */
+
     .gallery {
       text-align: center;
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .image-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
     }
 
     .main-image {
@@ -52,13 +63,68 @@
       max-width: 850px;
       height: auto;
       display: block;
-      margin: 0 auto 25px;
+      margin: 0 auto;
+      opacity: 1;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      user-select: none;
+      -webkit-user-drag: none;
     }
+
+    .main-image.fade {
+      opacity: 0;
+      transform: scale(0.98);
+    }
+
+    /* FLECHAS */
+
+    .gallery-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 46px;
+      height: 46px;
+      border: 1px solid rgba(26, 26, 26, 0.35);
+      background: rgba(245, 244, 240, 0.85);
+      color: #1a1a1a;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+      transition: all 0.25s ease;
+    }
+
+    .gallery-arrow:hover {
+      background: #1a1a1a;
+      color: #f5f4f0;
+    }
+
+    .arrow-left {
+      left: 15px;
+    }
+
+    .arrow-right {
+      right: 15px;
+    }
+
+    /* INDICADOR */
+
+    .counter {
+      margin-top: 15px;
+      font-size: 11px;
+      letter-spacing: 2px;
+      opacity: 0.6;
+    }
+
+    /* MINIATURAS */
 
     .thumbnails {
       display: flex;
       justify-content: center;
       gap: 10px;
+      margin-top: 20px;
     }
 
     .thumbnail {
@@ -66,12 +132,21 @@
       height: 70px;
       object-fit: cover;
       cursor: pointer;
-      opacity: 0.7;
+      opacity: 0.55;
+      transition: all 0.25s ease;
+      border: 1px solid transparent;
     }
 
     .thumbnail:hover {
-      opacity: 1;
+      opacity: 0.9;
     }
+
+    .thumbnail.active {
+      opacity: 1;
+      border: 1px solid #1a1a1a;
+    }
+
+    /* INFORMACIÓN */
 
     .info {
       max-width: 800px;
@@ -170,6 +245,8 @@
       text-transform: uppercase;
     }
 
+    /* MÓVIL */
+
     @media (max-width: 600px) {
 
       .page {
@@ -182,6 +259,25 @@
 
       .logo {
         width: 155px;
+      }
+
+      .gallery-arrow {
+        width: 38px;
+        height: 38px;
+        font-size: 20px;
+      }
+
+      .arrow-left {
+        left: 8px;
+      }
+
+      .arrow-right {
+        right: 8px;
+      }
+
+      .thumbnail {
+        width: 28%;
+        height: 70px;
       }
 
       .name {
@@ -198,11 +294,6 @@
 
       .detail {
         font-size: 13px;
-      }
-
-      .thumbnail {
-        width: 28%;
-        height: 70px;
       }
 
       .footer {
@@ -230,18 +321,47 @@
 
     <section class="product">
 
+      <!-- GALERÍA -->
+
       <div class="gallery">
 
-        <img
-          id="mainImage"
-          class="main-image"
-          src=""
-          alt=""
-        >
+        <div class="image-container">
+
+          <button
+            class="gallery-arrow arrow-left"
+            id="prevButton"
+            aria-label="Imagen anterior"
+          >
+            ‹
+          </button>
+
+          <img
+            id="mainImage"
+            class="main-image"
+            src=""
+            alt=""
+          >
+
+          <button
+            class="gallery-arrow arrow-right"
+            id="nextButton"
+            aria-label="Imagen siguiente"
+          >
+            ›
+          </button>
+
+        </div>
+
+        <div id="counter" class="counter">
+          1 / 1
+        </div>
 
         <div id="thumbnails" class="thumbnails"></div>
 
       </div>
+
+
+      <!-- INFORMACIÓN -->
 
       <div class="info">
 
@@ -300,6 +420,7 @@
 
         </div>
 
+
         <div class="features">
 
           <h2>Características</h2>
@@ -307,6 +428,7 @@
           <ul id="featuresList"></ul>
 
         </div>
+
 
         <a
           id="whatsappButton"
@@ -317,6 +439,7 @@
           Consultar por WhatsApp
         </a>
 
+
         <a class="back" href="index.html">
           ← Volver a MANGLE
         </a>
@@ -325,21 +448,19 @@
 
     </section>
 
+
     <footer class="footer">
+
       <span>Cancún, México</span>
+
       <span>© MANGLE</span>
+
     </footer>
 
   </main>
 
 
   <script>
-
-    /*
-      Ruta base de nuestro sitio.
-      La usamos explícitamente para evitar
-      problemas con las rutas de las imágenes.
-    */
 
     const BASE_URL =
       "https://manglefurniture.github.io/mangle-website/";
@@ -352,24 +473,198 @@
       params.get("producto");
 
 
-    fetch(BASE_URL + "productos.json")
+    let images = [];
+
+    let currentIndex = 0;
+
+    let autoSlide;
+
+
+    const mainImage =
+      document.getElementById("mainImage");
+
+    const thumbnails =
+      document.getElementById("thumbnails");
+
+    const counter =
+      document.getElementById("counter");
+
+
+    /*
+      CAMBIAR IMAGEN
+    */
+
+    function showImage(index, animate = true) {
+
+      if (!images.length) return;
+
+      currentIndex =
+        (index + images.length) %
+        images.length;
+
+
+      const imageURL =
+        BASE_URL +
+        encodeURIComponent(
+          images[currentIndex]
+        );
+
+
+      if (animate) {
+
+        mainImage.classList.add("fade");
+
+        setTimeout(() => {
+
+          mainImage.src =
+            imageURL;
+
+          mainImage.classList.remove("fade");
+
+        }, 180);
+
+      } else {
+
+        mainImage.src =
+          imageURL;
+
+      }
+
+
+      mainImage.alt =
+        "MANGLE — " +
+        images[currentIndex];
+
+
+      counter.textContent =
+        (currentIndex + 1) +
+        " / " +
+        images.length;
+
+
+      document
+        .querySelectorAll(".thumbnail")
+        .forEach((thumbnail, index) => {
+
+          thumbnail.classList.toggle(
+            "active",
+            index === currentIndex
+          );
+
+        });
+
+    }
+
+
+    /*
+      SIGUIENTE
+    */
+
+    function nextImage() {
+
+      showImage(
+        currentIndex + 1
+      );
+
+      restartAutoSlide();
+
+    }
+
+
+    /*
+      ANTERIOR
+    */
+
+    function previousImage() {
+
+      showImage(
+        currentIndex - 1
+      );
+
+      restartAutoSlide();
+
+    }
+
+
+    /*
+      AUTOMÁTICO
+    */
+
+    function startAutoSlide() {
+
+      if (images.length <= 1) return;
+
+      autoSlide =
+        setInterval(() => {
+
+          showImage(
+            currentIndex + 1
+          );
+
+        }, 4500);
+
+    }
+
+
+    function restartAutoSlide() {
+
+      clearInterval(autoSlide);
+
+      startAutoSlide();
+
+    }
+
+
+    /*
+      BOTONES
+    */
+
+    document
+      .getElementById("nextButton")
+      .addEventListener(
+        "click",
+        nextImage
+      );
+
+
+    document
+      .getElementById("prevButton")
+      .addEventListener(
+        "click",
+        previousImage
+      );
+
+
+    /*
+      CARGAR PRODUCTO
+    */
+
+    fetch(
+      BASE_URL +
+      "productos.json"
+    )
+
       .then(response => {
 
         if (!response.ok) {
+
           throw new Error(
             "No se pudo cargar productos.json"
           );
+
         }
 
         return response.json();
 
       })
 
+
       .then(data => {
 
         const producto =
           data.productos.find(
-            item => item.id === productoId
+            item =>
+              item.id === productoId
           );
 
 
@@ -379,11 +674,12 @@
             "<h1>Producto no encontrado</h1>";
 
           return;
+
         }
 
 
         /*
-          DATOS DEL PRODUCTO
+          DATOS
         */
 
         document.title =
@@ -408,9 +704,12 @@
         ).textContent =
           producto.precio !== null
             ? "$" +
-              producto.precio.toLocaleString("es-MX") +
+              producto.precio.toLocaleString(
+                "es-MX"
+              ) +
               " " +
               producto.moneda
+
             : "Precio por confirmar";
 
 
@@ -487,87 +786,67 @@
           GALERÍA
         */
 
-        const mainImage =
-          document.getElementById(
-            "mainImage"
-          );
+        images =
+          producto.imagenes;
 
 
-        const thumbnails =
-          document.getElementById(
-            "thumbnails"
-          );
-
-
-        producto.imagenes.forEach(
+        images.forEach(
           (imagen, index) => {
-
-            /*
-              Construimos la ruta absoluta
-              de cada imagen.
-            */
 
             const imageURL =
               BASE_URL +
-              encodeURIComponent(imagen);
+              encodeURIComponent(
+                imagen
+              );
 
 
-            /*
-              Primera imagen = imagen principal
-            */
-
-            if (index === 0) {
-
-              mainImage.src =
-                imageURL;
-
-              mainImage.alt =
-                producto.nombre +
-                " — MANGLE";
-
-            }
+            const thumbnail =
+              document.createElement(
+                "img"
+              );
 
 
-            /*
-              Creamos miniatura
-            */
-
-            const img =
-              document.createElement("img");
-
-
-            img.src =
+            thumbnail.src =
               imageURL;
 
 
-            img.alt =
+            thumbnail.alt =
               producto.nombre +
               " vista " +
               (index + 1);
 
 
-            img.className =
+            thumbnail.className =
               "thumbnail";
 
 
-            /*
-              Al tocar miniatura,
-              cambia la imagen principal.
-            */
+            thumbnail.addEventListener(
+              "click",
+              () => {
 
-            img.onclick =
-              function() {
+                showImage(index);
 
-                mainImage.src =
-                  imageURL;
+                restartAutoSlide();
 
-              };
+              }
+            );
 
 
-            thumbnails.appendChild(img);
+            thumbnails.appendChild(
+              thumbnail
+            );
 
           }
         );
+
+
+        showImage(
+          0,
+          false
+        );
+
+
+        startAutoSlide();
 
 
         /*
@@ -584,14 +863,18 @@
           caracteristica => {
 
             const li =
-              document.createElement("li");
+              document.createElement(
+                "li"
+              );
 
 
             li.textContent =
               caracteristica;
 
 
-            featuresList.appendChild(li);
+            featuresList.appendChild(
+              li
+            );
 
           }
         );
@@ -609,7 +892,9 @@
 
         const whatsappURL =
           "https://wa.me/?text=" +
-          encodeURIComponent(mensaje);
+          encodeURIComponent(
+            mensaje
+          );
 
 
         document.getElementById(
@@ -628,6 +913,60 @@
           "<h1>Error al cargar el producto</h1>";
 
       });
+
+
+    /*
+      SWIPE EN MÓVIL
+    */
+
+    let touchStartX = 0;
+
+    let touchEndX = 0;
+
+
+    mainImage.addEventListener(
+      "touchstart",
+      event => {
+
+        touchStartX =
+          event.changedTouches[0].screenX;
+
+      },
+      { passive: true }
+    );
+
+
+    mainImage.addEventListener(
+      "touchend",
+      event => {
+
+        touchEndX =
+          event.changedTouches[0].screenX;
+
+
+        const difference =
+          touchStartX -
+          touchEndX;
+
+
+        if (Math.abs(difference) < 40) {
+          return;
+        }
+
+
+        if (difference > 0) {
+
+          nextImage();
+
+        } else {
+
+          previousImage();
+
+        }
+
+      },
+      { passive: true }
+    );
 
   </script>
 
