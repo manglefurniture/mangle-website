@@ -1,0 +1,69 @@
+{
+  "productos": [
+    {
+      "id": "catey",
+      "sku": "MGL-CAT-001",
+      "nombre": "CATEY",
+      "tipo": "Mueble auxiliar",
+
+      "descripcion": "Minimalismo que ocupa poco espacio.",
+
+      "precio": 599,
+      "moneda": "MXN",
+
+      "dimensiones": {
+        "alto": 50,
+        "ancho": 40,
+        "profundidad": 23.5,
+        "unidad": "cm"
+      },
+
+      "material": {
+        "tipo": "MDM melaminado",
+        "espesor": 15,
+        "unidad_espesor": "mm",
+        "acabado": "Blanco"
+      },
+
+      "almacenamiento": {
+        "cajones": 0,
+        "puertas": 0,
+        "repisas": 1
+      },
+
+      "caracteristicas": [
+        "Diseño minimalista",
+        "Una repisa",
+        "Construcción en MDM melaminado de 15 mm",
+        "Acabado blanco",
+        "Listo para armar"
+      ],
+
+      "instalacion": {
+        "requiere": true,
+        "tipo": "Instalación del producto"
+      },
+
+      "entrega": {
+        "modalidad": "Listo para armar",
+        "tiempo": null
+      },
+
+      "peso": {
+        "valor": null,
+        "unidad": "kg"
+      },
+
+      "capacidad_carga": {
+        "valor": 20,
+        "unidad": "kg"
+      },
+
+      "disponibilidad": null,
+
+      "imagenes": [
+        "ChatGPT%20Image%209%20ago%202026%2012_47_06.png"
+      ]
+    }
+  ]
+}
