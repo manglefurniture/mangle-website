@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>MANGLE — Producto</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5f4f0;
+      color: #1a1a1a;
+    }
+
+    .page {
+      min-height: 100vh;
+      padding: 30px 45px 60px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .logo {
+      width: 150px;
+      height: auto;
+    }
+
+    .product {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .gallery {
+      text-align: center;
+    }
+
+    .main-image {
+      width: 100%;
+      max-width: 850px;
+      height: auto;
+      display: block;
+      margin: 0 auto 25px;
+    }
+
+    .thumbnails {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .thumbnail {
+      width: 90px;
+      height: 70px;
+      object-fit: cover;
+      cursor: pointer;
+      opacity: 0.7;
+    }
+
+    .thumbnail:hover {
+      opacity: 1;
+    }
+
+    .info {
+      max-width: 800px;
+      margin: 70px auto 0;
+      text-align: center;
+    }
+
+    .name {
+      font-size: clamp(60px, 10vw, 120px);
+      font-weight: 300;
+      letter-spacing: -5px;
+      line-height: 0.9;
+      margin-bottom: 25px;
+    }
+
+    .description {
+      font-size: 17px;
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
+
+    .price {
+      font-size: 30px;
+      font-weight: 400;
+      margin-bottom: 40px;
+    }
+
+    .details {
+      margin: 50px auto;
+      max-width: 650px;
+      text-align: left;
+      border-top: 1px solid #d8d7d2;
+    }
+
+    .detail {
+      display: flex;
+      justify-content: space-between;
+      padding: 16px 0;
+      border-bottom: 1px solid #d8d7d2;
+      font-size: 14px;
+    }
+
+    .detail span:first-child {
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .features {
+      margin: 50px auto;
+      max-width: 650px;
+      text-align: left;
+    }
+
+    .features h2 {
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+    }
+
+    .features ul {
+      padding-left: 20px;
+      line-height: 2;
+      font-size: 15px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 16px 35px;
+      background: #1a1a1a;
+      color: #f5f4f0;
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-top: 20px;
+    }
+
+    .back {
+      display: block;
+      margin-top: 35px;
+      color: #1a1a1a;
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .footer {
+      margin-top: 100px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 600px) {
+
+      .page {
+        padding: 20px 18px 40px;
+      }
+
+      .header {
+        margin-bottom: 40px;
+      }
+
+      .logo {
+        width: 155px;
+      }
+
+      .name {
+        font-size: 70px;
+      }
+
+      .description {
+        font-size: 15px;
+      }
+
+      .price {
+        font-size: 26px;
+      }
+
+      .detail {
+        font-size: 13px;
+        gap: 20px;
+      }
+
+      .thumbnail {
+        width: 28%;
+        height: 70px;
+      }
+
+      .footer {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="page">
+
+    <header class="header">
+      <a href="index.html">
+        <img
+          class="logo"
+          src="logo-mangle.png"
+          alt="MANGLE Minimal Furniture"
+        >
+      </a>
+    </header>
+
+    <section class="product">
+
+      <div class="gallery">
+
+        <img
+          id="mainImage"
+          class="main-image"
+          src=""
+          alt=""
+        >
+
+        <div id="thumbnails" class="thumbnails"></div>
+
+      </div>
+
+      <div class="info">
+
+        <h1 id="productName" class="name"></h1>
+
+        <p id="description" class="description"></p>
+
+        <div id="price" class="price"></div>
+
+        <div class="details">
+
+          <div class="detail">
+            <span>Dimensiones</span>
+            <span id="dimensions"></span>
+          </div>
+
+          <div class="detail">
+            <span>Material</span>
+            <span id="material"></span>
+          </div>
+
+          <div class="detail">
+            <span>Acabado</span>
+            <span id="finish"></span>
+          </div>
+
+          <div class="detail">
+            <span>Repisas</span>
+            <span id="shelves"></span>
+          </div>
+
+          <div class="detail">
+            <span>Cajones</span>
+            <span id="drawers"></span>
+          </div>
+
+          <div class="detail">
+            <span>Puertas</span>
+            <span id="doors"></span>
+          </div>
+
+          <div class="detail">
+            <span>Capacidad de carga</span>
+            <span id="capacity"></span>
+          </div>
+
+          <div class="detail">
+            <span>Entrega</span>
+            <span id="delivery"></span>
+          </div>
+
+          <div class="detail">
+            <span>Instalación</span>
+            <span id="installation"></span>
+          </div>
+
+        </div>
+
+        <div class="features">
+
+          <h2>Características</h2>
+
+          <ul id="featuresList"></ul>
+
+        </div>
+
+        <a
+          id="whatsappButton"
+          class="button"
+          href="#"
+          target="_blank"
+        >
+          Consultar por WhatsApp
+        </a>
+
+        <a class="back" href="index.html">
+          ← Volver a MANGLE
+        </a>
+
+      </div>
+
+    </section>
+
+    <footer class="footer">
+      <span>Cancún, México</span>
+      <span>© MANGLE</span>
+    </footer>
+
+  </main>
+
+
+  <script>
+
+    const params = new URLSearchParams(window.location.search);
+    const productoId = params.get("producto");
+
+    fetch("productos.json")
+      .then(response => response.json())
+      .then(data => {
+
+        const producto = data.productos.find(
+          item => item.id === productoId
+        );
+
+        if (!producto) {
+          document.body.innerHTML = "<h1>Producto no encontrado</h1>";
+          return;
+        }
+
+        document.title =
+          producto.nombre + " — MANGLE Minimal Furniture";
+
+        document.getElementById("productName").textContent =
+          producto.nombre;
+
+        document.getElementById("description").textContent =
+          producto.descripcion;
+
+        document.getElementById("price").textContent =
+          producto.precio !== null
+            ? "$" + producto.precio.toLocaleString("es-MX") + " " + producto.moneda
+            : "Precio por confirmar";
+
+        document.getElementById("dimensions").textContent =
+          producto.dimensiones.alto + " × " +
+          producto.dimensiones.ancho + " × " +
+          producto.dimensiones.profundidad + " " +
+          producto.dimensiones.unidad;
+
+        document.getElementById("material").textContent =
+          producto.material.tipo +
+          " (" +
+          producto.material.espesor +
+          " " +
+          producto.material.unidad_espesor +
+          ")";
+
+        document.getElementById("finish").textContent =
+          producto.material.acabado;
+
+        document.getElementById("shelves").textContent =
+          producto.almacenamiento.repisas;
+
+        document.getElementById("drawers").textContent =
+          producto.almacenamiento.cajones;
+
+        document.getElementById("doors").textContent =
+          producto.almacenamiento.puertas;
+
+        document.getElementById("capacity").textContent =
+          producto.capacidad_carga.valor +
+          " " +
+          producto.capacidad_carga.unidad;
+
+        document.getElementById("delivery").textContent =
+          producto.entrega.modalidad;
+
+        document.getElementById("installation").textContent =
+          producto.instalacion.requiere
+            ? "Sí"
+            : "No";
+
+
+        /* IMAGEN PRINCIPAL */
+
+        const mainImage =
+          document.getElementById("mainImage");
+
+        mainImage.src = producto.imagenes[0];
+
+        mainImage.alt =
+          producto.nombre + " — MANGLE";
+
+
+        /* GALERÍA */
+
+        const thumbnails =
+          document.getElementById("thumbnails");
+
+        producto.imagenes.forEach((imagen, index) => {
+
+          const img =
+            document.createElement("img");
+
+          img.src = imagen;
+          img.alt =
+            producto.nombre +
+            " vista " +
+            (index + 1);
+
+          img.className = "thumbnail";
+
+          img.onclick = function() {
+            mainImage.src = imagen;
+          };
+
+          thumbnails.appendChild(img);
+
+        });
+
+
+        /* CARACTERÍSTICAS */
+
+        const featuresList =
+          document.getElementById("featuresList");
+
+        producto.caracteristicas.forEach(
+          caracteristica => {
+
+            const li =
+              document.createElement("li");
+
+            li.textContent =
+              caracteristica;
+
+            featuresList.appendChild(li);
+
+          }
+        );
+
+
+        /* WHATSAPP */
+
+        const mensaje =
+          "Hola, me interesa el producto " +
+          producto.nombre +
+          " de MANGLE.";
+
+        const whatsappURL =
+          "https://wa.me/?text=" +
+          encodeURIComponent(mensaje);
+
+        document.getElementById(
+          "whatsappButton"
+        ).href = whatsappURL;
+
+      })
+
+      .catch(error => {
+
+        console.error(error);
+
+        document.body.innerHTML =
+          "<h1>Error al cargar el producto</h1>";
+
+      });
+
+  </script>
+
+</body>
+</html>
