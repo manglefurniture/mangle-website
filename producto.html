@@ -7,6 +7,7 @@
   <title>MANGLE — Producto</title>
 
   <style>
+
     * {
       margin: 0;
       padding: 0;
@@ -25,12 +26,17 @@
 
     .page {
       min-height: 100vh;
-      padding: 30px 45px 60px;
+      padding: 30px 45px 70px;
     }
+
+
+    /* =========================
+       HEADER
+    ========================= */
 
     .header {
       text-align: center;
-      margin-bottom: 60px;
+      margin-bottom: 55px;
     }
 
     .logo {
@@ -38,12 +44,20 @@
       height: auto;
     }
 
+
+    /* =========================
+       PRODUCTO
+    ========================= */
+
     .product {
-      max-width: 1200px;
+      max-width: 1100px;
       margin: 0 auto;
     }
 
-    /* GALERÍA */
+
+    /* =========================
+       GALERÍA
+    ========================= */
 
     .gallery {
       text-align: center;
@@ -64,8 +78,13 @@
       height: auto;
       display: block;
       margin: 0 auto;
+
       opacity: 1;
-      transition: opacity 0.35s ease, transform 0.35s ease;
+
+      transition:
+        opacity 0.35s ease,
+        transform 0.35s ease;
+
       user-select: none;
       -webkit-user-drag: none;
     }
@@ -75,24 +94,38 @@
       transform: scale(0.98);
     }
 
-    /* FLECHAS */
+
+    /* =========================
+       FLECHAS
+    ========================= */
 
     .gallery-arrow {
       position: absolute;
+
       top: 50%;
       transform: translateY(-50%);
+
       width: 46px;
       height: 46px;
+
       border: 1px solid rgba(26, 26, 26, 0.35);
+
       background: rgba(245, 244, 240, 0.85);
+
       color: #1a1a1a;
+
       border-radius: 50%;
+
       cursor: pointer;
+
       font-size: 24px;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       z-index: 5;
+
       transition: all 0.25s ease;
     }
 
@@ -109,31 +142,50 @@
       right: 15px;
     }
 
-    /* INDICADOR */
+
+    /* =========================
+       CONTADOR
+    ========================= */
 
     .counter {
       margin-top: 15px;
+
       font-size: 11px;
+
       letter-spacing: 2px;
+
       opacity: 0.6;
     }
 
-    /* MINIATURAS */
+
+    /* =========================
+       MINIATURAS
+    ========================= */
 
     .thumbnails {
       display: flex;
+
       justify-content: center;
+
       gap: 10px;
+
       margin-top: 20px;
     }
 
     .thumbnail {
       width: 90px;
       height: 70px;
+
       object-fit: cover;
+
       cursor: pointer;
-      opacity: 0.55;
-      transition: all 0.25s ease;
+
+      opacity: 0.5;
+
+      transition:
+        opacity 0.25s ease,
+        border 0.25s ease;
+
       border: 1px solid transparent;
     }
 
@@ -143,189 +195,443 @@
 
     .thumbnail.active {
       opacity: 1;
+
       border: 1px solid #1a1a1a;
     }
 
-    /* INFORMACIÓN */
+
+    /* =========================
+       INFORMACIÓN
+    ========================= */
 
     .info {
-      max-width: 800px;
-      margin: 70px auto 0;
+      max-width: 900px;
+
+      margin: 85px auto 0;
+
       text-align: center;
     }
 
+
+    /* NOMBRE */
+
     .name {
-      font-size: clamp(60px, 10vw, 120px);
+      font-size: clamp(65px, 10vw, 125px);
+
       font-weight: 300;
+
       letter-spacing: -5px;
+
       line-height: 0.9;
+
       margin-bottom: 25px;
     }
 
+
+    /* DESCRIPCIÓN */
+
     .description {
-      font-size: 17px;
+      font-size: 18px;
+
       line-height: 1.7;
-      margin-bottom: 30px;
+
+      letter-spacing: 0.5px;
+
+      margin-bottom: 22px;
     }
+
+
+    /* PRECIO */
 
     .price {
-      font-size: 30px;
+      font-size: 32px;
+
       font-weight: 400;
-      margin-bottom: 40px;
-    }
 
-    .details {
-      margin: 50px auto;
-      max-width: 650px;
-      text-align: left;
-      border-top: 1px solid #d8d7d2;
-    }
-
-    .detail {
-      display: flex;
-      justify-content: space-between;
-      padding: 16px 0;
-      border-bottom: 1px solid #d8d7d2;
-      font-size: 14px;
-      gap: 20px;
-    }
-
-    .detail span:first-child {
       letter-spacing: 1px;
-      text-transform: uppercase;
+
+      margin-bottom: 65px;
     }
+
+
+    /* =========================
+       ESPECIFICACIONES
+    ========================= */
+
+    .specs {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      border-top: 1px solid #d8d7d2;
+
+      border-bottom: 1px solid #d8d7d2;
+
+      margin-bottom: 65px;
+    }
+
+    .spec {
+      padding: 28px 15px;
+
+      border-right:
+        1px solid #d8d7d2;
+    }
+
+    .spec:last-child {
+      border-right: none;
+    }
+
+    .spec-label {
+      display: block;
+
+      font-size: 10px;
+
+      letter-spacing: 2px;
+
+      text-transform: uppercase;
+
+      opacity: 0.55;
+
+      margin-bottom: 12px;
+    }
+
+    .spec-value {
+      display: block;
+
+      font-size: 15px;
+
+      line-height: 1.5;
+    }
+
+
+    /* =========================
+       CARACTERÍSTICAS
+    ========================= */
 
     .features {
-      margin: 50px auto;
       max-width: 650px;
+
+      margin: 0 auto 60px;
+
       text-align: left;
     }
 
     .features h2 {
-      font-size: 13px;
+      font-size: 12px;
+
       letter-spacing: 3px;
+
       text-transform: uppercase;
+
+      font-weight: 400;
+
       margin-bottom: 25px;
     }
 
     .features ul {
-      padding-left: 20px;
-      line-height: 2;
-      font-size: 15px;
+      list-style: none;
+
+      border-top:
+        1px solid #d8d7d2;
     }
+
+    .features li {
+      padding: 14px 0;
+
+      border-bottom:
+        1px solid #d8d7d2;
+
+      font-size: 14px;
+
+      line-height: 1.6;
+    }
+
+    .features li::before {
+      content: "—";
+
+      margin-right: 12px;
+
+      opacity: 0.45;
+    }
+
+
+    /* =========================
+       BOTÓN
+    ========================= */
 
     .button {
       display: inline-block;
-      padding: 16px 35px;
+
+      padding: 18px 42px;
+
       background: #1a1a1a;
+
       color: #f5f4f0;
+
       text-decoration: none;
-      font-size: 12px;
+
+      font-size: 11px;
+
       letter-spacing: 3px;
+
       text-transform: uppercase;
-      margin-top: 20px;
+
+      transition:
+        background 0.25s ease,
+        transform 0.25s ease;
     }
+
+    .button:hover {
+      background: #333;
+
+      transform: translateY(-2px);
+    }
+
+
+    /* =========================
+       VOLVER
+    ========================= */
 
     .back {
       display: block;
+
       margin-top: 35px;
+
       color: #1a1a1a;
+
       text-decoration: none;
-      font-size: 11px;
+
+      font-size: 10px;
+
       letter-spacing: 3px;
+
       text-transform: uppercase;
+
+      opacity: 0.65;
     }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
 
     .footer {
-      margin-top: 100px;
+      max-width: 1100px;
+
+      margin: 120px auto 0;
+
+      padding-top: 25px;
+
+      border-top:
+        1px solid #d8d7d2;
+
       display: flex;
+
       justify-content: space-between;
-      font-size: 11px;
+
+      font-size: 10px;
+
       letter-spacing: 2px;
+
       text-transform: uppercase;
+
+      opacity: 0.55;
     }
 
-    /* MÓVIL */
 
-    @media (max-width: 600px) {
+    /* =========================
+       MÓVIL
+    ========================= */
+
+    @media (max-width: 700px) {
 
       .page {
-        padding: 20px 18px 40px;
+        padding:
+          20px
+          18px
+          50px;
       }
+
 
       .header {
         margin-bottom: 40px;
       }
 
+
       .logo {
         width: 155px;
       }
 
+
       .gallery-arrow {
         width: 38px;
         height: 38px;
+
         font-size: 20px;
       }
+
 
       .arrow-left {
         left: 8px;
       }
 
+
       .arrow-right {
         right: 8px;
       }
 
+
       .thumbnail {
-        width: 28%;
+        width: 29%;
+
         height: 70px;
       }
 
-      .name {
-        font-size: 70px;
+
+      .info {
+        margin-top: 65px;
       }
+
+
+      .name {
+        font-size: 72px;
+
+        letter-spacing: -4px;
+
+        margin-bottom: 20px;
+      }
+
 
       .description {
-        font-size: 15px;
+        font-size: 16px;
+
+        padding: 0 10px;
       }
+
 
       .price {
-        font-size: 26px;
+        font-size: 28px;
+
+        margin-bottom: 50px;
       }
 
-      .detail {
+
+      .specs {
+        grid-template-columns:
+          repeat(2, 1fr);
+
+        margin-bottom: 55px;
+      }
+
+
+      .spec {
+        padding:
+          24px 10px;
+
+        border-right:
+          1px solid #d8d7d2;
+
+        border-bottom:
+          1px solid #d8d7d2;
+      }
+
+
+      .spec:nth-child(2) {
+        border-right: none;
+      }
+
+
+      .spec:nth-child(3) {
+        border-bottom: none;
+      }
+
+
+      .spec:nth-child(4) {
+        border-right: none;
+
+        border-bottom: none;
+      }
+
+
+      .spec-value {
+        font-size: 14px;
+      }
+
+
+      .features {
+        margin-bottom: 50px;
+      }
+
+
+      .features li {
         font-size: 13px;
       }
 
+
+      .button {
+        width: 100%;
+
+        padding:
+          18px 20px;
+      }
+
+
       .footer {
+        margin-top: 90px;
+
         flex-direction: column;
+
         gap: 10px;
+
         text-align: center;
       }
+
     }
+
   </style>
 </head>
+
 
 <body>
 
   <main class="page">
 
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
     <header class="header">
+
       <a href="index.html">
+
         <img
           class="logo"
           src="logo-mangle.png"
           alt="MANGLE Minimal Furniture"
         >
+
       </a>
+
     </header>
 
+
+
+    <!-- =========================
+         PRODUCTO
+    ========================= -->
+
     <section class="product">
+
 
       <!-- GALERÍA -->
 
       <div class="gallery">
 
+
         <div class="image-container">
+
 
           <button
             class="gallery-arrow arrow-left"
@@ -335,12 +641,14 @@
             ‹
           </button>
 
+
           <img
             id="mainImage"
             class="main-image"
             src=""
             alt=""
           >
+
 
           <button
             class="gallery-arrow arrow-right"
@@ -350,85 +658,139 @@
             ›
           </button>
 
+
         </div>
 
-        <div id="counter" class="counter">
+
+        <div
+          id="counter"
+          class="counter"
+        >
           1 / 1
         </div>
 
-        <div id="thumbnails" class="thumbnails"></div>
+
+        <div
+          id="thumbnails"
+          class="thumbnails"
+        ></div>
+
 
       </div>
 
 
-      <!-- INFORMACIÓN -->
+
+      <!-- =========================
+           INFORMACIÓN
+      ========================= -->
 
       <div class="info">
 
-        <h1 id="productName" class="name"></h1>
 
-        <p id="description" class="description"></p>
+        <h1
+          id="productName"
+          class="name"
+        ></h1>
 
-        <div id="price" class="price"></div>
 
-        <div class="details">
+        <p
+          id="description"
+          class="description"
+        ></p>
 
-          <div class="detail">
-            <span>Dimensiones</span>
-            <span id="dimensions"></span>
+
+        <div
+          id="price"
+          class="price"
+        ></div>
+
+
+
+        <!-- ESPECIFICACIONES -->
+
+        <div class="specs">
+
+
+          <div class="spec">
+
+            <span class="spec-label">
+              Dimensiones
+            </span>
+
+            <span
+              id="dimensions"
+              class="spec-value"
+            ></span>
+
           </div>
 
-          <div class="detail">
-            <span>Material</span>
-            <span id="material"></span>
+
+          <div class="spec">
+
+            <span class="spec-label">
+              Material
+            </span>
+
+            <span
+              id="material"
+              class="spec-value"
+            ></span>
+
           </div>
 
-          <div class="detail">
-            <span>Acabado</span>
-            <span id="finish"></span>
+
+          <div class="spec">
+
+            <span class="spec-label">
+              Capacidad
+            </span>
+
+            <span
+              id="capacity"
+              class="spec-value"
+            ></span>
+
           </div>
 
-          <div class="detail">
-            <span>Repisas</span>
-            <span id="shelves"></span>
+
+          <div class="spec">
+
+            <span class="spec-label">
+              Armado
+            </span>
+
+            <span
+              id="delivery"
+              class="spec-value"
+            ></span>
+
           </div>
 
-          <div class="detail">
-            <span>Cajones</span>
-            <span id="drawers"></span>
-          </div>
-
-          <div class="detail">
-            <span>Puertas</span>
-            <span id="doors"></span>
-          </div>
-
-          <div class="detail">
-            <span>Capacidad de carga</span>
-            <span id="capacity"></span>
-          </div>
-
-          <div class="detail">
-            <span>Entrega</span>
-            <span id="delivery"></span>
-          </div>
-
-          <div class="detail">
-            <span>Instalación</span>
-            <span id="installation"></span>
-          </div>
 
         </div>
 
+
+
+        <!-- CARACTERÍSTICAS -->
 
         <div class="features">
 
-          <h2>Características</h2>
 
-          <ul id="featuresList"></ul>
+          <h2>
+            Características
+          </h2>
+
+
+          <ul
+            id="featuresList"
+          ></ul>
+
 
         </div>
 
+
+
+        <!-- WHATSAPP -->
 
         <a
           id="whatsappButton"
@@ -440,34 +802,56 @@
         </a>
 
 
-        <a class="back" href="index.html">
+        <a
+          class="back"
+          href="index.html"
+        >
           ← Volver a MANGLE
         </a>
 
+
       </div>
+
 
     </section>
 
 
+
+    <!-- FOOTER -->
+
     <footer class="footer">
 
-      <span>Cancún, México</span>
+      <span>
+        Cancún, México
+      </span>
 
-      <span>© MANGLE</span>
+      <span>
+        © MANGLE
+      </span>
 
     </footer>
+
 
   </main>
 
 
+
   <script>
+
+
+    /* =========================
+       CONFIGURACIÓN
+    ========================= */
 
     const BASE_URL =
       "https://manglefurniture.github.io/mangle-website/";
 
 
     const params =
-      new URLSearchParams(window.location.search);
+      new URLSearchParams(
+        window.location.search
+      );
+
 
     const productoId =
       params.get("producto");
@@ -480,23 +864,40 @@
     let autoSlide;
 
 
+
     const mainImage =
-      document.getElementById("mainImage");
+      document.getElementById(
+        "mainImage"
+      );
+
 
     const thumbnails =
-      document.getElementById("thumbnails");
+      document.getElementById(
+        "thumbnails"
+      );
+
 
     const counter =
-      document.getElementById("counter");
+      document.getElementById(
+        "counter"
+      );
 
 
-    /*
-      CAMBIAR IMAGEN
-    */
 
-    function showImage(index, animate = true) {
+    /* =========================
+       CAMBIAR IMAGEN
+    ========================= */
 
-      if (!images.length) return;
+    function showImage(
+      index,
+      animate = true
+    ) {
+
+
+      if (!images.length) {
+        return;
+      }
+
 
       currentIndex =
         (index + images.length) %
@@ -512,16 +913,23 @@
 
       if (animate) {
 
-        mainImage.classList.add("fade");
+        mainImage.classList.add(
+          "fade"
+        );
+
 
         setTimeout(() => {
 
           mainImage.src =
             imageURL;
 
-          mainImage.classList.remove("fade");
+
+          mainImage.classList.remove(
+            "fade"
+          );
 
         }, 180);
+
 
       } else {
 
@@ -543,22 +951,27 @@
 
 
       document
-        .querySelectorAll(".thumbnail")
-        .forEach((thumbnail, index) => {
+        .querySelectorAll(
+          ".thumbnail"
+        )
+        .forEach(
+          (thumbnail, index) => {
 
-          thumbnail.classList.toggle(
-            "active",
-            index === currentIndex
-          );
+            thumbnail.classList.toggle(
+              "active",
+              index === currentIndex
+            );
 
-        });
+          }
+        );
 
     }
 
 
-    /*
-      SIGUIENTE
-    */
+
+    /* =========================
+       SIGUIENTE
+    ========================= */
 
     function nextImage() {
 
@@ -566,14 +979,16 @@
         currentIndex + 1
       );
 
+
       restartAutoSlide();
 
     }
 
 
-    /*
-      ANTERIOR
-    */
+
+    /* =========================
+       ANTERIOR
+    ========================= */
 
     function previousImage() {
 
@@ -581,18 +996,24 @@
         currentIndex - 1
       );
 
+
       restartAutoSlide();
 
     }
 
 
-    /*
-      AUTOMÁTICO
-    */
+
+    /* =========================
+       AUTOMÁTICO
+    ========================= */
 
     function startAutoSlide() {
 
-      if (images.length <= 1) return;
+
+      if (images.length <= 1) {
+        return;
+      }
+
 
       autoSlide =
         setInterval(() => {
@@ -606,21 +1027,28 @@
     }
 
 
+
     function restartAutoSlide() {
 
-      clearInterval(autoSlide);
+      clearInterval(
+        autoSlide
+      );
+
 
       startAutoSlide();
 
     }
 
 
-    /*
-      BOTONES
-    */
+
+    /* =========================
+       BOTONES
+    ========================= */
 
     document
-      .getElementById("nextButton")
+      .getElementById(
+        "nextButton"
+      )
       .addEventListener(
         "click",
         nextImage
@@ -628,23 +1056,28 @@
 
 
     document
-      .getElementById("prevButton")
+      .getElementById(
+        "prevButton"
+      )
       .addEventListener(
         "click",
         previousImage
       );
 
 
-    /*
-      CARGAR PRODUCTO
-    */
+
+    /* =========================
+       CARGAR PRODUCTO
+    ========================= */
 
     fetch(
       BASE_URL +
       "productos.json"
     )
 
+
       .then(response => {
+
 
         if (!response.ok) {
 
@@ -654,12 +1087,14 @@
 
         }
 
+
         return response.json();
 
       })
 
 
       .then(data => {
+
 
         const producto =
           data.productos.find(
@@ -678,9 +1113,8 @@
         }
 
 
-        /*
-          DATOS
-        */
+
+        /* DATOS */
 
         document.title =
           producto.nombre +
@@ -713,6 +1147,9 @@
             : "Precio por confirmar";
 
 
+
+        /* DIMENSIONES */
+
         document.getElementById(
           "dimensions"
         ).textContent =
@@ -725,40 +1162,21 @@
           producto.dimensiones.unidad;
 
 
+
+        /* MATERIAL */
+
         document.getElementById(
           "material"
         ).textContent =
           producto.material.tipo +
-          " (" +
+          " · " +
           producto.material.espesor +
           " " +
-          producto.material.unidad_espesor +
-          ")";
+          producto.material.unidad_espesor;
 
 
-        document.getElementById(
-          "finish"
-        ).textContent =
-          producto.material.acabado;
 
-
-        document.getElementById(
-          "shelves"
-        ).textContent =
-          producto.almacenamiento.repisas;
-
-
-        document.getElementById(
-          "drawers"
-        ).textContent =
-          producto.almacenamiento.cajones;
-
-
-        document.getElementById(
-          "doors"
-        ).textContent =
-          producto.almacenamiento.puertas;
-
+        /* CAPACIDAD */
 
         document.getElementById(
           "capacity"
@@ -768,23 +1186,17 @@
           producto.capacidad_carga.unidad;
 
 
+
+        /* ENTREGA */
+
         document.getElementById(
           "delivery"
         ).textContent =
           producto.entrega.modalidad;
 
 
-        document.getElementById(
-          "installation"
-        ).textContent =
-          producto.instalacion.requiere
-            ? "Sí"
-            : "No";
 
-
-        /*
-          GALERÍA
-        */
+        /* GALERÍA */
 
         images =
           producto.imagenes;
@@ -792,6 +1204,7 @@
 
         images.forEach(
           (imagen, index) => {
+
 
             const imageURL =
               BASE_URL +
@@ -824,7 +1237,10 @@
               "click",
               () => {
 
-                showImage(index);
+                showImage(
+                  index
+                );
+
 
                 restartAutoSlide();
 
@@ -849,9 +1265,8 @@
         startAutoSlide();
 
 
-        /*
-          CARACTERÍSTICAS
-        */
+
+        /* CARACTERÍSTICAS */
 
         const featuresList =
           document.getElementById(
@@ -861,6 +1276,7 @@
 
         producto.caracteristicas.forEach(
           caracteristica => {
+
 
             const li =
               document.createElement(
@@ -880,9 +1296,8 @@
         );
 
 
-        /*
-          WHATSAPP
-        */
+
+        /* WHATSAPP */
 
         const mensaje =
           "Hola, me interesa el producto " +
@@ -902,12 +1317,15 @@
         ).href =
           whatsappURL;
 
+
       })
 
 
       .catch(error => {
 
+
         console.error(error);
+
 
         document.body.innerHTML =
           "<h1>Error al cargar el producto</h1>";
@@ -915,9 +1333,10 @@
       });
 
 
-    /*
-      SWIPE EN MÓVIL
-    */
+
+    /* =========================
+       SWIPE MÓVIL
+    ========================= */
 
     let touchStartX = 0;
 
@@ -929,10 +1348,13 @@
       event => {
 
         touchStartX =
-          event.changedTouches[0].screenX;
+          event.changedTouches[0]
+            .screenX;
 
       },
-      { passive: true }
+      {
+        passive: true
+      }
     );
 
 
@@ -940,8 +1362,10 @@
       "touchend",
       event => {
 
+
         touchEndX =
-          event.changedTouches[0].screenX;
+          event.changedTouches[0]
+            .screenX;
 
 
         const difference =
@@ -949,8 +1373,12 @@
           touchEndX;
 
 
-        if (Math.abs(difference) < 40) {
+        if (
+          Math.abs(difference) < 40
+        ) {
+
           return;
+
         }
 
 
@@ -965,8 +1393,11 @@
         }
 
       },
-      { passive: true }
+      {
+        passive: true
+      }
     );
+
 
   </script>
 
