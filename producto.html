@@ -29,7 +29,6 @@
       padding: 30px 45px 70px;
     }
 
-
     /* =========================
        HEADER
     ========================= */
@@ -44,7 +43,6 @@
       height: auto;
     }
 
-
     /* =========================
        PRODUCTO
     ========================= */
@@ -53,7 +51,6 @@
       max-width: 1100px;
       margin: 0 auto;
     }
-
 
     /* =========================
        GALERÍA
@@ -93,7 +90,6 @@
       opacity: 0;
       transform: scale(0.98);
     }
-
 
     /* =========================
        FLECHAS
@@ -142,7 +138,6 @@
       right: 15px;
     }
 
-
     /* =========================
        CONTADOR
     ========================= */
@@ -156,7 +151,6 @@
 
       opacity: 0.6;
     }
-
 
     /* =========================
        MINIATURAS
@@ -199,21 +193,17 @@
       border: 1px solid #1a1a1a;
     }
 
-
     /* =========================
        INFORMACIÓN
     ========================= */
 
     .info {
-      max-width: 900px;
+      max-width: 850px;
 
-      margin: 85px auto 0;
+      margin: 90px auto 0;
 
       text-align: center;
     }
-
-
-    /* NOMBRE */
 
     .name {
       font-size: clamp(65px, 10vw, 125px);
@@ -227,59 +217,48 @@
       margin-bottom: 25px;
     }
 
-
-    /* DESCRIPCIÓN */
-
     .description {
+      max-width: 600px;
+
+      margin: 0 auto 22px;
+
       font-size: 18px;
 
       line-height: 1.7;
 
       letter-spacing: 0.5px;
-
-      margin-bottom: 22px;
     }
 
-
-    /* PRECIO */
-
     .price {
-      font-size: 32px;
+      font-size: 34px;
 
       font-weight: 400;
 
       letter-spacing: 1px;
 
-      margin-bottom: 65px;
+      margin-bottom: 75px;
     }
-
 
     /* =========================
        ESPECIFICACIONES
     ========================= */
 
-    .specs {
-      display: grid;
+    .specifications {
+      border-top: 1px solid #d4d3ce;
 
-      grid-template-columns:
-        repeat(4, 1fr);
+      border-bottom: 1px solid #d4d3ce;
 
-      border-top: 1px solid #d8d7d2;
-
-      border-bottom: 1px solid #d8d7d2;
-
-      margin-bottom: 65px;
+      text-align: left;
     }
 
-    .spec {
-      padding: 28px 15px;
+    .specification {
+      padding: 28px 0;
 
-      border-right:
-        1px solid #d8d7d2;
+      border-bottom: 1px solid #d4d3ce;
     }
 
-    .spec:last-child {
-      border-right: none;
+    .specification:last-child {
+      border-bottom: none;
     }
 
     .spec-label {
@@ -287,38 +266,37 @@
 
       font-size: 10px;
 
-      letter-spacing: 2px;
+      letter-spacing: 3px;
 
       text-transform: uppercase;
 
-      opacity: 0.55;
+      opacity: 0.5;
 
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .spec-value {
       display: block;
 
-      font-size: 15px;
+      font-size: 20px;
 
-      line-height: 1.5;
+      font-weight: 400;
+
+      line-height: 1.4;
     }
-
 
     /* =========================
        CARACTERÍSTICAS
     ========================= */
 
     .features {
-      max-width: 650px;
-
-      margin: 0 auto 60px;
+      margin: 75px 0 60px;
 
       text-align: left;
     }
 
     .features h2 {
-      font-size: 12px;
+      font-size: 11px;
 
       letter-spacing: 3px;
 
@@ -332,17 +310,15 @@
     .features ul {
       list-style: none;
 
-      border-top:
-        1px solid #d8d7d2;
+      border-top: 1px solid #d4d3ce;
     }
 
     .features li {
-      padding: 14px 0;
+      padding: 16px 0;
 
-      border-bottom:
-        1px solid #d8d7d2;
+      border-bottom: 1px solid #d4d3ce;
 
-      font-size: 14px;
+      font-size: 15px;
 
       line-height: 1.6;
     }
@@ -355,7 +331,6 @@
       opacity: 0.45;
     }
 
-
     /* =========================
        BOTÓN
     ========================= */
@@ -363,7 +338,7 @@
     .button {
       display: inline-block;
 
-      padding: 18px 42px;
+      padding: 19px 45px;
 
       background: #1a1a1a;
 
@@ -388,7 +363,6 @@
       transform: translateY(-2px);
     }
 
-
     /* =========================
        VOLVER
     ========================= */
@@ -408,9 +382,8 @@
 
       text-transform: uppercase;
 
-      opacity: 0.65;
+      opacity: 0.6;
     }
-
 
     /* =========================
        FOOTER
@@ -423,8 +396,7 @@
 
       padding-top: 25px;
 
-      border-top:
-        1px solid #d8d7d2;
+      border-top: 1px solid #d4d3ce;
 
       display: flex;
 
@@ -436,9 +408,8 @@
 
       text-transform: uppercase;
 
-      opacity: 0.55;
+      opacity: 0.5;
     }
-
 
     /* =========================
        MÓVIL
@@ -453,16 +424,13 @@
           50px;
       }
 
-
       .header {
         margin-bottom: 40px;
       }
 
-
       .logo {
         width: 155px;
       }
-
 
       .gallery-arrow {
         width: 38px;
@@ -471,16 +439,13 @@
         font-size: 20px;
       }
 
-
       .arrow-left {
         left: 8px;
       }
 
-
       .arrow-right {
         right: 8px;
       }
-
 
       .thumbnail {
         width: 29%;
@@ -488,11 +453,9 @@
         height: 70px;
       }
 
-
       .info {
-        margin-top: 65px;
+        margin-top: 70px;
       }
-
 
       .name {
         font-size: 72px;
@@ -502,80 +465,47 @@
         margin-bottom: 20px;
       }
 
-
       .description {
         font-size: 16px;
 
-        padding: 0 10px;
+        padding: 0 8px;
       }
-
 
       .price {
-        font-size: 28px;
+        font-size: 29px;
 
-        margin-bottom: 50px;
+        margin-bottom: 60px;
       }
 
-
-      .specs {
-        grid-template-columns:
-          repeat(2, 1fr);
-
-        margin-bottom: 55px;
+      .specification {
+        padding: 25px 0;
       }
 
+      .spec-label {
+        font-size: 9px;
 
-      .spec {
-        padding:
-          24px 10px;
-
-        border-right:
-          1px solid #d8d7d2;
-
-        border-bottom:
-          1px solid #d8d7d2;
+        letter-spacing: 2.5px;
       }
-
-
-      .spec:nth-child(2) {
-        border-right: none;
-      }
-
-
-      .spec:nth-child(3) {
-        border-bottom: none;
-      }
-
-
-      .spec:nth-child(4) {
-        border-right: none;
-
-        border-bottom: none;
-      }
-
 
       .spec-value {
-        font-size: 14px;
+        font-size: 19px;
       }
 
-
       .features {
+        margin-top: 65px;
+
         margin-bottom: 50px;
       }
 
-
       .features li {
-        font-size: 13px;
+        font-size: 14px;
       }
-
 
       .button {
         width: 100%;
 
-        padding:
-          18px 20px;
+        padding: 19px 20px;
       }
-
 
       .footer {
         margin-top: 90px;
@@ -586,21 +516,16 @@
 
         text-align: center;
       }
-
     }
 
   </style>
 </head>
 
-
 <body>
 
   <main class="page">
 
-
-    <!-- =========================
-         HEADER
-    ========================= -->
+    <!-- HEADER -->
 
     <header class="header">
 
@@ -617,10 +542,7 @@
     </header>
 
 
-
-    <!-- =========================
-         PRODUCTO
-    ========================= -->
+    <!-- PRODUCTO -->
 
     <section class="product">
 
@@ -629,9 +551,7 @@
 
       <div class="gallery">
 
-
         <div class="image-container">
-
 
           <button
             class="gallery-arrow arrow-left"
@@ -641,14 +561,12 @@
             ‹
           </button>
 
-
           <img
             id="mainImage"
             class="main-image"
             src=""
             alt=""
           >
-
 
           <button
             class="gallery-arrow arrow-right"
@@ -658,9 +576,7 @@
             ›
           </button>
 
-
         </div>
-
 
         <div
           id="counter"
@@ -669,35 +585,27 @@
           1 / 1
         </div>
 
-
         <div
           id="thumbnails"
           class="thumbnails"
         ></div>
 
-
       </div>
 
 
-
-      <!-- =========================
-           INFORMACIÓN
-      ========================= -->
+      <!-- INFORMACIÓN -->
 
       <div class="info">
-
 
         <h1
           id="productName"
           class="name"
         ></h1>
 
-
         <p
           id="description"
           class="description"
         ></p>
-
 
         <div
           id="price"
@@ -705,13 +613,14 @@
         ></div>
 
 
-
         <!-- ESPECIFICACIONES -->
 
-        <div class="specs">
+        <div
+          id="specifications"
+          class="specifications"
+        >
 
-
-          <div class="spec">
+          <div class="specification">
 
             <span class="spec-label">
               Dimensiones
@@ -725,7 +634,7 @@
           </div>
 
 
-          <div class="spec">
+          <div class="specification">
 
             <span class="spec-label">
               Material
@@ -739,10 +648,10 @@
           </div>
 
 
-          <div class="spec">
+          <div class="specification">
 
             <span class="spec-label">
-              Capacidad
+              Capacidad de carga
             </span>
 
             <span
@@ -753,10 +662,10 @@
           </div>
 
 
-          <div class="spec">
+          <div class="specification">
 
             <span class="spec-label">
-              Armado
+              Entrega
             </span>
 
             <span
@@ -767,27 +676,39 @@
           </div>
 
 
-        </div>
+          <div
+            id="installationRow"
+            class="specification"
+          >
 
+            <span class="spec-label">
+              Instalación
+            </span>
+
+            <span
+              id="installation"
+              class="spec-value"
+            ></span>
+
+          </div>
+
+
+        </div>
 
 
         <!-- CARACTERÍSTICAS -->
 
         <div class="features">
 
-
           <h2>
             Características
           </h2>
-
 
           <ul
             id="featuresList"
           ></ul>
 
-
         </div>
-
 
 
         <!-- WHATSAPP -->
@@ -809,12 +730,9 @@
           ← Volver a MANGLE
         </a>
 
-
       </div>
 
-
     </section>
-
 
 
     <!-- FOOTER -->
@@ -831,13 +749,10 @@
 
     </footer>
 
-
   </main>
 
 
-
   <script>
-
 
     /* =========================
        CONFIGURACIÓN
@@ -846,16 +761,13 @@
     const BASE_URL =
       "https://manglefurniture.github.io/mangle-website/";
 
-
     const params =
       new URLSearchParams(
         window.location.search
       );
 
-
     const productoId =
       params.get("producto");
-
 
     let images = [];
 
@@ -864,18 +776,15 @@
     let autoSlide;
 
 
-
     const mainImage =
       document.getElementById(
         "mainImage"
       );
 
-
     const thumbnails =
       document.getElementById(
         "thumbnails"
       );
-
 
     const counter =
       document.getElementById(
@@ -883,9 +792,8 @@
       );
 
 
-
     /* =========================
-       CAMBIAR IMAGEN
+       GALERÍA
     ========================= */
 
     function showImage(
@@ -893,16 +801,13 @@
       animate = true
     ) {
 
-
       if (!images.length) {
         return;
       }
 
-
       currentIndex =
         (index + images.length) %
         images.length;
-
 
       const imageURL =
         BASE_URL +
@@ -910,26 +815,22 @@
           images[currentIndex]
         );
 
-
       if (animate) {
 
         mainImage.classList.add(
           "fade"
         );
 
-
         setTimeout(() => {
 
           mainImage.src =
             imageURL;
-
 
           mainImage.classList.remove(
             "fade"
           );
 
         }, 180);
-
 
       } else {
 
@@ -938,17 +839,14 @@
 
       }
 
-
       mainImage.alt =
         "MANGLE — " +
         images[currentIndex];
-
 
       counter.textContent =
         (currentIndex + 1) +
         " / " +
         images.length;
-
 
       document
         .querySelectorAll(
@@ -964,14 +862,8 @@
 
           }
         );
-
     }
 
-
-
-    /* =========================
-       SIGUIENTE
-    ========================= */
 
     function nextImage() {
 
@@ -979,16 +871,9 @@
         currentIndex + 1
       );
 
-
       restartAutoSlide();
-
     }
 
-
-
-    /* =========================
-       ANTERIOR
-    ========================= */
 
     function previousImage() {
 
@@ -996,24 +881,15 @@
         currentIndex - 1
       );
 
-
       restartAutoSlide();
-
     }
 
 
-
-    /* =========================
-       AUTOMÁTICO
-    ========================= */
-
     function startAutoSlide() {
-
 
       if (images.length <= 1) {
         return;
       }
-
 
       autoSlide =
         setInterval(() => {
@@ -1023,9 +899,7 @@
           );
 
         }, 4500);
-
     }
-
 
 
     function restartAutoSlide() {
@@ -1034,16 +908,9 @@
         autoSlide
       );
 
-
       startAutoSlide();
-
     }
 
-
-
-    /* =========================
-       BOTONES
-    ========================= */
 
     document
       .getElementById(
@@ -1065,7 +932,6 @@
       );
 
 
-
     /* =========================
        CARGAR PRODUCTO
     ========================= */
@@ -1075,9 +941,7 @@
       "productos.json"
     )
 
-
       .then(response => {
-
 
         if (!response.ok) {
 
@@ -1087,14 +951,11 @@
 
         }
 
-
         return response.json();
 
       })
 
-
       .then(data => {
-
 
         const producto =
           data.productos.find(
@@ -1109,9 +970,7 @@
             "<h1>Producto no encontrado</h1>";
 
           return;
-
         }
-
 
 
         /* DATOS */
@@ -1147,7 +1006,6 @@
             : "Precio por confirmar";
 
 
-
         /* DIMENSIONES */
 
         document.getElementById(
@@ -1162,7 +1020,6 @@
           producto.dimensiones.unidad;
 
 
-
         /* MATERIAL */
 
         document.getElementById(
@@ -1175,7 +1032,6 @@
           producto.material.unidad_espesor;
 
 
-
         /* CAPACIDAD */
 
         document.getElementById(
@@ -1186,7 +1042,6 @@
           producto.capacidad_carga.unidad;
 
 
-
         /* ENTREGA */
 
         document.getElementById(
@@ -1194,6 +1049,27 @@
         ).textContent =
           producto.entrega.modalidad;
 
+
+        /* INSTALACIÓN */
+
+        if (
+          producto.instalacion &&
+          producto.instalacion.requiere
+        ) {
+
+          document.getElementById(
+            "installation"
+          ).textContent =
+            "Requerida";
+
+        } else {
+
+          document.getElementById(
+            "installationRow"
+          ).style.display =
+            "none";
+
+        }
 
 
         /* GALERÍA */
@@ -1204,7 +1080,6 @@
 
         images.forEach(
           (imagen, index) => {
-
 
             const imageURL =
               BASE_URL +
@@ -1241,7 +1116,6 @@
                   index
                 );
 
-
                 restartAutoSlide();
 
               }
@@ -1265,7 +1139,6 @@
         startAutoSlide();
 
 
-
         /* CARACTERÍSTICAS */
 
         const featuresList =
@@ -1277,16 +1150,13 @@
         producto.caracteristicas.forEach(
           caracteristica => {
 
-
             const li =
               document.createElement(
                 "li"
               );
 
-
             li.textContent =
               caracteristica;
-
 
             featuresList.appendChild(
               li
@@ -1296,7 +1166,6 @@
         );
 
 
-
         /* WHATSAPP */
 
         const mensaje =
@@ -1304,34 +1173,28 @@
           producto.nombre +
           " de MANGLE.";
 
-
         const whatsappURL =
           "https://wa.me/?text=" +
           encodeURIComponent(
             mensaje
           );
 
-
         document.getElementById(
           "whatsappButton"
         ).href =
           whatsappURL;
-
 
       })
 
 
       .catch(error => {
 
-
         console.error(error);
-
 
         document.body.innerHTML =
           "<h1>Error al cargar el producto</h1>";
 
       });
-
 
 
     /* =========================
@@ -1362,25 +1225,19 @@
       "touchend",
       event => {
 
-
         touchEndX =
           event.changedTouches[0]
             .screenX;
-
 
         const difference =
           touchStartX -
           touchEndX;
 
-
         if (
           Math.abs(difference) < 40
         ) {
-
           return;
-
         }
-
 
         if (difference > 0) {
 
@@ -1397,7 +1254,6 @@
         passive: true
       }
     );
-
 
   </script>
 
