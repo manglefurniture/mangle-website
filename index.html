@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 
   <meta charset="UTF-8">
@@ -9,7 +10,7 @@
     content="width=device-width, initial-scale=1.0, viewport-fit=cover"
   >
 
-  <title>MANGLE — Minimal Furniture</title>
+  <title>MANGLE — Muebles Minimalistas</title>
 
 
   <style>
@@ -26,19 +27,16 @@
 
 
     html {
-
-      scroll-behavior: smooth;
-
-      scroll-snap-type: y mandatory;
-
+      width: 100%;
       height: 100%;
-
-      overflow-y: scroll;
-
+      overflow: hidden;
     }
 
 
     body {
+
+      width: 100%;
+      height: 100%;
 
       font-family:
         Arial,
@@ -49,28 +47,36 @@
 
       color: #1a1a1a;
 
-      width: 100%;
-
-      min-height: 100%;
-
-      overflow-x: hidden;
+      overflow: hidden;
 
     }
 
 
     /* =====================================================
-       CONTENEDOR
+       CONTENEDOR PRINCIPAL DEL SCROLL
     ===================================================== */
 
     .panels {
 
       width: 100%;
+      height: 100dvh;
+
+      overflow-y: auto;
+      overflow-x: hidden;
+
+      scroll-snap-type: y mandatory;
+
+      scroll-behavior: smooth;
+
+      -webkit-overflow-scrolling: touch;
+
+      overscroll-behavior-y: contain;
 
     }
 
 
     /* =====================================================
-       PANEL
+       CADA PANEL
     ===================================================== */
 
     .panel {
@@ -78,26 +84,17 @@
       position: relative;
 
       width: 100%;
-
-      height: 100vh;
-
       height: 100dvh;
-
-      min-height: 100vh;
-
       min-height: 100dvh;
 
       overflow: hidden;
 
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
       scroll-snap-align: start;
-
       scroll-snap-stop: always;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       isolation: isolate;
 
@@ -105,7 +102,7 @@
 
 
     /* =====================================================
-       IMAGEN
+       IMÁGENES
     ===================================================== */
 
     .panel-image {
@@ -115,26 +112,26 @@
       inset: 0;
 
       width: 100%;
-
       height: 100%;
+
+      display: block;
 
       object-fit: cover;
 
       object-position: center center;
 
-      display: block;
-
       z-index: -2;
 
-      transform: scale(1.04);
+      transform: scale(1.02);
 
       transition:
-        transform 1.4s cubic-bezier(.2,.7,.2,1);
+        transform 1.2s ease;
 
     }
 
 
-    .panel.active .panel-image {
+    .panel.visible
+    .panel-image {
 
       transform: scale(1);
 
@@ -142,7 +139,7 @@
 
 
     /* =====================================================
-       OVERLAY
+       OSCURECIMIENTO
     ===================================================== */
 
     .panel-overlay {
@@ -153,14 +150,14 @@
 
       z-index: -1;
 
+      pointer-events: none;
+
       background:
         linear-gradient(
           to bottom,
-          rgba(0,0,0,0.06),
+          rgba(0,0,0,0.04),
           rgba(0,0,0,0.20)
         );
-
-      pointer-events: none;
 
     }
 
@@ -173,17 +170,20 @@
 
       position: relative;
 
-      z-index: 3;
+      z-index: 5;
 
-      width: min(900px, 90%);
+      width: min(850px, 90%);
 
-      padding: 40px;
+      padding: 30px;
 
       text-align: center;
 
+      color: #ffffff;
+
       opacity: 0;
 
-      transform: translateY(35px);
+      transform:
+        translateY(30px);
 
       transition:
         opacity .8s ease,
@@ -192,11 +192,13 @@
     }
 
 
-    .panel.active .panel-content {
+    .panel.visible
+    .panel-content {
 
       opacity: 1;
 
-      transform: translateY(0);
+      transform:
+        translateY(0);
 
     }
 
@@ -207,7 +209,7 @@
 
     .eyebrow {
 
-      font-size: 11px;
+      font-size: 10px;
 
       letter-spacing: 5px;
 
@@ -221,15 +223,19 @@
     .title {
 
       font-size:
-        clamp(45px, 7vw, 90px);
+        clamp(
+          42px,
+          7vw,
+          88px
+        );
 
       font-weight: 300;
 
-      letter-spacing: 3px;
+      letter-spacing: 2px;
 
       line-height: 1.05;
 
-      margin-bottom: 28px;
+      margin-bottom: 25px;
 
     }
 
@@ -245,13 +251,13 @@
 
       line-height: 1.7;
 
-      letter-spacing: .5px;
+      letter-spacing: .3px;
 
     }
 
 
     /* =====================================================
-       BOTÓN
+       BOTONES
     ===================================================== */
 
     .button {
@@ -268,7 +274,7 @@
 
       text-decoration: none;
 
-      font-size: 11px;
+      font-size: 10px;
 
       letter-spacing: 3px;
 
@@ -288,21 +294,25 @@
 
       color: #f5f4f0;
 
-      transform: translateY(-2px);
+      transform:
+        translateY(-2px);
 
     }
 
 
     /* =====================================================
-       INDICADOR DE DESLIZAMIENTO
+       INDICADOR DE SCROLL
     ===================================================== */
 
-    .swipe-indicator {
+    .scroll-hint {
 
       position: absolute;
 
       bottom:
-        max(25px, env(safe-area-inset-bottom));
+        max(
+          28px,
+          env(safe-area-inset-bottom)
+        );
 
       left: 50%;
 
@@ -317,9 +327,9 @@
 
       align-items: center;
 
-      gap: 8px;
+      gap: 10px;
 
-      color: inherit;
+      color: #ffffff;
 
       font-size: 9px;
 
@@ -327,18 +337,20 @@
 
       text-transform: uppercase;
 
-      opacity: .75;
+      opacity: .85;
 
       pointer-events: none;
+
+      transition:
+        opacity .5s ease;
 
     }
 
 
-    .swipe-arrow {
+    .scroll-arrow {
 
-      width: 16px;
-
-      height: 16px;
+      width: 13px;
+      height: 13px;
 
       border-right:
         1px solid currentColor;
@@ -350,14 +362,14 @@
         rotate(45deg);
 
       animation:
-        arrowMove 1.7s
+        scrollArrow 1.6s
         ease-in-out
         infinite;
 
     }
 
 
-    @keyframes arrowMove {
+    @keyframes scrollArrow {
 
       0%,
       100% {
@@ -374,7 +386,7 @@
 
         transform:
           rotate(45deg)
-          translate(5px,5px);
+          translate(4px,4px);
 
         opacity: 1;
 
@@ -387,44 +399,42 @@
        NAVEGACIÓN LATERAL
     ===================================================== */
 
-    .panel-indicator {
+    .navigation {
 
       position: fixed;
 
-      right: 28px;
+      right: 25px;
 
       top: 50%;
 
       transform:
         translateY(-50%);
 
-      z-index: 30;
+      z-index: 50;
 
       display: flex;
 
       flex-direction: column;
 
-      gap: 12px;
+      gap: 13px;
 
     }
 
 
-    .dot {
-
-      appearance: none;
+    .nav-dot {
 
       width: 7px;
-
       height: 7px;
 
       padding: 0;
 
       border:
-        1px solid #1a1a1a;
+        1px solid #ffffff;
 
       border-radius: 50%;
 
-      background: transparent;
+      background:
+        transparent;
 
       cursor: pointer;
 
@@ -435,9 +445,9 @@
     }
 
 
-    .dot.active {
+    .nav-dot.active {
 
-      background: #1a1a1a;
+      background: #ffffff;
 
       transform:
         scale(1.6);
@@ -446,75 +456,27 @@
 
 
     /* =====================================================
-       FLECHAS DE NAVEGACIÓN
+       PANEL CATEY
     ===================================================== */
 
-    .panel-arrow {
+    .catey-panel {
 
-      position: absolute;
-
-      z-index: 20;
-
-      left: 50%;
-
-      bottom: 70px;
-
-      transform:
-        translateX(-50%);
-
-      width: 42px;
-
-      height: 42px;
-
-      border:
-        1px solid currentColor;
-
-      border-radius: 50%;
-
-      background:
-        rgba(255,255,255,.08);
-
-      color: inherit;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      cursor: pointer;
-
-      font-size: 20px;
-
-      transition:
-        background .3s ease,
-        color .3s ease;
+      justify-content:
+        flex-end;
 
     }
 
-
-    .panel-arrow:hover {
-
-      background: #1a1a1a;
-
-      color: #f5f4f0;
-
-    }
-
-
-    /* =====================================================
-       CATEY
-    ===================================================== */
 
     .catey-content {
 
       position: relative;
 
-      z-index: 3;
+      z-index: 5;
 
-      width: min(1100px, 90%);
+      width: 100%;
 
-      padding: 40px;
+      padding:
+        60px 8vw;
 
       display: flex;
 
@@ -522,10 +484,12 @@
 
       align-items: center;
 
+      color: #ffffff;
+
       opacity: 0;
 
       transform:
-        translateY(35px);
+        translateY(30px);
 
       transition:
         opacity .8s ease,
@@ -534,7 +498,7 @@
     }
 
 
-    .panel.active
+    .catey-panel.visible
     .catey-content {
 
       opacity: 1;
@@ -547,11 +511,17 @@
 
     .catey-info {
 
-      width: min(400px, 100%);
+      width:
+        min(
+          390px,
+          100%
+        );
 
       text-align: left;
 
-      color: #1a1a1a;
+      text-shadow:
+        0 2px 18px
+        rgba(0,0,0,.25);
 
     }
 
@@ -559,7 +529,11 @@
     .catey-title {
 
       font-size:
-        clamp(65px, 9vw, 115px);
+        clamp(
+          70px,
+          9vw,
+          120px
+        );
 
       font-weight: 300;
 
@@ -578,7 +552,7 @@
 
       line-height: 1.7;
 
-      margin-bottom: 25px;
+      margin-bottom: 20px;
 
     }
 
@@ -593,15 +567,18 @@
 
 
     /* =====================================================
-       MOBILE
+       MÓVIL
     ===================================================== */
 
     @media (max-width: 700px) {
 
 
-      html {
+      .panels {
 
-        scroll-snap-type: y mandatory;
+        height: 100dvh;
+
+        scroll-snap-type:
+          y mandatory;
 
       }
 
@@ -614,25 +591,32 @@
 
         min-height: 100dvh;
 
+        scroll-snap-align:
+          start center;
+
+        scroll-snap-stop:
+          always;
+
       }
 
 
       /*
-        IMPORTANTE:
-        Las imágenes 16:9 se recortan
-        proporcionalmente en móvil.
-        Nunca se deforman.
+        Las imágenes 16:9 se
+        comportan como fondos.
+        No se deforman.
+        Se recortan para llenar
+        la pantalla vertical.
       */
 
       .panel-image {
 
         width: 100%;
-
         height: 100%;
 
         object-fit: cover;
 
-        object-position: center center;
+        object-position:
+          center center;
 
       }
 
@@ -660,9 +644,9 @@
 
       .title {
 
-        font-size: 40px;
+        font-size: 38px;
 
-        letter-spacing: 1.5px;
+        letter-spacing: 1px;
 
         line-height: 1.1;
 
@@ -686,65 +670,29 @@
       }
 
 
-      /*
-        Indicador más visible
-        en móvil.
-      */
+      /* -------------------------
+         CATEY MÓVIL
+      ------------------------- */
 
-      .swipe-indicator {
-
-        bottom:
-          max(
-            24px,
-            env(safe-area-inset-bottom)
-          );
-
-      }
-
-
-      .panel-indicator {
-
-        right: 12px;
-
-        gap: 10px;
-
-      }
-
-
-      .dot {
-
-        width: 6px;
-
-        height: 6px;
-
-      }
-
-
-      .panel-arrow {
-
-        display: none;
-
-      }
-
-
-      /*
-        CATEY
-      */
-
-      .catey-content {
-
-        width: 100%;
-
-        padding:
-          25px;
-
-        justify-content:
-          center;
+      .catey-panel {
 
         align-items:
           flex-end;
 
-        height: 100%;
+      }
+
+
+      .catey-content {
+
+        padding:
+          30px 22px
+          max(
+            45px,
+            env(safe-area-inset-bottom)
+          );
+
+        justify-content:
+          center;
 
       }
 
@@ -754,14 +702,6 @@
         width: 100%;
 
         text-align: center;
-
-        padding-bottom: 55px;
-
-        color: #ffffff;
-
-        text-shadow:
-          0 2px 15px
-          rgba(0,0,0,.35);
 
       }
 
@@ -788,37 +728,40 @@
 
       }
 
+
+      /* -------------------------
+         NAVEGACIÓN MÓVIL
+      ------------------------- */
+
+      .navigation {
+
+        right: 13px;
+
+        gap: 11px;
+
+      }
+
+
+      .nav-dot {
+
+        width: 6px;
+        height: 6px;
+
+      }
+
+
+      .scroll-hint {
+
+        bottom:
+          max(
+            25px,
+            env(safe-area-inset-bottom)
+          );
+
+      }
+
     }
 
-
-    /* =====================================================
-       PANTALLAS MUY PEQUEÑAS
-    ===================================================== */
-
-    @media (max-width: 380px) {
-
-
-      .title {
-
-        font-size: 34px;
-
-      }
-
-
-      .catey-title {
-
-        font-size: 62px;
-
-      }
-
-
-      .catey-info {
-
-        padding-bottom: 45px;
-
-      }
-
-    }
 
   </style>
 
@@ -833,38 +776,38 @@
   ===================================================== -->
 
   <nav
-    class="panel-indicator"
-    aria-label="Navegación de paneles"
+    class="navigation"
+    aria-label="Navegación de la página"
   >
 
     <button
-      class="dot active"
+      class="nav-dot active"
       data-panel="0"
-      aria-label="Ir al panel 1"
+      aria-label="Inicio"
     ></button>
 
     <button
-      class="dot"
+      class="nav-dot"
       data-panel="1"
-      aria-label="Ir al panel 2"
+      aria-label="Nuestra filosofía"
     ></button>
 
     <button
-      class="dot"
+      class="nav-dot"
       data-panel="2"
-      aria-label="Ir al panel 3"
+      aria-label="Materiales"
     ></button>
 
     <button
-      class="dot"
+      class="nav-dot"
       data-panel="3"
-      aria-label="Ir al panel 4"
+      aria-label="Catey"
     ></button>
 
     <button
-      class="dot"
+      class="nav-dot"
       data-panel="4"
-      aria-label="Ir al panel 5"
+      aria-label="Cierre"
     ></button>
 
   </nav>
@@ -875,7 +818,7 @@
        PANELES
   ===================================================== -->
 
-  <main class="panels">
+  <main class="panels" id="panels">
 
 
     <!-- =================================================
@@ -883,37 +826,30 @@
     ================================================= -->
 
     <section
-      class="panel active"
+      class="panel visible"
       id="panel-1"
     >
 
       <img
         class="panel-image"
         src="hero-mangle.png"
-        alt="MANGLE Minimal Furniture"
+        alt="MANGLE — Muebles minimalistas"
       >
 
       <div class="panel-overlay"></div>
 
 
-      <div class="swipe-indicator">
+      <div class="scroll-hint">
 
         <span>
           Desliza
         </span>
 
-        <span class="swipe-arrow"></span>
+        <span
+          class="scroll-arrow"
+        ></span>
 
       </div>
-
-
-      <button
-        class="panel-arrow"
-        data-next="1"
-        aria-label="Siguiente panel"
-      >
-        ↓
-      </button>
 
     </section>
 
@@ -931,7 +867,7 @@
       <img
         class="panel-image"
         src="mangle-filosofia.png"
-        alt="Arquitectura minimalista MANGLE"
+        alt="Filosofía MANGLE"
       >
 
       <div class="panel-overlay"></div>
@@ -944,26 +880,21 @@
         </div>
 
         <h1 class="title">
-          LESS FURNITURE.<br>
-          MORE SPACE.
+
+          MENOS MUEBLE.<br>
+          MÁS ESPACIO.
+
         </h1>
 
         <p class="subtitle">
+
           Diseñamos piezas esenciales,
-          funcionales y honestas.
-          Para espacios que respiran.
+          funcionales y honestas,
+          para espacios que respiran.
+
         </p>
 
       </div>
-
-
-      <button
-        class="panel-arrow"
-        data-next="2"
-        aria-label="Siguiente panel"
-      >
-        ↓
-      </button>
 
     </section>
 
@@ -981,7 +912,7 @@
       <img
         class="panel-image"
         src="mangle-material.png"
-        alt="Materiales y acabados MANGLE"
+        alt="Materiales MANGLE"
       >
 
       <div class="panel-overlay"></div>
@@ -990,30 +921,25 @@
       <div class="panel-content">
 
         <div class="eyebrow">
-          Material
+          Materiales
         </div>
 
         <h1 class="title">
+
           COLOR.<br>
-          TEXTURE.<br>
-          FORM.
+          TEXTURA.<br>
+          FORMA.
+
         </h1>
 
         <p class="subtitle">
+
           Una misma idea.
           Diferentes posibilidades.
+
         </p>
 
       </div>
-
-
-      <button
-        class="panel-arrow"
-        data-next="3"
-        aria-label="Siguiente panel"
-      >
-        ↓
-      </button>
 
     </section>
 
@@ -1024,7 +950,7 @@
     ================================================= -->
 
     <section
-      class="panel"
+      class="panel catey-panel"
       id="panel-4"
     >
 
@@ -1050,8 +976,10 @@
           </h1>
 
           <p class="catey-description">
+
             Minimalismo que ocupa
             poco espacio.
+
           </p>
 
           <div class="catey-price">
@@ -1069,15 +997,6 @@
 
       </div>
 
-
-      <button
-        class="panel-arrow"
-        data-next="4"
-        aria-label="Siguiente panel"
-      >
-        ↓
-      </button>
-
     </section>
 
 
@@ -1094,7 +1013,7 @@
       <img
         class="panel-image"
         src="mangle-cierre.png"
-        alt="Espacio arquitectónico MANGLE"
+        alt="Espacio MANGLE"
       >
 
       <div class="panel-overlay"></div>
@@ -1107,16 +1026,18 @@
         </div>
 
         <h1 class="title">
-          MAKE SPACE<br>
-          FOR WHAT MATTERS.
+
+          HAZ ESPACIO<br>
+          PARA LO QUE IMPORTA.
+
         </h1>
 
-        <a
-          href="#panel-4"
-          class="button"
-        >
-          Ver colección
-        </a>
+        <p class="subtitle">
+
+          Muebles minimalistas
+          diseñados en México.
+
+        </p>
 
       </div>
 
@@ -1134,6 +1055,12 @@
   <script>
 
 
+    const container =
+      document.getElementById(
+        "panels"
+      );
+
+
     const panels =
       Array.from(
         document.querySelectorAll(
@@ -1145,112 +1072,30 @@
     const dots =
       Array.from(
         document.querySelectorAll(
-          ".dot"
-        )
-      );
-
-
-    const arrows =
-      Array.from(
-        document.querySelectorAll(
-          ".panel-arrow"
+          ".nav-dot"
         )
       );
 
 
     let currentPanel = 0;
 
-    let isScrolling = false;
-
-    let touchStartY = 0;
-
-    let touchEndY = 0;
-
 
     /* =====================================================
-       IR A PANEL
-    ===================================================== */
-
-    function goToPanel(index) {
-
-
-      index =
-        Math.max(
-          0,
-          Math.min(
-            index,
-            panels.length - 1
-          )
-        );
-
-
-      currentPanel = index;
-
-
-      panels[index].scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-
-    }
-
-
-    /* =====================================================
-       ACTUALIZAR PANEL ACTIVO
-    ===================================================== */
-
-    function updateActivePanel(
-      index
-    ) {
-
-
-      currentPanel = index;
-
-
-      panels.forEach(
-        (panel, i) => {
-
-          panel.classList.toggle(
-            "active",
-            i === index
-          );
-
-        }
-      );
-
-
-      dots.forEach(
-        (dot, i) => {
-
-          dot.classList.toggle(
-            "active",
-            i === index
-          );
-
-        }
-      );
-
-    }
-
-
-    /* =====================================================
-       OBSERVER
+       DETECTAR PANEL VISIBLE
     ===================================================== */
 
     const observer =
       new IntersectionObserver(
-        entries => {
 
+        entries => {
 
           entries.forEach(
             entry => {
 
-
               if (
                 entry.isIntersecting &&
-                entry.intersectionRatio >= .65
+                entry.intersectionRatio >= 0.65
               ) {
-
 
                 const index =
                   panels.indexOf(
@@ -1258,23 +1103,57 @@
                   );
 
 
-                if (index !== -1) {
-
-                  updateActivePanel(
-                    index
-                  );
-
+                if (
+                  index === -1
+                ) {
+                  return;
                 }
+
+
+                currentPanel =
+                  index;
+
+
+                panels.forEach(
+                  (panel, i) => {
+
+                    panel.classList.toggle(
+                      "visible",
+                      i === index
+                    );
+
+                  }
+                );
+
+
+                dots.forEach(
+                  (dot, i) => {
+
+                    dot.classList.toggle(
+                      "active",
+                      i === index
+                    );
+
+                  }
+                );
 
               }
 
             }
+
           );
 
         },
+
         {
-          threshold: [.65]
+          root: container,
+
+          threshold: [
+            0.65
+          ]
+
         }
+
       );
 
 
@@ -1290,7 +1169,7 @@
 
 
     /* =====================================================
-       PUNTOS
+       NAVEGACIÓN POR PUNTOS
     ===================================================== */
 
     dots.forEach(
@@ -1305,228 +1184,21 @@
                 dot.dataset.panel
               );
 
-            goToPanel(index);
+
+            if (
+              !panels[index]
+            ) {
+              return;
+            }
+
+
+            panels[index].scrollIntoView({
+              behavior: "smooth",
+              block: "start"
+            });
 
           }
         );
-
-      }
-    );
-
-
-    /* =====================================================
-       FLECHAS
-    ===================================================== */
-
-    arrows.forEach(
-      arrow => {
-
-        arrow.addEventListener(
-          "click",
-          event => {
-
-            event.stopPropagation();
-
-            const next =
-              Number(
-                arrow.dataset.next
-              );
-
-            goToPanel(next);
-
-          }
-        );
-
-      }
-    );
-
-
-    /* =====================================================
-       SWIPE MÓVIL
-    ===================================================== */
-
-    document.addEventListener(
-      "touchstart",
-      event => {
-
-        touchStartY =
-          event.changedTouches[0]
-            .screenY;
-
-      },
-      {
-        passive: true
-      }
-    );
-
-
-    document.addEventListener(
-      "touchend",
-      event => {
-
-
-        touchEndY =
-          event.changedTouches[0]
-            .screenY;
-
-
-        const difference =
-          touchStartY -
-          touchEndY;
-
-
-        /*
-          Ignorar pequeños movimientos
-        */
-
-        if (
-          Math.abs(difference) < 50
-        ) {
-
-          return;
-
-        }
-
-
-        /*
-          Deslizar hacia arriba
-          = siguiente panel
-        */
-
-        if (
-          difference > 0
-        ) {
-
-          goToPanel(
-            currentPanel + 1
-          );
-
-        }
-
-
-        /*
-          Deslizar hacia abajo
-          = panel anterior
-        */
-
-        else {
-
-          goToPanel(
-            currentPanel - 1
-          );
-
-        }
-
-      },
-      {
-        passive: true
-      }
-    );
-
-
-    /* =====================================================
-       RUEDA DEL MOUSE
-    ===================================================== */
-
-    let wheelLocked = false;
-
-
-    window.addEventListener(
-      "wheel",
-      event => {
-
-
-        if (
-          Math.abs(event.deltaY) < 10
-        ) {
-
-          return;
-
-        }
-
-
-        if (
-          wheelLocked
-        ) {
-
-          return;
-
-        }
-
-
-        wheelLocked = true;
-
-
-        if (
-          event.deltaY > 0
-        ) {
-
-          goToPanel(
-            currentPanel + 1
-          );
-
-        }
-
-        else {
-
-          goToPanel(
-            currentPanel - 1
-          );
-
-        }
-
-
-        setTimeout(
-          () => {
-
-            wheelLocked = false;
-
-          },
-          850
-        );
-
-      },
-      {
-        passive: true
-      }
-    );
-
-
-    /* =====================================================
-       TECLADO
-    ===================================================== */
-
-    window.addEventListener(
-      "keydown",
-      event => {
-
-
-        if (
-          event.key === "ArrowDown" ||
-          event.key === "PageDown"
-        ) {
-
-          event.preventDefault();
-
-          goToPanel(
-            currentPanel + 1
-          );
-
-        }
-
-
-        if (
-          event.key === "ArrowUp" ||
-          event.key === "PageUp"
-        ) {
-
-          event.preventDefault();
-
-          goToPanel(
-            currentPanel - 1
-          );
-
-        }
 
       }
     );
@@ -1536,4 +1208,5 @@
 
 
 </body>
+
 </html>
