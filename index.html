@@ -300,28 +300,26 @@
 
     .closing-whatsapp {
       display: none;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 18px;
+
+      min-width: 210px;
+      min-height: 56px;
+      padding: 0 30px;
     }
 
     .landing.is-closing .floating-collection,
     .landing.is-closing .floating-whatsapp {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
       transform: translateY(10px);
     }
 
     .landing.is-closing .closing-whatsapp {
-      display: inline-flex;
-    }
-
-    .closing-whatsapp {
-      position: absolute;
-      margin-top: 18px;
-      left: 50%;
-      transform: translateX(-50%);
-      min-width: 210px;
-      min-height: 56px;
-      padding: 0 30px;
+      display: inline-flex !important;
     }
 
 
@@ -563,10 +561,6 @@
         font-size: 9px;
       }
 
-      .closing .panel-button {
-        margin-bottom: 0;
-      }
-
 
       /* =================================================
          WHATSAPP DEL CIERRE — MOBILE
@@ -583,7 +577,7 @@
       }
 
       .landing.is-closing .closing-whatsapp {
-        display: inline-flex;
+        display: inline-flex !important;
       }
 
 
@@ -995,4 +989,383 @@
   ==================================================== -->
 
   <nav
-    class="panel
+    class="panel-navigation"
+    aria-label="Navegación de secciones"
+  >
+
+    <button
+      class="nav-dot active"
+      data-target="0"
+      aria-label="Ir al panel 1"
+    ></button>
+
+    <button
+      class="nav-dot"
+      data-target="1"
+      aria-label="Ir al panel 2"
+    ></button>
+
+    <button
+      class="nav-dot"
+      data-target="2"
+      aria-label="Ir al panel 3"
+    ></button>
+
+    <button
+      class="nav-dot"
+      data-target="3"
+      aria-label="Ir al panel 4"
+    ></button>
+
+    <button
+      class="nav-dot"
+      data-target="4"
+      aria-label="Ir al panel 5"
+    ></button>
+
+  </nav>
+
+
+
+  <!-- ===================================================
+       FLECHAS ESCRITORIO
+  ==================================================== -->
+
+  <div
+    class="panel-arrows"
+    aria-label="Navegación entre paneles"
+  >
+
+    <button
+      class="arrow-button"
+      id="prevPanel"
+      aria-label="Panel anterior"
+    >
+      ↑
+    </button>
+
+    <button
+      class="arrow-button"
+      id="nextPanel"
+      aria-label="Panel siguiente"
+    >
+      ↓
+    </button>
+
+  </div>
+
+
+
+  <script>
+
+    const panels = Array.from(
+      document.querySelectorAll(".panel")
+    );
+
+    const dots = Array.from(
+      document.querySelectorAll(".nav-dot")
+    );
+
+    const landing =
+      document.getElementById("landing");
+
+    const prevButton =
+      document.getElementById("prevPanel");
+
+    const nextButton =
+      document.getElementById("nextPanel");
+
+    let currentPanel = 0;
+
+
+    function updateClosingState(index) {
+
+      landing.classList.toggle(
+        "is-closing",
+        index === panels.length - 1
+      );
+
+    }
+
+
+    function goToPanel(index) {
+
+      if (index < 0) {
+        index = 0;
+      }
+
+      if (index > panels.length - 1) {
+        index = panels.length - 1;
+      }
+
+      currentPanel = index;
+
+      panels[index].scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+      updateNavigation(index);
+      updateClosingState(index);
+
+    }
+
+
+    function updateNavigation(index) {
+
+      dots.forEach((dot, i) => {
+
+        dot.classList.toggle(
+          "active",
+          i === index
+        );
+
+      });
+
+      updateClosingState(index);
+
+    }
+
+
+    dots.forEach((dot) => {
+
+      dot.addEventListener("click", () => {
+
+        const target =
+          Number(dot.dataset.target);
+
+        goToPanel(target);
+
+      });
+
+    });
+
+
+    prevButton.addEventListener(
+      "click",
+      () => {
+        goToPanel(currentPanel - 1);
+      }
+    );
+
+
+    nextButton.addEventListener(
+      "click",
+      () => {
+        goToPanel(currentPanel + 1);
+      }
+    );
+
+
+    /* =====================================================
+       OBSERVADOR DE PANELES
+    ===================================================== */
+
+    const observer =
+      new IntersectionObserver(
+        (entries) => {
+
+          entries.forEach((entry) => {
+
+            if (
+              entry.isIntersecting &&
+              entry.intersectionRatio >= 0.55
+            ) {
+
+              const index =
+                Number(
+                  entry.target.dataset.index
+                );
+
+              currentPanel = index;
+
+              updateNavigation(index);
+
+            }
+
+          });
+
+        },
+        {
+          threshold: [0.55]
+        }
+      );
+
+
+    panels.forEach((panel) => {
+      observer.observe(panel);
+    });
+
+
+    /* =====================================================
+       REFUERZO PARA EL ÚLTIMO PANEL
+       
+       Detecta directamente si la última pantalla está
+       ocupando el centro del viewport.
+       
+       Esto garantiza que el cambio de botones funcione
+       también en móviles.
+    ===================================================== */
+
+    function syncClosingFromViewport() {
+
+      const closingPanel =
+        panels[panels.length - 1];
+
+      if (!closingPanel) {
+        return;
+      }
+
+      const rect =
+        closingPanel.getBoundingClientRect();
+
+      const middle =
+        window.innerHeight / 2;
+
+      const isClosing =
+        rect.top <= middle &&
+        rect.bottom >= middle;
+
+      landing.classList.toggle(
+        "is-closing",
+        isClosing
+      );
+
+    }
+
+
+    syncClosingFromViewport();
+
+
+    window.addEventListener(
+      "scroll",
+      syncClosingFromViewport,
+      {
+        passive: true
+      }
+    );
+
+
+    window.addEventListener(
+      "resize",
+      syncClosingFromViewport
+    );
+
+
+    /* =====================================================
+       RUEDA DEL MOUSE — ESCRITORIO
+    ===================================================== */
+
+    let wheelLocked = false;
+
+
+    window.addEventListener(
+      "wheel",
+      (event) => {
+
+        if (window.innerWidth <= 700) {
+          return;
+        }
+
+        if (wheelLocked) {
+          event.preventDefault();
+          return;
+        }
+
+        if (Math.abs(event.deltaY) < 15) {
+          return;
+        }
+
+        event.preventDefault();
+
+        wheelLocked = true;
+
+        if (event.deltaY > 0) {
+
+          goToPanel(
+            currentPanel + 1
+          );
+
+        } else {
+
+          goToPanel(
+            currentPanel - 1
+          );
+
+        }
+
+        setTimeout(() => {
+
+          wheelLocked = false;
+
+        }, 700);
+
+      },
+      {
+        passive: false
+      }
+    );
+
+
+    /* =====================================================
+       TECLADO
+    ===================================================== */
+
+    window.addEventListener(
+      "keydown",
+      (event) => {
+
+        if (
+          event.key === "ArrowDown" ||
+          event.key === "PageDown"
+        ) {
+
+          event.preventDefault();
+
+          goToPanel(
+            currentPanel + 1
+          );
+
+        }
+
+
+        if (
+          event.key === "ArrowUp" ||
+          event.key === "PageUp"
+        ) {
+
+          event.preventDefault();
+
+          goToPanel(
+            currentPanel - 1
+          );
+
+        }
+
+
+        if (event.key === "Home") {
+
+          event.preventDefault();
+
+          goToPanel(0);
+
+        }
+
+
+        if (event.key === "End") {
+
+          event.preventDefault();
+
+          goToPanel(
+            panels.length - 1
+          );
+
+        }
+
+      }
+    );
+
+  </script>
+
+</body>
+</html>
