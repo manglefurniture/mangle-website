@@ -78,7 +78,6 @@
 
     .panel-kicker {
       margin-bottom: 17px;
-      font-family: "Satoshi", Arial, sans-serif;
       font-size: 11px;
       font-weight: 500;
       line-height: 1;
@@ -89,7 +88,6 @@
 
     .panel-title {
       margin: 0 0 17px;
-      font-family: "Satoshi", Arial, Helvetica, sans-serif;
       font-size: clamp(43px, 6.2vw, 82px);
       font-weight: 600;
       line-height: 0.94;
@@ -97,15 +95,10 @@
       color: #171717;
     }
 
-    .panel-title.small {
-      font-size: clamp(36px, 5vw, 66px);
-    }
-
     .panel-text {
       max-width: 470px;
       margin-left: auto;
       margin-right: auto;
-      font-family: "Satoshi", Arial, sans-serif;
       font-size: clamp(16px, 1.35vw, 20px);
       font-weight: 400;
       line-height: 1.48;
@@ -223,7 +216,6 @@
 
       text-decoration: none;
 
-      font-family: "Satoshi", Arial, sans-serif;
       font-size: 10px;
       font-weight: 500;
       letter-spacing: 0.20em;
@@ -265,18 +257,17 @@
 
       text-decoration: none;
 
-      font-family: "Satoshi", Arial, sans-serif;
       font-size: 10px;
       font-weight: 500;
       letter-spacing: 0.18em;
       text-transform: uppercase;
 
       transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease,
         background 0.3s ease,
         color 0.3s ease,
-        transform 0.3s ease,
-        opacity 0.3s ease,
-        visibility 0.3s ease;
+        transform 0.3s ease;
     }
 
     .floating-button:hover {
@@ -300,14 +291,38 @@
 
     .closing-whatsapp {
       display: none;
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      margin-top: 18px;
 
-      min-width: 210px;
+      width: 230px;
+      min-width: 230px;
       min-height: 56px;
+
+      margin: 18px auto 0;
       padding: 0 30px;
+
+      border: 1px solid #171717;
+      background: #171717;
+      color: #f7f5ef;
+
+      text-decoration: none;
+
+      align-items: center;
+      justify-content: center;
+
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+
+      transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease;
+    }
+
+    .closing-whatsapp:hover {
+      background: #2a2a2a;
+      color: #ffffff;
+      transform: translateY(-2px);
     }
 
     .landing.is-closing .floating-collection,
@@ -319,7 +334,7 @@
     }
 
     .landing.is-closing .closing-whatsapp {
-      display: inline-flex !important;
+      display: flex !important;
     }
 
 
@@ -396,10 +411,6 @@
       color: #171717;
       cursor: pointer;
       font-size: 18px;
-
-      transition:
-        background 0.25s ease,
-        color 0.25s ease;
     }
 
     .arrow-button:hover {
@@ -425,8 +436,6 @@
       .panel {
         height: 100svh;
         min-height: 100svh;
-        scroll-snap-align: start;
-        scroll-snap-stop: always;
       }
 
       .panel-content {
@@ -441,23 +450,20 @@
 
       .panel-title {
         font-size: clamp(37px, 11.2vw, 55px);
-        font-weight: 600;
         line-height: 0.95;
-        letter-spacing: -0.045em;
         margin-bottom: 15px;
       }
 
       .panel-text {
         max-width: 330px;
         font-size: 15px;
-        font-weight: 400;
         line-height: 1.48;
       }
 
 
       /* =================================================
          HERO MOBILE
-         Variante centrada y desplazada 100px hacia abajo
+         Centrado y 100px hacia abajo
       ================================================= */
 
       .hero .panel-content {
@@ -465,7 +471,9 @@
         right: auto;
         top: calc(50% + 100px);
         bottom: auto;
+
         transform: translate(-50%, -50%);
+
         text-align: center;
       }
 
@@ -563,21 +571,18 @@
 
 
       /* =================================================
-         WHATSAPP DEL CIERRE — MOBILE
+         WHATSAPP CIERRE MOBILE
       ================================================= */
 
       .closing-whatsapp {
-        position: static;
-        display: none;
-        margin-top: 14px;
-        transform: none;
-        min-width: 210px;
+        width: 230px;
+        min-width: 230px;
         min-height: 54px;
-        padding: 0 25px;
-      }
 
-      .landing.is-closing .closing-whatsapp {
-        display: inline-flex !important;
+        margin: 14px auto 0;
+        padding: 0 25px;
+
+        font-size: 9px;
       }
 
 
@@ -669,7 +674,8 @@
       }
 
       .closing-whatsapp {
-        min-width: 200px;
+        width: 220px;
+        min-width: 220px;
       }
     }
 
@@ -937,7 +943,7 @@
 
         <a
           href="https://wa.me/529982655834"
-          class="panel-button closing-whatsapp"
+          class="closing-whatsapp"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Contactar por WhatsApp"
@@ -993,379 +999,6 @@
     aria-label="Navegación de secciones"
   >
 
-    <button
-      class="nav-dot active"
-      data-target="0"
-      aria-label="Ir al panel 1"
-    ></button>
-
-    <button
-      class="nav-dot"
-      data-target="1"
-      aria-label="Ir al panel 2"
-    ></button>
-
-    <button
-      class="nav-dot"
-      data-target="2"
-      aria-label="Ir al panel 3"
-    ></button>
-
-    <button
-      class="nav-dot"
-      data-target="3"
-      aria-label="Ir al panel 4"
-    ></button>
-
-    <button
-      class="nav-dot"
-      data-target="4"
-      aria-label="Ir al panel 5"
-    ></button>
-
-  </nav>
-
-
-
-  <!-- ===================================================
-       FLECHAS ESCRITORIO
-  ==================================================== -->
-
-  <div
-    class="panel-arrows"
-    aria-label="Navegación entre paneles"
-  >
-
-    <button
-      class="arrow-button"
-      id="prevPanel"
-      aria-label="Panel anterior"
-    >
-      ↑
-    </button>
-
-    <button
-      class="arrow-button"
-      id="nextPanel"
-      aria-label="Panel siguiente"
-    >
-      ↓
-    </button>
-
-  </div>
-
-
-
-  <script>
-
-    const panels = Array.from(
-      document.querySelectorAll(".panel")
-    );
-
-    const dots = Array.from(
-      document.querySelectorAll(".nav-dot")
-    );
-
-    const landing =
-      document.getElementById("landing");
-
-    const prevButton =
-      document.getElementById("prevPanel");
-
-    const nextButton =
-      document.getElementById("nextPanel");
-
-    let currentPanel = 0;
-
-
-    function updateClosingState(index) {
-
-      landing.classList.toggle(
-        "is-closing",
-        index === panels.length - 1
-      );
-
-    }
-
-
-    function goToPanel(index) {
-
-      if (index < 0) {
-        index = 0;
-      }
-
-      if (index > panels.length - 1) {
-        index = panels.length - 1;
-      }
-
-      currentPanel = index;
-
-      panels[index].scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-
-      updateNavigation(index);
-      updateClosingState(index);
-
-    }
-
-
-    function updateNavigation(index) {
-
-      dots.forEach((dot, i) => {
-
-        dot.classList.toggle(
-          "active",
-          i === index
-        );
-
-      });
-
-      updateClosingState(index);
-
-    }
-
-
-    dots.forEach((dot) => {
-
-      dot.addEventListener("click", () => {
-
-        const target =
-          Number(dot.dataset.target);
-
-        goToPanel(target);
-
-      });
-
-    });
-
-
-    prevButton.addEventListener(
-      "click",
-      () => {
-        goToPanel(currentPanel - 1);
-      }
-    );
-
-
-    nextButton.addEventListener(
-      "click",
-      () => {
-        goToPanel(currentPanel + 1);
-      }
-    );
-
-
-    /* =====================================================
-       OBSERVADOR DE PANELES
-    ===================================================== */
-
-    const observer =
-      new IntersectionObserver(
-        (entries) => {
-
-          entries.forEach((entry) => {
-
-            if (
-              entry.isIntersecting &&
-              entry.intersectionRatio >= 0.55
-            ) {
-
-              const index =
-                Number(
-                  entry.target.dataset.index
-                );
-
-              currentPanel = index;
-
-              updateNavigation(index);
-
-            }
-
-          });
-
-        },
-        {
-          threshold: [0.55]
-        }
-      );
-
-
-    panels.forEach((panel) => {
-      observer.observe(panel);
-    });
-
-
-    /* =====================================================
-       REFUERZO PARA EL ÚLTIMO PANEL
-       
-       Detecta directamente si la última pantalla está
-       ocupando el centro del viewport.
-       
-       Esto garantiza que el cambio de botones funcione
-       también en móviles.
-    ===================================================== */
-
-    function syncClosingFromViewport() {
-
-      const closingPanel =
-        panels[panels.length - 1];
-
-      if (!closingPanel) {
-        return;
-      }
-
-      const rect =
-        closingPanel.getBoundingClientRect();
-
-      const middle =
-        window.innerHeight / 2;
-
-      const isClosing =
-        rect.top <= middle &&
-        rect.bottom >= middle;
-
-      landing.classList.toggle(
-        "is-closing",
-        isClosing
-      );
-
-    }
-
-
-    syncClosingFromViewport();
-
-
-    window.addEventListener(
-      "scroll",
-      syncClosingFromViewport,
-      {
-        passive: true
-      }
-    );
-
-
-    window.addEventListener(
-      "resize",
-      syncClosingFromViewport
-    );
-
-
-    /* =====================================================
-       RUEDA DEL MOUSE — ESCRITORIO
-    ===================================================== */
-
-    let wheelLocked = false;
-
-
-    window.addEventListener(
-      "wheel",
-      (event) => {
-
-        if (window.innerWidth <= 700) {
-          return;
-        }
-
-        if (wheelLocked) {
-          event.preventDefault();
-          return;
-        }
-
-        if (Math.abs(event.deltaY) < 15) {
-          return;
-        }
-
-        event.preventDefault();
-
-        wheelLocked = true;
-
-        if (event.deltaY > 0) {
-
-          goToPanel(
-            currentPanel + 1
-          );
-
-        } else {
-
-          goToPanel(
-            currentPanel - 1
-          );
-
-        }
-
-        setTimeout(() => {
-
-          wheelLocked = false;
-
-        }, 700);
-
-      },
-      {
-        passive: false
-      }
-    );
-
-
-    /* =====================================================
-       TECLADO
-    ===================================================== */
-
-    window.addEventListener(
-      "keydown",
-      (event) => {
-
-        if (
-          event.key === "ArrowDown" ||
-          event.key === "PageDown"
-        ) {
-
-          event.preventDefault();
-
-          goToPanel(
-            currentPanel + 1
-          );
-
-        }
-
-
-        if (
-          event.key === "ArrowUp" ||
-          event.key === "PageUp"
-        ) {
-
-          event.preventDefault();
-
-          goToPanel(
-            currentPanel - 1
-          );
-
-        }
-
-
-        if (event.key === "Home") {
-
-          event.preventDefault();
-
-          goToPanel(0);
-
-        }
-
-
-        if (event.key === "End") {
-
-          event.preventDefault();
-
-          goToPanel(
-            panels.length - 1
-          );
-
-        }
-
-      }
-    );
-
-  </script>
-
-</body>
-</html>
+    <button class="nav-dot active" data-target="0" aria-label="Ir al panel 1"></button>
+    <button class="nav-dot" data-target="1" aria-label="Ir al panel 2"></button>
+    <button class="nav-dot" data-target="2" aria-label="Ir a
