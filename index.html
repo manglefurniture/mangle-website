@@ -275,7 +275,8 @@
         background 0.3s ease,
         color 0.3s ease,
         transform 0.3s ease,
-        opacity 0.3s ease;
+        opacity 0.3s ease,
+        visibility 0.3s ease;
     }
 
     .floating-button:hover {
@@ -294,31 +295,33 @@
 
 
     /* =====================================================
-       ESTADO FINAL — ÚLTIMO PANEL
+       WHATSAPP ESPECIAL DEL CIERRE
     ===================================================== */
 
-    body.is-final-panel .floating-collection {
+    .closing-whatsapp {
+      display: none;
+    }
+
+    .landing.is-closing .floating-collection,
+    .landing.is-closing .floating-whatsapp {
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
       transform: translateY(10px);
     }
 
-    body.is-final-panel .floating-whatsapp {
-      left: 50%;
-      right: auto;
-
-      bottom: 35vh;
-
-      min-width: 230px;
-      height: 54px;
-      padding: 0 30px;
-
-      transform: translateX(-50%);
+    .landing.is-closing .closing-whatsapp {
+      display: inline-flex;
     }
 
-    body.is-final-panel .floating-whatsapp:hover {
-      transform: translateX(-50%) translateY(-2px);
+    .closing-whatsapp {
+      position: absolute;
+      margin-top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      min-width: 210px;
+      min-height: 56px;
+      padding: 0 30px;
     }
 
 
@@ -456,7 +459,7 @@
 
       /* =================================================
          HERO MOBILE
-         Centrado y 100px más abajo
+         Variante centrada y desplazada 100px hacia abajo
       ================================================= */
 
       .hero .panel-content {
@@ -464,9 +467,7 @@
         right: auto;
         top: calc(50% + 100px);
         bottom: auto;
-
         transform: translate(-50%, -50%);
-
         text-align: center;
       }
 
@@ -478,42 +479,35 @@
         margin-top: 20px;
         margin-left: auto;
         margin-right: auto;
-
         max-width: 330px;
-
         text-align: center;
       }
 
 
       /* =================================================
-         FILOSOFÍA MOBILE
+         FILOSOFÍA
       ================================================= */
 
       .philosophy .panel-content {
-        top: 13vh;
+        top: 14vh;
         left: 50%;
-
         transform: translateX(-50%);
-
         text-align: center;
       }
 
       .philosophy .panel-title {
-        font-size: clamp(36px, 10.6vw, 53px);
+        font-size: clamp(37px, 10.8vw, 53px);
       }
 
 
       /* =================================================
-         MATERIAL MOBILE
-         Subido ligeramente
+         MATERIAL
       ================================================= */
 
       .material .panel-content {
-        top: calc(14vh - 12px);
+        top: 14vh;
         left: 50%;
-
         transform: translateX(-50%);
-
         text-align: center;
       }
 
@@ -523,39 +517,33 @@
 
 
       /* =================================================
-         DISEÑO MOBILE
+         DISEÑO
       ================================================= */
 
       .design .panel-content {
         top: 12.5vh;
         left: 50%;
-
         transform: translateX(-50%);
-
         text-align: center;
       }
 
       .design .panel-title {
-        font-size: clamp(35px, 10vw, 49px);
+        font-size: clamp(36px, 10.4vw, 51px);
       }
 
       .design .panel-text {
         max-width: 320px;
-        transform: translateY(-10px);
       }
 
 
       /* =================================================
-         CIERRE MOBILE
-         Bloque ligeramente más arriba
+         CIERRE
       ================================================= */
 
       .closing .panel-content {
-        top: calc(14vh - 12px);
+        top: 14vh;
         left: 50%;
-
         transform: translateX(-50%);
-
         text-align: center;
       }
 
@@ -570,11 +558,32 @@
 
       .panel-button {
         margin-top: 23px;
-
         min-height: 48px;
         padding: 14px 25px;
-
         font-size: 9px;
+      }
+
+      .closing .panel-button {
+        margin-bottom: 0;
+      }
+
+
+      /* =================================================
+         WHATSAPP DEL CIERRE — MOBILE
+      ================================================= */
+
+      .closing-whatsapp {
+        position: static;
+        display: none;
+        margin-top: 14px;
+        transform: none;
+        min-width: 210px;
+        min-height: 54px;
+        padding: 0 25px;
+      }
+
+      .landing.is-closing .closing-whatsapp {
+        display: inline-flex;
       }
 
 
@@ -584,12 +593,9 @@
 
       .floating-button {
         bottom: 18px;
-
         height: 46px;
         min-width: 138px;
-
         padding: 0 17px;
-
         font-size: 9px;
         letter-spacing: 0.14em;
       }
@@ -600,27 +606,6 @@
 
       .floating-whatsapp {
         right: 15px;
-      }
-
-
-      /* =================================================
-         ÚLTIMO PANEL MOBILE
-      ================================================= */
-
-      body.is-final-panel .floating-whatsapp {
-        left: 50%;
-        right: auto;
-
-        bottom: 35vh;
-
-        min-width: 230px;
-        height: 54px;
-
-        transform: translateX(-50%);
-      }
-
-      body.is-final-panel .floating-whatsapp:hover {
-        transform: translateX(-50%) translateY(-2px);
       }
 
 
@@ -662,12 +647,9 @@
       .hero .panel-content {
         left: 50%;
         right: auto;
-
         top: calc(50% + 100px);
         bottom: auto;
-
         transform: translate(-50%, -50%);
-
         text-align: center;
       }
 
@@ -692,10 +674,8 @@
         font-size: 8px;
       }
 
-      body.is-final-panel .floating-whatsapp {
-        min-width: 210px;
-        height: 52px;
-        bottom: 35vh;
+      .closing-whatsapp {
+        min-width: 200px;
       }
     }
 
@@ -961,6 +941,16 @@
           Ver colección
         </a>
 
+        <a
+          href="https://wa.me/529982655834"
+          class="panel-button closing-whatsapp"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Contactar por WhatsApp"
+        >
+          WhatsApp
+        </a>
+
       </div>
 
     </section>
@@ -1005,13 +995,4 @@
   ==================================================== -->
 
   <nav
-    class="panel-navigation"
-    aria-label="Navegación de secciones"
-  >
-
-    <button
-      class="nav-dot active"
-      data-target="0"
-      aria-label="Ir al panel 1"
-    ></button>
-
+    class="panel
