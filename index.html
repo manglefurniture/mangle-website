@@ -26,61 +26,58 @@
     }
 
 
-    html,
-    body {
+    html {
 
       width: 100%;
-      height: 100%;
 
-      overflow: hidden;
+      scroll-behavior:
+        smooth;
 
     }
 
 
     body {
+
+      width: 100%;
+
+      min-height: 100vh;
 
       font-family:
         Arial,
         Helvetica,
         sans-serif;
 
-      background: #f5f4f0;
+      background:
+        #f5f4f0;
 
-      color: #171717;
+      color:
+        #171717;
+
+      overflow-x:
+        hidden;
+
+      /*
+        El scroll vuelve al documento principal.
+        Esto permite el gesto de actualización
+        del navegador en móvil.
+      */
+
+      scroll-snap-type:
+        y mandatory;
 
     }
 
 
     /* =====================================================
-       CONTENEDOR PRINCIPAL
+       PANELES
     ===================================================== */
 
     .panels {
 
       width: 100%;
-      height: 100dvh;
-
-      overflow-y: auto;
-      overflow-x: hidden;
-
-      scroll-snap-type:
-        y mandatory;
-
-      scroll-behavior:
-        smooth;
-
-      -webkit-overflow-scrolling:
-        touch;
-
-      overscroll-behavior-y:
-        contain;
 
     }
 
-
-    /* =====================================================
-       PANEL
-    ===================================================== */
 
     .panel {
 
@@ -89,6 +86,7 @@
       width: 100%;
 
       height: 100dvh;
+
       min-height: 100dvh;
 
       overflow: hidden;
@@ -124,6 +122,7 @@
       inset: 0;
 
       width: 100%;
+
       height: 100%;
 
       z-index: -2;
@@ -133,12 +132,14 @@
 
     .panel-picture img {
 
-      width: 100%;
-      height: 100%;
-
       display: block;
 
-      object-fit: cover;
+      width: 100%;
+
+      height: 100%;
+
+      object-fit:
+        cover;
 
       object-position:
         center center;
@@ -188,11 +189,14 @@
 
       padding: 30px;
 
-      text-align: center;
+      text-align:
+        center;
 
-      color: #171717;
+      color:
+        #171717;
 
-      opacity: 0;
+      opacity:
+        0;
 
       transform:
         translateY(25px);
@@ -207,7 +211,8 @@
     .panel.visible
     .panel-content {
 
-      opacity: 1;
+      opacity:
+        1;
 
       transform:
         translateY(0);
@@ -221,16 +226,20 @@
 
     .eyebrow {
 
-      font-size: 12px;
+      font-size:
+        12px;
 
-      font-weight: 600;
+      font-weight:
+        600;
 
-      letter-spacing: 4px;
+      letter-spacing:
+        4px;
 
       text-transform:
         uppercase;
 
-      margin-bottom: 22px;
+      margin-bottom:
+        22px;
 
     }
 
@@ -244,7 +253,8 @@
           88px
         );
 
-      font-weight: 700;
+      font-weight:
+        700;
 
       letter-spacing:
         -1.5px;
@@ -252,26 +262,31 @@
       line-height:
         1.02;
 
-      margin-bottom: 25px;
+      margin-bottom:
+        25px;
 
     }
 
 
     .subtitle {
 
-      max-width: 620px;
+      max-width:
+        620px;
 
       margin:
         0 auto 32px;
 
-      font-size: 18px;
+      font-size:
+        18px;
 
-      line-height: 1.75;
+      line-height:
+        1.75;
 
       letter-spacing:
         .15px;
 
-      font-weight: 500;
+      font-weight:
+        500;
 
     }
 
@@ -282,7 +297,8 @@
 
     .button {
 
-      display: inline-block;
+      display:
+        inline-block;
 
       padding:
         15px 32px;
@@ -290,18 +306,23 @@
       border:
         1px solid #171717;
 
-      color: #171717;
+      color:
+        #171717;
 
       background:
         rgba(255,255,255,.16);
 
-      text-decoration: none;
+      text-decoration:
+        none;
 
-      font-size: 10px;
+      font-size:
+        10px;
 
-      font-weight: 600;
+      font-weight:
+        600;
 
-      letter-spacing: 3px;
+      letter-spacing:
+        3px;
 
       text-transform:
         uppercase;
@@ -329,14 +350,13 @@
 
 
     /* =====================================================
-       BOTÓN FLOTANTE — COLECCIÓN
+       BOTONES FLOTANTES
     ===================================================== */
 
-    .collection-floating {
+    .floating-button {
 
-      position: fixed;
-
-      left: 28px;
+      position:
+        fixed;
 
       bottom:
         max(
@@ -344,13 +364,17 @@
           env(safe-area-inset-bottom)
         );
 
-      z-index: 100;
+      z-index:
+        100;
 
-      display: inline-flex;
+      display:
+        inline-flex;
 
-      align-items: center;
+      align-items:
+        center;
 
-      justify-content: center;
+      justify-content:
+        center;
 
       padding:
         13px 20px;
@@ -373,11 +397,14 @@
       text-decoration:
         none;
 
-      font-size: 10px;
+      font-size:
+        10px;
 
-      font-weight: 600;
+      font-weight:
+        600;
 
-      letter-spacing: 3px;
+      letter-spacing:
+        3px;
 
       text-transform:
         uppercase;
@@ -390,7 +417,7 @@
     }
 
 
-    .collection-floating:hover {
+    .floating-button:hover {
 
       background:
         #171717;
@@ -404,13 +431,30 @@
     }
 
 
+    .collection-floating {
+
+      left:
+        28px;
+
+    }
+
+
+    .contact-floating {
+
+      right:
+        28px;
+
+    }
+
+
     /* =====================================================
-       INDICADOR "DESLIZA"
+       INDICADOR DESLIZA
     ===================================================== */
 
     .scroll-hint {
 
-      position: absolute;
+      position:
+        absolute;
 
       bottom:
         max(
@@ -418,27 +462,35 @@
           env(safe-area-inset-bottom)
         );
 
-      left: 50%;
+      left:
+        50%;
 
       transform:
         translateX(-50%);
 
-      z-index: 10;
+      z-index:
+        10;
 
-      display: flex;
+      display:
+        flex;
 
-      flex-direction: column;
+      flex-direction:
+        column;
 
-      align-items: center;
+      align-items:
+        center;
 
-      gap: 10px;
+      gap:
+        10px;
 
       color:
         #171717;
 
-      font-size: 9px;
+      font-size:
+        9px;
 
-      letter-spacing: 3px;
+      letter-spacing:
+        3px;
 
       text-transform:
         uppercase;
@@ -451,8 +503,11 @@
 
     .scroll-arrow {
 
-      width: 12px;
-      height: 12px;
+      width:
+        12px;
+
+      height:
+        12px;
 
       border-right:
         1px solid #171717;
@@ -480,7 +535,8 @@
           rotate(45deg)
           translate(0,0);
 
-        opacity: .4;
+        opacity:
+          .4;
 
       }
 
@@ -490,7 +546,8 @@
           rotate(45deg)
           translate(4px,4px);
 
-        opacity: 1;
+        opacity:
+          1;
 
       }
 
@@ -503,42 +560,55 @@
 
     .navigation {
 
-      position: fixed;
+      position:
+        fixed;
 
-      right: 24px;
+      right:
+        24px;
 
-      top: 50%;
+      top:
+        50%;
 
       transform:
         translateY(-50%);
 
-      z-index: 50;
+      z-index:
+        50;
 
-      display: flex;
+      display:
+        flex;
 
-      flex-direction: column;
+      flex-direction:
+        column;
 
-      gap: 13px;
+      gap:
+        13px;
 
     }
 
 
     .nav-dot {
 
-      width: 8px;
-      height: 8px;
+      width:
+        8px;
 
-      padding: 0;
+      height:
+        8px;
+
+      padding:
+        0;
 
       border:
         1px solid #171717;
 
-      border-radius: 50%;
+      border-radius:
+        50%;
 
       background:
         rgba(255,255,255,.25);
 
-      cursor: pointer;
+      cursor:
+        pointer;
 
       transition:
         transform .3s ease,
@@ -575,13 +645,17 @@
 
     .catey-content {
 
-      position: relative;
+      position:
+        relative;
 
-      z-index: 5;
+      z-index:
+        5;
 
-      width: 100%;
+      width:
+        100%;
 
-      display: flex;
+      display:
+        flex;
 
       justify-content:
         center;
@@ -631,7 +705,8 @@
           90%
         );
 
-      display: flex;
+      display:
+        flex;
 
       flex-direction:
         column;
@@ -704,17 +779,6 @@
     @media (max-width: 700px) {
 
 
-      .panels {
-
-        height:
-          100dvh;
-
-        scroll-snap-type:
-          y mandatory;
-
-      }
-
-
       .panel {
 
         height:
@@ -733,7 +797,7 @@
 
 
       /* ---------------------------------------------
-         IMÁGENES MÓVILES
+         IMÁGENES
       --------------------------------------------- */
 
       .panel-picture img {
@@ -811,13 +875,10 @@
 
 
       /* ---------------------------------------------
-         BOTÓN COLECCIÓN MÓVIL
+         BOTONES FLOTANTES
       --------------------------------------------- */
 
-      .collection-floating {
-
-        left:
-          18px;
+      .floating-button {
 
         bottom:
           max(
@@ -837,8 +898,24 @@
       }
 
 
+      .collection-floating {
+
+        left:
+          18px;
+
+      }
+
+
+      .contact-floating {
+
+        right:
+          18px;
+
+      }
+
+
       /* ---------------------------------------------
-         CATEY MÓVIL
+         CATEY
       --------------------------------------------- */
 
       .catey-content {
@@ -956,14 +1033,26 @@
 
 
   <!-- =====================================================
-       BOTÓN FIJO DE COLECCIÓN
+       BOTÓN FIJO — COLECCIÓN
   ===================================================== -->
 
   <a
     href="coleccion.html"
-    class="collection-floating"
+    class="floating-button collection-floating"
   >
     Ver colección
+  </a>
+
+
+  <!-- =====================================================
+       BOTÓN FIJO — CONTACTO
+  ===================================================== -->
+
+  <a
+    href="contacto.html"
+    class="floating-button contact-floating"
+  >
+    Contacto
   </a>
 
 
@@ -1368,12 +1457,6 @@
   <script>
 
 
-    const container =
-      document.getElementById(
-        "panels"
-      );
-
-
     const panels =
       Array.from(
         document.querySelectorAll(
@@ -1391,7 +1474,7 @@
 
 
     /* =====================================================
-       OBSERVADOR DE PANELES
+       OBSERVADOR
     ===================================================== */
 
     const observer =
@@ -1454,9 +1537,6 @@
         },
 
         {
-
-          root:
-            container,
 
           threshold:
             [0.65]
