@@ -22,193 +22,185 @@
       font-family: Arial, Helvetica, sans-serif;
       background: #f5f4f0;
       color: #1a1a1a;
+      overflow-x: hidden;
     }
 
 
     /* =========================
-       HERO
+       CONTENEDOR
     ========================= */
 
-    .hero {
+    .panels {
       width: 100%;
-      background: #f5f4f0;
     }
 
-    .hero-image {
-      display: block;
+
+    /* =========================
+       PANEL
+    ========================= */
+
+    .panel {
+      position: relative;
+
       width: 100%;
-      height: auto;
-    }
+      min-height: 100vh;
 
-
-    /* =========================
-       HERO TEXTO
-    ========================= */
-
-    .hero-content {
-      text-align: center;
-      padding: 75px 25px 100px;
-    }
-
-    .hero-title {
-      font-size: clamp(38px, 6vw, 72px);
-      font-weight: 300;
-      letter-spacing: 7px;
-      line-height: 1.15;
-      margin-bottom: 35px;
-    }
-
-    .hero-link {
-      display: inline-block;
-      color: #1a1a1a;
-      text-decoration: none;
-      font-size: 11px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      padding-bottom: 8px;
-      border-bottom: 1px solid #1a1a1a;
-      transition: opacity 0.3s ease;
-    }
-
-    .hero-link:hover {
-      opacity: 0.55;
-    }
-
-
-    /* =========================
-       NUESTRA IDEA
-    ========================= */
-
-    .idea {
-      padding: 115px 25px 120px;
-      text-align: center;
-      border-top: 1px solid #deddd8;
-    }
-
-    .section-label {
-      font-size: 11px;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-      margin-bottom: 35px;
-      font-weight: 400;
-    }
-
-    .section-line {
-      width: 35px;
-      height: 1px;
-      background: #1a1a1a;
-      margin: 0 auto 35px;
-    }
-
-    .idea-text {
-      max-width: 700px;
-      margin: 0 auto;
-
-      font-size: clamp(24px, 4vw, 42px);
-
-      font-weight: 300;
-
-      line-height: 1.45;
-
-      letter-spacing: 1px;
-    }
-
-
-    /* =========================
-       COLECCIÓN
-    ========================= */
-
-    .collection {
-      padding: 100px 45px 120px;
-      border-top: 1px solid #deddd8;
-      text-align: center;
-    }
-
-    .collection-title {
-      font-size: 13px;
-      font-weight: 400;
-      letter-spacing: 6px;
-      text-transform: uppercase;
-      margin-bottom: 70px;
-    }
-
-    .collection-product {
-      max-width: 1100px;
-      margin: 0 auto;
-
-      display: grid;
-
-      grid-template-columns:
-        minmax(0, 1.7fr)
-        minmax(280px, 0.8fr);
-
+      display: flex;
       align-items: center;
+      justify-content: center;
 
-      gap: 70px;
+      overflow: hidden;
 
-      text-align: left;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
     }
 
 
-    /* FOTO CATEY */
+    /* =========================
+       IMAGEN DE FONDO
+    ========================= */
 
-    .collection-image {
-      display: block;
+    .panel-image {
+      position: absolute;
+
+      inset: 0;
 
       width: 100%;
+      height: 100%;
 
-      height: auto;
+      object-fit: cover;
 
-      margin: 0;
+      z-index: 0;
+
+      transform: scale(1.03);
+
+      transition:
+        transform 1.5s ease,
+        opacity 1s ease;
     }
 
 
-    /* INFORMACIÓN CATEY */
-
-    .collection-info {
-      padding: 20px 0;
+    .panel.active .panel-image {
+      transform: scale(1);
     }
 
-    .collection-name {
-      font-size: clamp(50px, 7vw, 90px);
 
-      font-weight: 300;
+    /* =========================
+       CAPA OSCURA SUTIL
+    ========================= */
 
-      letter-spacing: -4px;
+    .panel-overlay {
+      position: absolute;
 
-      line-height: 0.9;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(0,0,0,0.08),
+          rgba(0,0,0,0.18)
+        );
+
+      z-index: 1;
+    }
+
+
+    /* =========================
+       CONTENIDO
+    ========================= */
+
+    .panel-content {
+
+      position: relative;
+
+      z-index: 2;
+
+      text-align: center;
+
+      max-width: 850px;
+
+      padding: 40px;
+
+      opacity: 0;
+
+      transform: translateY(35px);
+
+      transition:
+        opacity 0.9s ease,
+        transform 0.9s ease;
+    }
+
+
+    .panel.active .panel-content {
+
+      opacity: 1;
+
+      transform: translateY(0);
+
+    }
+
+
+    /* =========================
+       TEXTO
+    ========================= */
+
+    .eyebrow {
+
+      font-size: 11px;
+
+      letter-spacing: 5px;
+
+      text-transform: uppercase;
 
       margin-bottom: 25px;
+
     }
 
-    .collection-description {
+
+    .title {
+
+      font-size:
+        clamp(45px, 7vw, 90px);
+
+      font-weight: 300;
+
+      letter-spacing: 3px;
+
+      line-height: 1.05;
+
+      margin-bottom: 25px;
+
+    }
+
+
+    .subtitle {
+
       font-size: 16px;
+
+      letter-spacing: 1px;
 
       line-height: 1.7;
 
-      letter-spacing: 0.5px;
+      max-width: 550px;
 
-      max-width: 330px;
+      margin: 0 auto 35px;
 
-      margin-bottom: 30px;
     }
 
-    .collection-price {
-      font-size: 24px;
 
-      letter-spacing: 1px;
+    /* =========================
+       BOTONES
+    ========================= */
 
-      margin-bottom: 35px;
-    }
+    .button {
 
-    .collection-button {
       display: inline-block;
 
-      padding: 15px 30px;
+      padding: 16px 34px;
 
-      border: 1px solid #1a1a1a;
+      border: 1px solid currentColor;
 
-      color: #1a1a1a;
+      color: inherit;
 
       text-decoration: none;
 
@@ -218,186 +210,287 @@
 
       text-transform: uppercase;
 
-      transition: all 0.3s ease;
+      transition:
+        background 0.3s ease,
+        color 0.3s ease;
+
     }
 
-    .collection-button:hover {
+
+    .button:hover {
+
       background: #1a1a1a;
 
       color: #f5f4f0;
+
     }
 
 
     /* =========================
-       FOOTER
+       PANEL CLARO
     ========================= */
 
-    .footer {
-      display: flex;
+    .panel-light {
 
-      justify-content: space-between;
+      background: #f5f4f0;
 
-      padding: 25px 45px 30px;
+      color: #1a1a1a;
 
-      border-top: 1px solid #deddd8;
+    }
 
-      font-size: 10px;
 
-      letter-spacing: 2px;
+    .panel-light .panel-overlay {
 
-      text-transform: uppercase;
+      display: none;
 
-      opacity: 0.6;
     }
 
 
     /* =========================
-       MÓVIL
+       PANEL OSCURO
+    ========================= */
+
+    .panel-dark {
+
+      color: #ffffff;
+
+    }
+
+
+    .panel-dark .panel-overlay {
+
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(0,0,0,0.08),
+          rgba(0,0,0,0.35)
+        );
+
+    }
+
+
+    /* =========================
+       PANEL 4 — CATEY
+    ========================= */
+
+    .catey-content {
+
+      text-align: left;
+
+      max-width: 1100px;
+
+      width: 100%;
+
+      padding:
+        50px;
+
+    }
+
+
+    .catey-info {
+
+      max-width: 400px;
+
+      margin-left: auto;
+
+    }
+
+
+    .catey-title {
+
+      font-size:
+        clamp(65px, 9vw, 115px);
+
+      font-weight: 300;
+
+      letter-spacing: -5px;
+
+      line-height: 0.9;
+
+      margin-bottom: 25px;
+
+    }
+
+
+    .catey-description {
+
+      font-size: 16px;
+
+      line-height: 1.7;
+
+      margin-bottom: 25px;
+
+    }
+
+
+    .catey-price {
+
+      font-size: 25px;
+
+      margin-bottom: 30px;
+
+    }
+
+
+    /* =========================
+       INDICADOR
+    ========================= */
+
+    .panel-indicator {
+
+      position: fixed;
+
+      right: 28px;
+
+      top: 50%;
+
+      transform:
+        translateY(-50%);
+
+      z-index: 20;
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 12px;
+
+    }
+
+
+    .dot {
+
+      width: 7px;
+
+      height: 7px;
+
+      border-radius: 50%;
+
+      border: 1px solid #1a1a1a;
+
+      background: transparent;
+
+      cursor: pointer;
+
+      transition:
+        transform 0.3s ease,
+        background 0.3s ease;
+
+    }
+
+
+    .dot.active {
+
+      background: #1a1a1a;
+
+      transform: scale(1.5);
+
+    }
+
+
+    /* =========================
+       MOBILE
     ========================= */
 
     @media (max-width: 700px) {
 
-      .hero-image {
-        width: 100%;
-        height: auto;
+      .panel {
+
+        min-height: 100svh;
+
       }
 
 
-      .hero-content {
+      .panel-content {
+
         padding:
-          60px
-          20px
-          80px;
-      }
-
-
-      .hero-title {
-        font-size: 30px;
-
-        letter-spacing: 5px;
-
-        line-height: 1.4;
-
-        margin-bottom: 30px;
-      }
-
-
-      .idea {
-        padding:
-          85px
-          20px
-          90px;
-      }
-
-
-      .section-label {
-        font-size: 10px;
-
-        letter-spacing: 4px;
-
-        margin-bottom: 28px;
-      }
-
-
-      .section-line {
-        margin-bottom: 28px;
-      }
-
-
-      .idea-text {
-        font-size: 25px;
-
-        line-height: 1.5;
-      }
-
-
-      .collection {
-        padding:
-          80px
-          18px
-          90px;
-      }
-
-
-      .collection-title {
-        font-size: 11px;
-
-        letter-spacing: 4px;
-
-        margin-bottom: 45px;
-      }
-
-
-      .collection-product {
-
-        display: flex;
-
-        flex-direction: column;
-
-        gap: 40px;
-
-        text-align: center;
-      }
-
-
-      .collection-image {
-        width: 100%;
-      }
-
-
-      .collection-info {
-        padding: 0;
-      }
-
-
-      .collection-name {
-        font-size: 68px;
-
-        letter-spacing: -4px;
-
-        margin-bottom: 20px;
-      }
-
-
-      .collection-description {
-        margin:
-          0 auto
           25px;
 
+      }
+
+
+      .title {
+
+        font-size: 42px;
+
+        letter-spacing: 2px;
+
+      }
+
+
+      .subtitle {
+
         font-size: 15px;
+
       }
 
 
-      .collection-price {
-        font-size: 23px;
+      .eyebrow {
 
-        margin-bottom: 30px;
+        font-size: 9px;
+
+        letter-spacing: 4px;
+
       }
 
 
-      .collection-button {
+      .catey-content {
+
         padding:
-          15px
-          28px;
+          25px;
+
+        align-items:
+          flex-end;
+
       }
 
 
-      .footer {
-        padding:
-          25px
-          18px
-          30px;
+      .catey-info {
 
-        flex-direction: column;
+        max-width: 100%;
+
+        margin-left: 0;
+
+        text-align: center;
+
+      }
+
+
+      .catey-title {
+
+        font-size: 72px;
+
+      }
+
+
+      .catey-description {
+
+        font-size: 15px;
+
+      }
+
+
+      .panel-indicator {
+
+        right: 14px;
 
         gap: 10px;
 
-        text-align: center;
+      }
+
+
+      .dot {
+
+        width: 6px;
+
+        height: 6px;
+
       }
 
     }
 
   </style>
+
 </head>
 
 
@@ -405,137 +498,447 @@
 
 
   <!-- =========================
-       HERO
+       INDICADORES
   ========================= -->
 
-  <section class="hero">
-
-    <img
-      class="hero-image"
-      src="hero-mangle.png"
-      alt="MANGLE Minimal Furniture"
-    >
-
-  </section>
-
-
-
-  <!-- =========================
-       MENSAJE PRINCIPAL
-  ========================= -->
-
-  <section class="hero-content">
-
-    <h1 class="hero-title">
-      LESS FURNITURE.<br>
-      MORE SPACE.
-    </h1>
-
-    <a
-      href="#coleccion"
-      class="hero-link"
-    >
-      Ver colección
-    </a>
-
-  </section>
-
-
-
-  <!-- =========================
-       NUESTRA IDEA
-  ========================= -->
-
-  <section class="idea">
-
-    <h2 class="section-label">
-      Nuestra idea
-    </h2>
-
-    <div class="section-line"></div>
-
-    <p class="idea-text">
-      Diseñamos piezas esenciales,
-      funcionales y honestas.
-      Para espacios que respiran.
-    </p>
-
-  </section>
-
-
-
-  <!-- =========================
-       COLECCIÓN
-  ========================= -->
-
-  <section
-    class="collection"
-    id="coleccion"
+  <nav
+    class="panel-indicator"
+    aria-label="Navegación"
   >
 
-    <h2 class="collection-title">
-      Colección
-    </h2>
+    <button
+      class="dot active"
+      data-panel="0"
+      aria-label="Panel 1"
+    ></button>
+
+    <button
+      class="dot"
+      data-panel="1"
+      aria-label="Panel 2"
+    ></button>
+
+    <button
+      class="dot"
+      data-panel="2"
+      aria-label="Panel 3"
+    ></button>
+
+    <button
+      class="dot"
+      data-panel="3"
+      aria-label="Panel 4"
+    ></button>
+
+    <button
+      class="dot"
+      data-panel="4"
+      aria-label="Panel 5"
+    ></button>
+
+  </nav>
 
 
-    <div class="collection-product">
+
+  <!-- =========================
+       PANELES
+  ========================= -->
+
+  <main class="panels">
 
 
-      <!-- FOTO CATEY -->
+    <!-- =========================
+         PANEL 1 — IDENTIDAD
+    ========================= -->
+
+    <section
+      class="panel panel-dark active"
+      id="panel-1"
+    >
 
       <img
-        class="collection-image"
-        src="CateyV0_00.png"
-        alt="Catey — MANGLE"
+        class="panel-image"
+        src="hero-mangle.png"
+        alt="MANGLE Minimal Furniture"
       >
 
+      <div class="panel-overlay"></div>
 
-      <!-- INFORMACIÓN -->
-
-      <div class="collection-info">
-
-        <h3 class="collection-name">
-          CATEY
-        </h3>
-
-        <p class="collection-description">
-          Minimalismo que ocupa poco espacio.
-        </p>
-
-        <div class="collection-price">
-          $599 MXN
-        </div>
+      <div class="panel-content">
 
         <a
-          href="producto.html?producto=catey"
-          class="collection-button"
+          href="#panel-2"
+          class="button"
         >
-          Ver producto
+          Descubrir
         </a>
 
       </div>
 
-    </div>
+    </section>
 
-  </section>
+
+
+    <!-- =========================
+         PANEL 2 — FILOSOFÍA
+    ========================= -->
+
+    <section
+      class="panel panel-dark"
+      id="panel-2"
+    >
+
+      <img
+        class="panel-image"
+        src="mangle-filosofia.png"
+        alt="Arquitectura minimalista MANGLE"
+      >
+
+      <div class="panel-overlay"></div>
+
+      <div class="panel-content">
+
+        <div class="eyebrow">
+          Nuestra filosofía
+        </div>
+
+        <h1 class="title">
+          LESS FURNITURE.<br>
+          MORE SPACE.
+        </h1>
+
+        <p class="subtitle">
+          Diseñamos piezas esenciales,
+          funcionales y honestas.
+          Para espacios que respiran.
+        </p>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         PANEL 3 — MATERIAL
+    ========================= -->
+
+    <section
+      class="panel panel-dark"
+      id="panel-3"
+    >
+
+      <img
+        class="panel-image"
+        src="mangle-material.png"
+        alt="Materiales MANGLE"
+      >
+
+      <div class="panel-overlay"></div>
+
+      <div class="panel-content">
+
+        <div class="eyebrow">
+          Material
+        </div>
+
+        <h1 class="title">
+          COLOR.<br>
+          TEXTURE.<br>
+          FORM.
+        </h1>
+
+        <p class="subtitle">
+          Una misma idea.
+          Diferentes posibilidades.
+        </p>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         PANEL 4 — CATEY
+    ========================= -->
+
+    <section
+      class="panel"
+      id="panel-4"
+    >
+
+      <img
+        class="panel-image"
+        src="mangle-catey-editorial.png"
+        alt="Catey — MANGLE"
+      >
+
+      <div class="panel-overlay"></div>
+
+
+      <div class="catey-content">
+
+        <div class="catey-info">
+
+          <div class="eyebrow">
+            Colección
+          </div>
+
+          <h1 class="catey-title">
+            CATEY
+          </h1>
+
+          <p class="catey-description">
+            Minimalismo que ocupa
+            poco espacio.
+          </p>
+
+          <div class="catey-price">
+            $599 MXN
+          </div>
+
+          <a
+            href="producto.html?producto=catey"
+            class="button"
+          >
+            Ver producto
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         PANEL 5 — CIERRE
+    ========================= -->
+
+    <section
+      class="panel panel-dark"
+      id="panel-5"
+    >
+
+      <img
+        class="panel-image"
+        src="mangle-cierre.png"
+        alt="Espacio arquitectónico MANGLE"
+      >
+
+      <div class="panel-overlay"></div>
+
+      <div class="panel-content">
+
+        <div class="eyebrow">
+          MANGLE
+        </div>
+
+        <h1 class="title">
+          MAKE SPACE<br>
+          FOR WHAT MATTERS.
+        </h1>
+
+        <a
+          href="#panel-4"
+          class="button"
+        >
+          Ver colección
+        </a>
+
+      </div>
+
+    </section>
+
+
+  </main>
 
 
 
   <!-- =========================
-       FOOTER
+       JAVASCRIPT
   ========================= -->
 
-  <footer class="footer">
+  <script>
 
-    <span>
-      Cancún, México
-    </span>
+    const panels =
+      document.querySelectorAll(
+        ".panel"
+      );
 
-    <span>
-      © MANGLE
-    </span>
 
-  </footer>
+    const dots =
+      document.querySelectorAll(
+        ".dot"
+      );
+
+
+    let currentPanel = 0;
+
+
+    /*
+      Detecta qué panel está
+      actualmente visible.
+    */
+
+    const observer =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (
+              entry.isIntersecting &&
+              entry.intersectionRatio > 0.55
+            ) {
+
+              const index =
+                [...panels]
+                  .indexOf(
+                    entry.target
+                  );
+
+              currentPanel =
+                index;
+
+
+              panels.forEach(
+                panel => {
+
+                  panel.classList.remove(
+                    "active"
+                  );
+
+                }
+              );
+
+
+              entry.target.classList.add(
+                "active"
+              );
+
+
+              dots.forEach(
+                (dot, dotIndex) => {
+
+                  dot.classList.toggle(
+                    "active",
+                    dotIndex === index
+                  );
+
+                }
+              );
+
+            }
+
+          });
+
+        },
+        {
+          threshold: [0.55]
+        }
+      );
+
+
+    panels.forEach(
+      panel => {
+
+        observer.observe(
+          panel
+        );
+
+      }
+    );
+
+
+    /*
+      Navegación por puntos
+    */
+
+    dots.forEach(
+      dot => {
+
+        dot.addEventListener(
+          "click",
+          () => {
+
+            const index =
+              Number(
+                dot.dataset.panel
+              );
+
+
+            panels[index]
+              .scrollIntoView({
+                behavior: "smooth"
+              });
+
+          }
+        );
+
+      }
+    );
+
+
+    /*
+      Teclado
+    */
+
+    window.addEventListener(
+      "keydown",
+      event => {
+
+        if (
+          event.key === "ArrowDown" ||
+          event.key === "PageDown"
+        ) {
+
+          event.preventDefault();
+
+
+          const next =
+            Math.min(
+              currentPanel + 1,
+              panels.length - 1
+            );
+
+
+          panels[next]
+            .scrollIntoView({
+              behavior: "smooth"
+            });
+
+        }
+
+
+        if (
+          event.key === "ArrowUp" ||
+          event.key === "PageUp"
+        ) {
+
+          event.preventDefault();
+
+
+          const previous =
+            Math.max(
+              currentPanel - 1,
+              0
+            );
+
+
+          panels[previous]
+            .scrollIntoView({
+              behavior: "smooth"
+            });
+
+        }
+
+      }
+    );
+
+  </script>
 
 
 </body>
