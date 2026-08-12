@@ -28,9 +28,12 @@
 
     html,
     body {
+
       width: 100%;
       height: 100%;
+
       overflow: hidden;
+
     }
 
 
@@ -60,13 +63,17 @@
       overflow-y: auto;
       overflow-x: hidden;
 
-      scroll-snap-type: y mandatory;
+      scroll-snap-type:
+        y mandatory;
 
-      scroll-behavior: smooth;
+      scroll-behavior:
+        smooth;
 
-      -webkit-overflow-scrolling: touch;
+      -webkit-overflow-scrolling:
+        touch;
 
-      overscroll-behavior-y: contain;
+      overscroll-behavior-y:
+        contain;
 
     }
 
@@ -80,20 +87,28 @@
       position: relative;
 
       width: 100%;
+
       height: 100dvh;
       min-height: 100dvh;
 
       overflow: hidden;
 
-      scroll-snap-align: start;
-      scroll-snap-stop: always;
+      scroll-snap-align:
+        start;
+
+      scroll-snap-stop:
+        always;
 
       display: flex;
 
-      align-items: center;
-      justify-content: center;
+      align-items:
+        center;
 
-      isolation: isolate;
+      justify-content:
+        center;
+
+      isolation:
+        isolate;
 
     }
 
@@ -125,7 +140,8 @@
 
       object-fit: cover;
 
-      object-position: center center;
+      object-position:
+        center center;
 
     }
 
@@ -164,7 +180,11 @@
 
       z-index: 5;
 
-      width: min(850px, 90%);
+      width:
+        min(
+          850px,
+          90%
+        );
 
       padding: 30px;
 
@@ -184,7 +204,8 @@
     }
 
 
-    .panel.visible .panel-content {
+    .panel.visible
+    .panel-content {
 
       opacity: 1;
 
@@ -206,7 +227,8 @@
 
       letter-spacing: 4px;
 
-      text-transform: uppercase;
+      text-transform:
+        uppercase;
 
       margin-bottom: 22px;
 
@@ -224,9 +246,11 @@
 
       font-weight: 700;
 
-      letter-spacing: -1.5px;
+      letter-spacing:
+        -1.5px;
 
-      line-height: 1.02;
+      line-height:
+        1.02;
 
       margin-bottom: 25px;
 
@@ -235,24 +259,25 @@
 
     .subtitle {
 
-      max-width: 600px;
+      max-width: 620px;
 
       margin:
         0 auto 32px;
 
-      font-size: 17px;
+      font-size: 18px;
 
-      line-height: 1.7;
+      line-height: 1.75;
 
-      letter-spacing: .2px;
+      letter-spacing:
+        .15px;
 
-      font-weight: 400;
+      font-weight: 500;
 
     }
 
 
     /* =====================================================
-       BOTÓN
+       BOTÓN NORMAL
     ===================================================== */
 
     .button {
@@ -268,7 +293,7 @@
       color: #171717;
 
       background:
-        rgba(255,255,255,.12);
+        rgba(255,255,255,.16);
 
       text-decoration: none;
 
@@ -278,7 +303,8 @@
 
       letter-spacing: 3px;
 
-      text-transform: uppercase;
+      text-transform:
+        uppercase;
 
       transition:
         background .3s ease,
@@ -290,9 +316,87 @@
 
     .button:hover {
 
-      background: #171717;
+      background:
+        #171717;
 
-      color: #ffffff;
+      color:
+        #ffffff;
+
+      transform:
+        translateY(-2px);
+
+    }
+
+
+    /* =====================================================
+       BOTÓN FLOTANTE — COLECCIÓN
+    ===================================================== */
+
+    .collection-floating {
+
+      position: fixed;
+
+      left: 28px;
+
+      bottom:
+        max(
+          25px,
+          env(safe-area-inset-bottom)
+        );
+
+      z-index: 100;
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding:
+        13px 20px;
+
+      border:
+        1px solid #171717;
+
+      background:
+        rgba(245,244,240,.88);
+
+      backdrop-filter:
+        blur(8px);
+
+      -webkit-backdrop-filter:
+        blur(8px);
+
+      color:
+        #171717;
+
+      text-decoration:
+        none;
+
+      font-size: 10px;
+
+      font-weight: 600;
+
+      letter-spacing: 3px;
+
+      text-transform:
+        uppercase;
+
+      transition:
+        background .3s ease,
+        color .3s ease,
+        transform .3s ease;
+
+    }
+
+
+    .collection-floating:hover {
+
+      background:
+        #171717;
+
+      color:
+        #ffffff;
 
       transform:
         translateY(-2px);
@@ -329,15 +433,18 @@
 
       gap: 10px;
 
-      color: #171717;
+      color:
+        #171717;
 
       font-size: 9px;
 
       letter-spacing: 3px;
 
-      text-transform: uppercase;
+      text-transform:
+        uppercase;
 
-      pointer-events: none;
+      pointer-events:
+        none;
 
     }
 
@@ -442,7 +549,8 @@
 
     .nav-dot.active {
 
-      background: #171717;
+      background:
+        #171717;
 
       transform:
         scale(1.45);
@@ -456,9 +564,11 @@
 
     .catey-panel {
 
-      align-items: center;
+      align-items:
+        center;
 
-      justify-content: center;
+      justify-content:
+        center;
 
     }
 
@@ -473,17 +583,23 @@
 
       display: flex;
 
-      justify-content: center;
+      justify-content:
+        center;
 
-      align-items: center;
+      align-items:
+        center;
 
-      text-align: center;
+      text-align:
+        center;
 
-      padding: 30px;
+      padding:
+        30px;
 
-      color: #171717;
+      color:
+        #171717;
 
-      opacity: 0;
+      opacity:
+        0;
 
       transform:
         translateY(25px);
@@ -498,7 +614,8 @@
     .catey-panel.visible
     .catey-content {
 
-      opacity: 1;
+      opacity:
+        1;
 
       transform:
         translateY(0);
@@ -516,11 +633,14 @@
 
       display: flex;
 
-      flex-direction: column;
+      flex-direction:
+        column;
 
-      align-items: center;
+      align-items:
+        center;
 
-      text-align: center;
+      text-align:
+        center;
 
     }
 
@@ -534,33 +654,45 @@
           125px
         );
 
-      font-weight: 400;
+      font-weight:
+        400;
 
-      letter-spacing: -5px;
+      letter-spacing:
+        -5px;
 
-      line-height: .9;
+      line-height:
+        .9;
 
-      margin-bottom: 25px;
+      margin-bottom:
+        25px;
 
     }
 
 
     .catey-description {
 
-      font-size: 16px;
+      font-size:
+        17px;
 
-      line-height: 1.7;
+      line-height:
+        1.7;
 
-      margin-bottom: 18px;
+      font-weight:
+        500;
+
+      margin-bottom:
+        18px;
 
     }
 
 
     .catey-price {
 
-      font-size: 24px;
+      font-size:
+        24px;
 
-      margin-bottom: 28px;
+      margin-bottom:
+        28px;
 
     }
 
@@ -574,7 +706,8 @@
 
       .panels {
 
-        height: 100dvh;
+        height:
+          100dvh;
 
         scroll-snap-type:
           y mandatory;
@@ -584,9 +717,11 @@
 
       .panel {
 
-        height: 100dvh;
+        height:
+          100dvh;
 
-        min-height: 100dvh;
+        min-height:
+          100dvh;
 
         scroll-snap-align:
           start;
@@ -603,9 +738,11 @@
 
       .panel-picture img {
 
-        object-fit: cover;
+        object-fit:
+          cover;
 
-        object-position: center center;
+        object-position:
+          center center;
 
       }
 
@@ -616,42 +753,86 @@
 
       .panel-content {
 
-        width: 92%;
+        width:
+          92%;
 
-        padding: 24px;
+        padding:
+          24px;
 
       }
 
 
       .eyebrow {
 
-        font-size: 9px;
+        font-size:
+          9px;
 
-        letter-spacing: 3px;
+        letter-spacing:
+          3px;
 
-        margin-bottom: 18px;
+        margin-bottom:
+          18px;
 
       }
 
 
       .title {
 
-        font-size: 42px;
+        font-size:
+          42px;
 
-        font-weight: 700;
+        font-weight:
+          700;
 
-        line-height: 1.05;
+        line-height:
+          1.05;
 
-        letter-spacing: -.5px;
+        letter-spacing:
+          -.5px;
 
       }
 
 
       .subtitle {
 
-        font-size: 15px;
+        font-size:
+          16px;
 
-        line-height: 1.6;
+        line-height:
+          1.65;
+
+        font-weight:
+          500;
+
+        max-width:
+          340px;
+
+      }
+
+
+      /* ---------------------------------------------
+         BOTÓN COLECCIÓN MÓVIL
+      --------------------------------------------- */
+
+      .collection-floating {
+
+        left:
+          18px;
+
+        bottom:
+          max(
+            18px,
+            env(safe-area-inset-bottom)
+          );
+
+        padding:
+          12px 16px;
+
+        font-size:
+          9px;
+
+        letter-spacing:
+          2.5px;
 
       }
 
@@ -662,56 +843,64 @@
 
       .catey-content {
 
-        width: 100%;
+        width:
+          100%;
 
         padding:
-          25px 18px
-          max(
-            35px,
-            env(safe-area-inset-bottom)
-          );
+          25px 18px;
 
-        justify-content: center;
+        justify-content:
+          center;
 
       }
 
 
       .catey-info {
 
-        width: 100%;
+        width:
+          100%;
 
-        max-width: 420px;
+        max-width:
+          420px;
 
-        align-items: center;
+        align-items:
+          center;
 
-        text-align: center;
+        text-align:
+          center;
 
       }
 
 
       .catey-title {
 
-        font-size: 72px;
+        font-size:
+          72px;
 
-        font-weight: 400;
+        font-weight:
+          400;
 
-        letter-spacing: -4px;
+        letter-spacing:
+          -4px;
 
       }
 
 
       .catey-description {
 
-        font-size: 15px;
+        font-size:
+          15px;
 
-        max-width: 280px;
+        max-width:
+          280px;
 
       }
 
 
       .catey-price {
 
-        font-size: 22px;
+        font-size:
+          22px;
 
       }
 
@@ -722,17 +911,22 @@
 
       .navigation {
 
-        right: 13px;
+        right:
+          13px;
 
-        gap: 11px;
+        gap:
+          11px;
 
       }
 
 
       .nav-dot {
 
-        width: 7px;
-        height: 7px;
+        width:
+          7px;
+
+        height:
+          7px;
 
       }
 
@@ -762,7 +956,20 @@
 
 
   <!-- =====================================================
-       NAVEGACIÓN
+       BOTÓN FIJO DE COLECCIÓN
+  ===================================================== -->
+
+  <a
+    href="coleccion.html"
+    class="collection-floating"
+  >
+    Ver colección
+  </a>
+
+
+
+  <!-- =====================================================
+       NAVEGACIÓN LATERAL
   ===================================================== -->
 
   <nav
@@ -823,7 +1030,9 @@
       id="panel-1"
     >
 
-      <picture class="panel-picture">
+      <picture
+        class="panel-picture"
+      >
 
         <source
           media="(max-width: 700px)"
@@ -838,10 +1047,14 @@
       </picture>
 
 
-      <div class="panel-overlay"></div>
+      <div
+        class="panel-overlay"
+      ></div>
 
 
-      <div class="scroll-hint">
+      <div
+        class="scroll-hint"
+      >
 
         <span>
           Desliza
@@ -866,7 +1079,9 @@
       id="panel-2"
     >
 
-      <picture class="panel-picture">
+      <picture
+        class="panel-picture"
+      >
 
         <source
           media="(max-width: 700px)"
@@ -881,17 +1096,25 @@
       </picture>
 
 
-      <div class="panel-overlay"></div>
+      <div
+        class="panel-overlay"
+      ></div>
 
 
-      <div class="panel-content">
+      <div
+        class="panel-content"
+      >
 
-        <div class="eyebrow">
+        <div
+          class="eyebrow"
+        >
           Nuestra filosofía
         </div>
 
 
-        <h1 class="title">
+        <h1
+          class="title"
+        >
 
           MENOS MUEBLE.<br>
           MÁS ESPACIO.
@@ -899,7 +1122,9 @@
         </h1>
 
 
-        <p class="subtitle">
+        <p
+          class="subtitle"
+        >
 
           Diseñamos piezas esenciales,
           funcionales y honestas,
@@ -922,7 +1147,9 @@
       id="panel-3"
     >
 
-      <picture class="panel-picture">
+      <picture
+        class="panel-picture"
+      >
 
         <source
           media="(max-width: 700px)"
@@ -937,17 +1164,25 @@
       </picture>
 
 
-      <div class="panel-overlay"></div>
+      <div
+        class="panel-overlay"
+      ></div>
 
 
-      <div class="panel-content">
+      <div
+        class="panel-content"
+      >
 
-        <div class="eyebrow">
+        <div
+          class="eyebrow"
+        >
           Materiales
         </div>
 
 
-        <h1 class="title">
+        <h1
+          class="title"
+        >
 
           COLOR.<br>
           TEXTURA.<br>
@@ -956,7 +1191,9 @@
         </h1>
 
 
-        <p class="subtitle">
+        <p
+          class="subtitle"
+        >
 
           Una misma idea.
           Diferentes posibilidades.
@@ -978,7 +1215,9 @@
       id="panel-4"
     >
 
-      <picture class="panel-picture">
+      <picture
+        class="panel-picture"
+      >
 
         <source
           media="(max-width: 700px)"
@@ -993,24 +1232,36 @@
       </picture>
 
 
-      <div class="panel-overlay"></div>
+      <div
+        class="panel-overlay"
+      ></div>
 
 
-      <div class="catey-content">
+      <div
+        class="catey-content"
+      >
 
-        <div class="catey-info">
+        <div
+          class="catey-info"
+        >
 
-          <div class="eyebrow">
+          <div
+            class="eyebrow"
+          >
             Colección
           </div>
 
 
-          <h1 class="catey-title">
+          <h1
+            class="catey-title"
+          >
             CATEY
           </h1>
 
 
-          <p class="catey-description">
+          <p
+            class="catey-description"
+          >
 
             Minimalismo que ocupa
             poco espacio.
@@ -1018,7 +1269,9 @@
           </p>
 
 
-          <div class="catey-price">
+          <div
+            class="catey-price"
+          >
             $599 MXN
           </div>
 
@@ -1047,7 +1300,9 @@
       id="panel-5"
     >
 
-      <picture class="panel-picture">
+      <picture
+        class="panel-picture"
+      >
 
         <source
           media="(max-width: 700px)"
@@ -1062,17 +1317,25 @@
       </picture>
 
 
-      <div class="panel-overlay"></div>
+      <div
+        class="panel-overlay"
+      ></div>
 
 
-      <div class="panel-content">
+      <div
+        class="panel-content"
+      >
 
-        <div class="eyebrow">
+        <div
+          class="eyebrow"
+        >
           MANGLE
         </div>
 
 
-        <h1 class="title">
+        <h1
+          class="title"
+        >
 
           HAZ ESPACIO<br>
           PARA LO QUE IMPORTA.
@@ -1080,7 +1343,9 @@
         </h1>
 
 
-        <p class="subtitle">
+        <p
+          class="subtitle"
+        >
 
           Muebles minimalistas
           diseñados en México.
@@ -1190,11 +1455,11 @@
 
         {
 
-          root: container,
+          root:
+            container,
 
-          threshold: [
-            0.65
-          ]
+          threshold:
+            [0.65]
 
         }
 
