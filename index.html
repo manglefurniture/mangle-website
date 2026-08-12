@@ -274,7 +274,8 @@
       transition:
         background 0.3s ease,
         color 0.3s ease,
-        transform 0.3s ease;
+        transform 0.3s ease,
+        opacity 0.3s ease;
     }
 
     .floating-button:hover {
@@ -289,6 +290,35 @@
 
     .floating-whatsapp {
       right: 28px;
+    }
+
+
+    /* =====================================================
+       ESTADO FINAL — ÚLTIMO PANEL
+    ===================================================== */
+
+    body.is-final-panel .floating-collection {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(10px);
+    }
+
+    body.is-final-panel .floating-whatsapp {
+      left: 50%;
+      right: auto;
+
+      bottom: 35vh;
+
+      min-width: 230px;
+      height: 54px;
+      padding: 0 30px;
+
+      transform: translateX(-50%);
+    }
+
+    body.is-final-panel .floating-whatsapp:hover {
+      transform: translateX(-50%) translateY(-2px);
     }
 
 
@@ -426,7 +456,7 @@
 
       /* =================================================
          HERO MOBILE
-         Variante centrada y desplazada 100px hacia abajo
+         Centrado y 100px más abajo
       ================================================= */
 
       .hero .panel-content {
@@ -434,7 +464,9 @@
         right: auto;
         top: calc(50% + 100px);
         bottom: auto;
+
         transform: translate(-50%, -50%);
+
         text-align: center;
       }
 
@@ -446,35 +478,42 @@
         margin-top: 20px;
         margin-left: auto;
         margin-right: auto;
+
         max-width: 330px;
+
         text-align: center;
       }
 
 
       /* =================================================
-         FILOSOFÍA
+         FILOSOFÍA MOBILE
       ================================================= */
 
       .philosophy .panel-content {
-        top: 14vh;
+        top: 13vh;
         left: 50%;
+
         transform: translateX(-50%);
+
         text-align: center;
       }
 
       .philosophy .panel-title {
-        font-size: clamp(37px, 10.8vw, 53px);
+        font-size: clamp(36px, 10.6vw, 53px);
       }
 
 
       /* =================================================
-         MATERIAL
+         MATERIAL MOBILE
+         Subido ligeramente
       ================================================= */
 
       .material .panel-content {
-        top: 14vh;
+        top: calc(14vh - 12px);
         left: 50%;
+
         transform: translateX(-50%);
+
         text-align: center;
       }
 
@@ -484,33 +523,39 @@
 
 
       /* =================================================
-         DISEÑO
+         DISEÑO MOBILE
       ================================================= */
 
       .design .panel-content {
         top: 12.5vh;
         left: 50%;
+
         transform: translateX(-50%);
+
         text-align: center;
       }
 
       .design .panel-title {
-        font-size: clamp(36px, 10.4vw, 51px);
+        font-size: clamp(35px, 10vw, 49px);
       }
 
       .design .panel-text {
         max-width: 320px;
+        transform: translateY(-10px);
       }
 
 
       /* =================================================
-         CIERRE
+         CIERRE MOBILE
+         Bloque ligeramente más arriba
       ================================================= */
 
       .closing .panel-content {
-        top: 14vh;
+        top: calc(14vh - 12px);
         left: 50%;
+
         transform: translateX(-50%);
+
         text-align: center;
       }
 
@@ -525,8 +570,10 @@
 
       .panel-button {
         margin-top: 23px;
+
         min-height: 48px;
         padding: 14px 25px;
+
         font-size: 9px;
       }
 
@@ -537,9 +584,12 @@
 
       .floating-button {
         bottom: 18px;
+
         height: 46px;
         min-width: 138px;
+
         padding: 0 17px;
+
         font-size: 9px;
         letter-spacing: 0.14em;
       }
@@ -550,6 +600,27 @@
 
       .floating-whatsapp {
         right: 15px;
+      }
+
+
+      /* =================================================
+         ÚLTIMO PANEL MOBILE
+      ================================================= */
+
+      body.is-final-panel .floating-whatsapp {
+        left: 50%;
+        right: auto;
+
+        bottom: 35vh;
+
+        min-width: 230px;
+        height: 54px;
+
+        transform: translateX(-50%);
+      }
+
+      body.is-final-panel .floating-whatsapp:hover {
+        transform: translateX(-50%) translateY(-2px);
       }
 
 
@@ -591,9 +662,12 @@
       .hero .panel-content {
         left: 50%;
         right: auto;
+
         top: calc(50% + 100px);
         bottom: auto;
+
         transform: translate(-50%, -50%);
+
         text-align: center;
       }
 
@@ -616,6 +690,12 @@
         min-width: 130px;
         padding: 0 12px;
         font-size: 8px;
+      }
+
+      body.is-final-panel .floating-whatsapp {
+        min-width: 210px;
+        height: 52px;
+        bottom: 35vh;
       }
     }
 
@@ -935,90 +1015,3 @@
       aria-label="Ir al panel 1"
     ></button>
 
-    <button
-      class="nav-dot"
-      data-target="1"
-      aria-label="Ir al panel 2"
-    ></button>
-
-    <button
-      class="nav-dot"
-      data-target="2"
-      aria-label="Ir al panel 3"
-    ></button>
-
-    <button
-      class="nav-dot"
-      data-target="3"
-      aria-label="Ir al panel 4"
-    ></button>
-
-    <button
-      class="nav-dot"
-      data-target="4"
-      aria-label="Ir al panel 5"
-    ></button>
-
-  </nav>
-
-
-
-  <!-- ===================================================
-       FLECHAS ESCRITORIO
-  ==================================================== -->
-
-  <div
-    class="panel-arrows"
-    aria-label="Navegación entre paneles"
-  >
-
-    <button
-      class="arrow-button"
-      id="prevPanel"
-      aria-label="Panel anterior"
-    >
-      ↑
-    </button>
-
-    <button
-      class="arrow-button"
-      id="nextPanel"
-      aria-label="Panel siguiente"
-    >
-      ↓
-    </button>
-
-  </div>
-
-
-
-  <script>
-
-    const panels = Array.from(
-      document.querySelectorAll(".panel")
-    );
-
-    const dots = Array.from(
-      document.querySelectorAll(".nav-dot")
-    );
-
-    const prevButton =
-      document.getElementById("prevPanel");
-
-    const nextButton =
-      document.getElementById("nextPanel");
-
-    let currentPanel = 0;
-
-
-    function goToPanel(index) {
-
-      if (index < 0) {
-        index = 0;
-      }
-
-      if (index > panels.length - 1) {
-        index = panels.length - 1;
-      }
-
-  
