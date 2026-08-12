@@ -15,15 +15,10 @@
 
   <title>MANGLE — Minimal Furniture</title>
 
-  <!-- TIPOGRAFÍAS -->
+  <!-- TIPOGRAFÍA -->
   <link
     rel="stylesheet"
-    href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap"
-  >
-
-  <link
-    rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap"
+    href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700&display=swap"
   >
 
   <style>
@@ -39,8 +34,8 @@
     }
 
     html {
-      scroll-behavior: smooth;
       background: #f5f3ee;
+      scroll-behavior: smooth;
     }
 
     body {
@@ -49,7 +44,7 @@
       color: #171717;
 
       font-family:
-        "Instrument Sans",
+        "Satoshi",
         Arial,
         Helvetica,
         sans-serif;
@@ -59,7 +54,7 @@
 
 
     /* =====================================================
-       CONTENEDOR PRINCIPAL
+       LANDING
     ===================================================== */
 
     .landing {
@@ -108,32 +103,7 @@
 
     .panel-picture img {
       object-fit: cover;
-      object-position: center;
-    }
-
-
-    /* =====================================================
-       CAPA DE LECTURA
-    ===================================================== */
-
-    .panel::after {
-      content: "";
-
-      position: absolute;
-
-      inset: 0;
-
-      z-index: 1;
-
-      pointer-events: none;
-
-      background:
-        linear-gradient(
-          180deg,
-          rgba(255,255,255,0.03) 0%,
-          rgba(255,255,255,0.00) 45%,
-          rgba(255,255,255,0.05) 100%
-        );
+      object-position: center center;
     }
 
 
@@ -155,11 +125,37 @@
 
 
     /* =====================================================
-       TITULARES
+       KICKER
+    ===================================================== */
+
+    .panel-kicker {
+      margin-bottom: 17px;
+
+      font-family:
+        "Satoshi",
+        Arial,
+        sans-serif;
+
+      font-size: 11px;
+
+      font-weight: 500;
+
+      line-height: 1;
+
+      letter-spacing: 0.30em;
+
+      text-transform: uppercase;
+
+      color: #171717;
+    }
+
+
+    /* =====================================================
+       TÍTULOS
     ===================================================== */
 
     .panel-title {
-      margin: 0 0 18px;
+      margin: 0 0 17px;
 
       font-family:
         "Satoshi",
@@ -167,11 +163,11 @@
         Helvetica,
         sans-serif;
 
-      font-size: clamp(48px, 7vw, 96px);
+      font-size: clamp(43px, 6.2vw, 82px);
 
-      font-weight: 700;
+      font-weight: 600;
 
-      line-height: 0.92;
+      line-height: 0.94;
 
       letter-spacing: -0.045em;
 
@@ -180,29 +176,13 @@
 
 
     .panel-title.small {
-      font-size: clamp(38px, 5vw, 70px);
+      font-size: clamp(36px, 5vw, 66px);
     }
 
 
-    .panel-kicker {
-      margin-bottom: 18px;
-
-      font-family:
-        "Instrument Sans",
-        Arial,
-        sans-serif;
-
-      font-size: 12px;
-
-      font-weight: 600;
-
-      letter-spacing: 0.28em;
-
-      text-transform: uppercase;
-
-      color: #252525;
-    }
-
+    /* =====================================================
+       TEXTO SECUNDARIO
+    ===================================================== */
 
     .panel-text {
       max-width: 470px;
@@ -211,25 +191,24 @@
       margin-right: auto;
 
       font-family:
-        "Instrument Sans",
+        "Satoshi",
         Arial,
         sans-serif;
 
-      font-size: clamp(17px, 1.5vw, 21px);
+      font-size: clamp(16px, 1.35vw, 20px);
 
-      font-weight: 500;
+      font-weight: 400;
 
-      line-height: 1.5;
+      line-height: 1.48;
 
-      letter-spacing: 0.01em;
+      letter-spacing: 0.005em;
 
-      color: #252525;
+      color: #202020;
     }
 
 
     /* =====================================================
        HERO
-       SE MANTIENE EN SU POSICIÓN ORIGINAL
     ===================================================== */
 
     .hero .panel-content {
@@ -239,17 +218,17 @@
       text-align: left;
     }
 
+
     .hero-title {
-      font-size: clamp(44px, 6vw, 82px);
+      font-size: clamp(43px, 5.7vw, 76px);
     }
 
+
     .hero-text {
-      margin-top: 18px;
+      margin-top: 16px;
 
       margin-left: 0;
       margin-right: 0;
-
-      font-size: clamp(16px, 1.4vw, 20px);
 
       max-width: 420px;
     }
@@ -257,7 +236,6 @@
 
     /* =====================================================
        FILOSOFÍA
-       CENTRADO SUPERIOR
     ===================================================== */
 
     .philosophy .panel-content {
@@ -270,9 +248,13 @@
     }
 
 
+    .philosophy .panel-title {
+      font-size: clamp(42px, 5.7vw, 76px);
+    }
+
+
     /* =====================================================
        MATERIAL
-       CENTRADO SUPERIOR
     ===================================================== */
 
     .material .panel-content {
@@ -285,19 +267,27 @@
     }
 
 
+    .material .panel-title {
+      font-size: clamp(42px, 5.7vw, 76px);
+    }
+
+
     /* =====================================================
        DISEÑO
-       CENTRADO SUPERIOR
     ===================================================== */
 
     .design .panel-content {
-      top: 20vh;
+      top: 17vh;
       left: 50%;
-      right: auto;
 
       transform: translateX(-50%);
 
       text-align: center;
+    }
+
+
+    .design .panel-title {
+      font-size: clamp(40px, 5.4vw, 72px);
     }
 
 
@@ -308,7 +298,6 @@
 
     /* =====================================================
        CIERRE
-       CENTRADO SUPERIOR
     ===================================================== */
 
     .closing .panel-content {
@@ -318,6 +307,11 @@
       transform: translateX(-50%);
 
       text-align: center;
+    }
+
+
+    .closing .panel-title {
+      font-size: clamp(42px, 5.7vw, 76px);
     }
 
 
@@ -331,7 +325,7 @@
       align-items: center;
       justify-content: center;
 
-      margin-top: 30px;
+      margin-top: 27px;
 
       padding: 15px 28px;
 
@@ -344,15 +338,15 @@
       text-decoration: none;
 
       font-family:
-        "Instrument Sans",
+        "Satoshi",
         Arial,
         sans-serif;
 
-      font-size: 11px;
+      font-size: 10px;
 
-      font-weight: 600;
+      font-weight: 500;
 
-      letter-spacing: 0.22em;
+      letter-spacing: 0.20em;
 
       text-transform: uppercase;
 
@@ -362,9 +356,10 @@
         transform 0.3s ease;
     }
 
+
     .panel-button:hover {
       background: #171717;
-      color: #f5f3ee;
+      color: #ffffff;
 
       transform: translateY(-2px);
     }
@@ -390,7 +385,7 @@
 
       padding: 0 20px;
 
-      border: 1px solid rgba(23,23,23,0.45);
+      border: 1px solid rgba(23,23,23,0.38);
 
       background: rgba(247,245,239,0.90);
 
@@ -402,13 +397,13 @@
       text-decoration: none;
 
       font-family:
-        "Instrument Sans",
+        "Satoshi",
         Arial,
         sans-serif;
 
       font-size: 10px;
 
-      font-weight: 600;
+      font-weight: 500;
 
       letter-spacing: 0.18em;
 
@@ -420,9 +415,9 @@
         transform 0.3s ease;
     }
 
+
     .floating-button:hover {
       background: #171717;
-
       color: #ffffff;
 
       transform: translateY(-2px);
@@ -449,13 +444,11 @@
       z-index: 90;
 
       right: 24px;
-
       top: 50%;
 
       transform: translateY(-50%);
 
       display: flex;
-
       flex-direction: column;
 
       gap: 9px;
@@ -480,6 +473,7 @@
         background 0.25s ease;
     }
 
+
     .nav-dot.active {
       background: #171717;
 
@@ -497,7 +491,6 @@
       z-index: 90;
 
       left: 50%;
-
       bottom: 28px;
 
       transform: translateX(-50%);
@@ -537,6 +530,7 @@
         color 0.25s ease;
     }
 
+
     .arrow-button:hover {
       background: #171717;
       color: #ffffff;
@@ -567,53 +561,51 @@
       }
 
 
-      .panel-picture img {
-        object-position: center center;
-      }
-
-
-      /* ---------- CONTENIDO ---------- */
-
       .panel-content {
         width: calc(100vw - 40px);
       }
 
 
-      .panel-title {
-        font-size: clamp(42px, 13vw, 64px);
+      /* -------------------------
+         TIPOGRAFÍA MOBILE
+      ------------------------- */
 
-        line-height: 0.92;
+      .panel-kicker {
+        font-size: 9px;
+
+        letter-spacing: 0.25em;
+
+        margin-bottom: 13px;
+      }
+
+
+      .panel-title {
+        font-size: clamp(37px, 11.2vw, 55px);
+
+        font-weight: 600;
+
+        line-height: 0.95;
 
         letter-spacing: -0.045em;
 
-        margin-bottom: 16px;
-      }
-
-
-      .panel-title.small {
-        font-size: clamp(36px, 11vw, 56px);
-      }
-
-
-      .panel-kicker {
-        font-size: 10px;
-
-        letter-spacing: 0.23em;
-
-        margin-bottom: 14px;
+        margin-bottom: 15px;
       }
 
 
       .panel-text {
         max-width: 330px;
 
-        font-size: 16px;
+        font-size: 15px;
+
+        font-weight: 400;
 
         line-height: 1.48;
       }
 
 
-      /* ---------- HERO ---------- */
+      /* -------------------------
+         HERO
+      ------------------------- */
 
       .hero .panel-content {
         left: 20px;
@@ -624,31 +616,62 @@
 
 
       .hero-title {
-        font-size: clamp(40px, 12vw, 58px);
+        font-size: clamp(37px, 11.2vw, 54px);
       }
 
 
-      /* ---------- FILOSOFÍA ---------- */
+      .hero-text {
+        margin-top: 15px;
+
+        max-width: 330px;
+      }
+
+
+      /* -------------------------
+         FILOSOFÍA
+      ------------------------- */
 
       .philosophy .panel-content {
         top: 14vh;
         left: 50%;
 
-        bottom: auto;
-
         transform: translateX(-50%);
 
         text-align: center;
       }
 
 
-      /* ---------- MATERIAL ---------- */
+      .philosophy .panel-title {
+        font-size: clamp(37px, 10.8vw, 53px);
+      }
+
+
+      /* -------------------------
+         MATERIAL
+      ------------------------- */
 
       .material .panel-content {
         top: 14vh;
         left: 50%;
 
-        bottom: auto;
+        transform: translateX(-50%);
+
+        text-align: center;
+      }
+
+
+      .material .panel-title {
+        font-size: clamp(37px, 10.8vw, 53px);
+      }
+
+
+      /* -------------------------
+         DISEÑO
+      ------------------------- */
+
+      .design .panel-content {
+        top: 12.5vh;
+        left: 50%;
 
         transform: translateX(-50%);
 
@@ -656,18 +679,8 @@
       }
 
 
-      /* ---------- DISEÑO ---------- */
-
-      .design .panel-content {
-        top: 14vh;
-        left: 50%;
-        right: auto;
-
-        bottom: auto;
-
-        transform: translateX(-50%);
-
-        text-align: center;
+      .design .panel-title {
+        font-size: clamp(36px, 10.4vw, 51px);
       }
 
 
@@ -676,13 +689,13 @@
       }
 
 
-      /* ---------- CIERRE ---------- */
+      /* -------------------------
+         CIERRE
+      ------------------------- */
 
       .closing .panel-content {
         top: 14vh;
         left: 50%;
-
-        bottom: auto;
 
         transform: translateX(-50%);
 
@@ -690,18 +703,27 @@
       }
 
 
-      /* ---------- BOTONES ---------- */
-
-      .panel-button {
-        margin-top: 24px;
-
-        padding: 14px 23px;
-
-        font-size: 10px;
+      .closing .panel-title {
+        font-size: clamp(37px, 10.8vw, 53px);
       }
 
 
-      /* ---------- BOTONES FLOTANTES ---------- */
+      /* -------------------------
+         BOTÓN INTERNO
+      ------------------------- */
+
+      .panel-button {
+        margin-top: 23px;
+
+        padding: 14px 23px;
+
+        font-size: 9px;
+      }
+
+
+      /* -------------------------
+         BOTONES FLOTANTES
+      ------------------------- */
 
       .floating-button {
         bottom: 18px;
@@ -726,7 +748,9 @@
       }
 
 
-      /* ---------- NAVEGACIÓN ---------- */
+      /* -------------------------
+         NAVEGACIÓN
+      ------------------------- */
 
       .panel-navigation {
         right: 13px;
@@ -741,7 +765,9 @@
       }
 
 
-      /* ---------- FLECHAS ---------- */
+      /* -------------------------
+         FLECHAS
+      ------------------------- */
 
       .panel-arrows {
         display: none;
@@ -751,7 +777,7 @@
 
 
     /* =====================================================
-       PANTALLAS MUY PEQUEÑAS
+       MOBILE MUY PEQUEÑO
     ===================================================== */
 
     @media (max-width: 380px) {
@@ -760,9 +786,11 @@
         width: calc(100vw - 34px);
       }
 
+
       .hero .panel-content {
         left: 17px;
       }
+
 
       .philosophy .panel-content,
       .material .panel-content,
@@ -771,13 +799,16 @@
         left: 50%;
       }
 
+
       .panel-title {
-        font-size: 40px;
+        font-size: 36px;
       }
 
+
       .panel-text {
-        font-size: 15px;
+        font-size: 14px;
       }
+
 
       .floating-button {
         padding: 0 12px;
@@ -814,7 +845,7 @@
 
 
     <!-- =================================================
-         PANEL 1 — HERO
+         HERO
     ================================================== -->
 
     <section
@@ -841,10 +872,6 @@
 
       <div class="panel-content">
 
-        <p class="panel-kicker">
-          MANGLE
-        </p>
-
         <h1 class="panel-title hero-title">
           Diseño que<br>
           respira.
@@ -861,7 +888,7 @@
 
 
     <!-- =================================================
-         PANEL 2 — FILOSOFÍA
+         FILOSOFÍA
     ================================================== -->
 
     <section
@@ -909,7 +936,7 @@
 
 
     <!-- =================================================
-         PANEL 3 — MATERIAL
+         MATERIAL
     ================================================== -->
 
     <section
@@ -958,7 +985,7 @@
 
 
     <!-- =================================================
-         PANEL 4 — DISEÑO
+         DISEÑO
     ================================================== -->
 
     <section
@@ -1006,7 +1033,7 @@
 
 
     <!-- =================================================
-         PANEL 5 — CIERRE
+         CIERRE
     ================================================== -->
 
     <section
@@ -1063,7 +1090,7 @@
 
 
   <!-- ===================================================
-       BOTÓN FLOTANTE — COLECCIÓN
+       BOTÓN COLECCIÓN
   ==================================================== -->
 
   <a
@@ -1077,7 +1104,7 @@
 
 
   <!-- ===================================================
-       BOTÓN FLOTANTE — WHATSAPP
+       WHATSAPP
   ==================================================== -->
 
   <a
@@ -1093,7 +1120,7 @@
 
 
   <!-- ===================================================
-       NAVEGACIÓN DE PANELES
+       NAVEGACIÓN LATERAL
   ==================================================== -->
 
   <nav
@@ -1136,7 +1163,7 @@
 
 
   <!-- ===================================================
-       FLECHAS — ESCRITORIO
+       FLECHAS ESCRITORIO
   ==================================================== -->
 
   <div
@@ -1146,25 +1173,4 @@
 
     <button
       class="arrow-button"
-      id="prevPanel"
-      aria-label="Panel anterior"
-    >
-      ↑
-    </button>
-
-    <button
-      class="arrow-button"
-      id="nextPanel"
-      aria-label="Panel siguiente"
-    >
-      ↓
-    </button>
-
-  </div>
-
-
-
-  <script>
-
-    /* =====================================================
-       NAVEGACIÓN D
+      id=
