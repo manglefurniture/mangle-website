@@ -26,21 +26,18 @@
     }
 
 
-    html {
+    html,
+    body {
 
       width: 100%;
+      height: 100%;
 
-      scroll-behavior:
-        smooth;
+      overflow: hidden;
 
     }
 
 
     body {
-
-      width: 100%;
-
-      min-height: 100vh;
 
       font-family:
         Arial,
@@ -53,31 +50,41 @@
       color:
         #171717;
 
-      overflow-x:
-        hidden;
-
-      /*
-        El scroll vuelve al documento principal.
-        Esto permite el gesto de actualización
-        del navegador en móvil.
-      */
-
-      scroll-snap-type:
-        y mandatory;
-
     }
 
 
     /* =====================================================
-       PANELES
+       CONTENEDOR PRINCIPAL
     ===================================================== */
 
     .panels {
 
       width: 100%;
 
+      height: 100dvh;
+
+      overflow-y: auto;
+
+      overflow-x: hidden;
+
+      scroll-snap-type:
+        y mandatory;
+
+      scroll-behavior:
+        smooth;
+
+      -webkit-overflow-scrolling:
+        touch;
+
+      overscroll-behavior-y:
+        contain;
+
     }
 
+
+    /* =====================================================
+       PANEL
+    ===================================================== */
 
     .panel {
 
@@ -112,7 +119,7 @@
 
 
     /* =====================================================
-       IMAGEN / PICTURE
+       IMAGEN
     ===================================================== */
 
     .panel-picture {
@@ -779,6 +786,17 @@
     @media (max-width: 700px) {
 
 
+      .panels {
+
+        height:
+          100dvh;
+
+        scroll-snap-type:
+          y mandatory;
+
+      }
+
+
       .panel {
 
         height:
@@ -797,7 +815,7 @@
 
 
       /* ---------------------------------------------
-         IMÁGENES
+         IMÁGENES MÓVILES
       --------------------------------------------- */
 
       .panel-picture img {
@@ -915,7 +933,7 @@
 
 
       /* ---------------------------------------------
-         CATEY
+         CATEY MÓVIL
       --------------------------------------------- */
 
       .catey-content {
@@ -1045,12 +1063,14 @@
 
 
   <!-- =====================================================
-       BOTÓN FIJO — CONTACTO
+       BOTÓN FIJO — WHATSAPP
   ===================================================== -->
 
   <a
-    href="contacto.html"
+    href="https://wa.me/529982655834"
     class="floating-button contact-floating"
+    target="_blank"
+    rel="noopener noreferrer"
   >
     Contacto
   </a>
@@ -1457,6 +1477,12 @@
   <script>
 
 
+    const container =
+      document.getElementById(
+        "panels"
+      );
+
+
     const panels =
       Array.from(
         document.querySelectorAll(
@@ -1537,6 +1563,9 @@
         },
 
         {
+
+          root:
+            container,
 
           threshold:
             [0.65]
