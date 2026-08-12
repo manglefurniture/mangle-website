@@ -45,6 +45,11 @@
       width: 100%;
     }
 
+
+    /* =====================================================
+       PANELES
+    ===================================================== */
+
     .panel {
       position: relative;
       width: 100%;
@@ -53,8 +58,10 @@
       min-height: 100vh;
       min-height: 100svh;
       overflow: hidden;
+
       scroll-snap-align: start;
       scroll-snap-stop: always;
+
       isolation: isolate;
     }
 
@@ -72,32 +79,43 @@
       object-position: center center;
     }
 
+
+    /* =====================================================
+       TEXTO GENERAL
+    ===================================================== */
+
     .panel-content {
       position: absolute;
       z-index: 3;
+
       width: min(620px, 82vw);
+
       color: #171717;
       text-align: left;
     }
 
     .panel-kicker {
       margin-bottom: 17px;
+
       font-family: "Satoshi", Arial, sans-serif;
       font-size: 11px;
       font-weight: 500;
       line-height: 1;
       letter-spacing: .30em;
       text-transform: uppercase;
+
       color: #171717;
     }
 
     .panel-title {
       margin: 0 0 17px;
+
       font-family: "Satoshi", Arial, Helvetica, sans-serif;
       font-size: clamp(43px, 6.2vw, 82px);
       font-weight: 600;
       line-height: .94;
       letter-spacing: -.045em;
+
       color: #171717;
     }
 
@@ -107,67 +125,96 @@
 
     .panel-text {
       max-width: 470px;
+
       margin-left: auto;
       margin-right: auto;
+
       font-family: "Satoshi", Arial, sans-serif;
       font-size: clamp(16px, 1.35vw, 20px);
       font-weight: 400;
       line-height: 1.48;
       letter-spacing: .005em;
+
       color: #202020;
     }
 
 
     /* =====================================================
-       HERO — BASE
+       HERO — DESKTOP
     ===================================================== */
 
     .hero .panel-content {
-      left: 7vw;
-      bottom: 10vh;
+      left: 6vw;
+
+      /*
+        Bajamos ligeramente el contenido para separarlo
+        visualmente del logo integrado en la fotografía.
+      */
+      bottom: 7vh;
+
+      width: min(500px, 40vw);
+
       text-align: left;
     }
 
     .hero-title {
-      font-size: clamp(43px, 5.7vw, 76px);
+      font-size: clamp(43px, 5.2vw, 70px);
+      max-width: 480px;
     }
 
     .hero-text {
-      margin-top: 20px;
+      margin-top: 18px;
       margin-left: 0;
       margin-right: 0;
-      max-width: 420px;
+
+      max-width: 390px;
     }
 
 
     /* =====================================================
-       FILOSOFÍA / MATERIAL / CIERRE — BASE
+       FILOSOFÍA
     ===================================================== */
 
     .philosophy .panel-content,
     .material .panel-content,
     .closing .panel-content {
+
       top: 20vh;
       left: 50%;
+
       transform: translateX(-50%);
+
       text-align: center;
     }
 
     .philosophy .panel-title,
     .material .panel-title,
     .closing .panel-title {
+
       font-size: clamp(42px, 5.7vw, 76px);
     }
 
 
     /* =====================================================
-       DISEÑO — BASE
+       MATERIAL
+    ===================================================== */
+
+    .material .panel-content {
+      top: 20vh;
+    }
+
+
+    /* =====================================================
+       DISEÑO
     ===================================================== */
 
     .design .panel-content {
+
       top: 17vh;
       left: 50%;
+
       transform: translateX(-50%);
+
       text-align: center;
     }
 
@@ -181,19 +228,50 @@
 
 
     /* =====================================================
+       CIERRE — DESKTOP
+    ===================================================== */
+
+    .closing .panel-content {
+      top: 17vh;
+
+      width: min(760px, 82vw);
+    }
+
+    .closing .panel-title {
+
+      /*
+        Un poco más contenido que antes para que
+        el cierre tenga más aire en pantallas grandes.
+      */
+      font-size: clamp(48px, 5vw, 68px);
+
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .closing .panel-text {
+      max-width: 420px;
+    }
+
+
+    /* =====================================================
        BOTONES
     ===================================================== */
 
     .panel-button {
+
       display: inline-flex;
       align-items: center;
       justify-content: center;
 
       margin-top: 27px;
+
       min-height: 50px;
       padding: 15px 30px;
 
       border: 1px solid #171717;
+
       background: #171717;
       color: #f7f5ef;
 
@@ -212,8 +290,10 @@
     }
 
     .panel-button:hover {
+
       background: #2a2a2a;
       color: #fff;
+
       transform: translateY(-2px);
     }
 
@@ -223,6 +303,7 @@
     ===================================================== */
 
     .floating-button {
+
       position: fixed;
       z-index: 100;
 
@@ -234,9 +315,11 @@
 
       height: 48px;
       min-width: 142px;
+
       padding: 0 22px;
 
       border: 1px solid #171717;
+
       background: #171717;
       color: #f7f5ef;
 
@@ -251,13 +334,14 @@
       transition:
         background .3s ease,
         color .3s ease,
-        transform .3s ease,
-        opacity .3s ease;
+        transform .3s ease;
     }
 
     .floating-button:hover {
+
       background: #2a2a2a;
       color: #fff;
+
       transform: translateY(-2px);
     }
 
@@ -270,38 +354,11 @@
     }
 
 
-    /* =====================================================
-       WHATSAPP DEL CIERRE
-    ===================================================== */
-
-    .closing-whatsapp {
-      display: none;
-    }
-
-    .landing.is-closing
-    .floating-collection,
-    .landing.is-closing
-    .floating-whatsapp {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-      transform: translateY(10px);
-    }
-
-    .landing.is-closing
-    .closing-whatsapp {
-      display: inline-flex;
-    }
-
-    .closing-whatsapp {
-      position: absolute;
-      margin-top: 18px;
-      left: 50%;
-      transform: translateX(-50%);
-      min-width: 210px;
-      min-height: 56px;
-      padding: 0 30px;
-    }
+    /*
+      IMPORTANTE:
+      Los dos botones flotantes permanecen visibles
+      también en el cierre.
+    */
 
 
     /* =====================================================
@@ -309,6 +366,7 @@
     ===================================================== */
 
     .panel-navigation {
+
       position: fixed;
       z-index: 90;
 
@@ -319,18 +377,21 @@
 
       display: flex;
       flex-direction: column;
+
       gap: 9px;
     }
 
     .nav-dot {
+
       width: 7px;
       height: 7px;
 
       padding: 0;
+
       border: 0;
       border-radius: 50%;
 
-      background: rgba(23,23,23,.28);
+      background: rgba(23, 23, 23, .28);
 
       cursor: pointer;
 
@@ -340,16 +401,19 @@
     }
 
     .nav-dot.active {
+
       background: #171717;
+
       transform: scale(1.55);
     }
 
 
     /* =====================================================
-       FLECHAS
+       FLECHAS DESKTOP
     ===================================================== */
 
     .panel-arrows {
+
       position: fixed;
       z-index: 90;
 
@@ -359,10 +423,12 @@
       transform: translateX(-50%);
 
       display: flex;
+
       gap: 8px;
     }
 
     .arrow-button {
+
       width: 42px;
       height: 42px;
 
@@ -370,10 +436,10 @@
       align-items: center;
       justify-content: center;
 
-      border: 1px solid rgba(23,23,23,.35);
+      border: 1px solid rgba(23, 23, 23, .35);
       border-radius: 50%;
 
-      background: rgba(247,245,239,.78);
+      background: rgba(247, 245, 239, .78);
 
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
@@ -390,283 +456,14 @@
     }
 
     .arrow-button:hover {
+
       background: #171717;
       color: #fff;
     }
 
 
     /* =====================================================
-       DESKTOP
-       701px EN ADELANTE
-    ===================================================== */
-
-    @media (min-width: 701px) {
-
-      html {
-        scroll-snap-type: y mandatory;
-      }
-
-      body {
-        overflow-x: hidden;
-        overflow-y: auto;
-      }
-
-      .panel {
-        width: 100vw;
-        height: 100vh;
-        min-height: 100vh;
-
-        scroll-snap-align: start;
-        scroll-snap-stop: always;
-      }
-
-      .panel-picture,
-      .panel-picture img {
-        width: 100%;
-        height: 100%;
-      }
-
-      .panel-picture img {
-        object-fit: cover;
-        object-position: center center;
-      }
-
-
-      /* -----------------------------------------------
-         CONTENIDO GENERAL DESKTOP
-      ----------------------------------------------- */
-
-      .panel-content {
-        width: min(600px, 42vw);
-        z-index: 3;
-      }
-
-      .panel-kicker {
-        margin-bottom: 18px;
-        font-size: 11px;
-        letter-spacing: .32em;
-      }
-
-      .panel-title {
-        font-size: clamp(52px, 5.1vw, 78px);
-        line-height: .94;
-        letter-spacing: -.045em;
-        margin-bottom: 20px;
-      }
-
-      .panel-text {
-        max-width: 470px;
-        font-size: clamp(17px, 1.35vw, 20px);
-        line-height: 1.5;
-      }
-
-
-      /* -----------------------------------------------
-         HERO
-      ----------------------------------------------- */
-
-      .hero .panel-content {
-        left: 7vw;
-        right: auto;
-        bottom: 13vh;
-        top: auto;
-
-        transform: none;
-
-        text-align: left;
-
-        width: min(520px, 38vw);
-      }
-
-      .hero-title {
-        font-size: clamp(55px, 5.5vw, 82px);
-        line-height: .92;
-      }
-
-      .hero-text {
-        margin-top: 22px;
-        margin-left: 0;
-        margin-right: 0;
-        max-width: 410px;
-      }
-
-
-      /* -----------------------------------------------
-         FILOSOFÍA
-      ----------------------------------------------- */
-
-      .philosophy .panel-content {
-        top: 17vh;
-        left: 50%;
-
-        transform: translateX(-50%);
-
-        text-align: center;
-
-        width: min(650px, 58vw);
-      }
-
-      .philosophy .panel-title {
-        font-size: clamp(52px, 5.2vw, 78px);
-      }
-
-      .philosophy .panel-text {
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-
-      /* -----------------------------------------------
-         MATERIAL
-      ----------------------------------------------- */
-
-      .material .panel-content {
-        top: 12vh;
-        left: 50%;
-
-        transform: translateX(-50%);
-
-        text-align: center;
-
-        width: min(620px, 55vw);
-      }
-
-      .material .panel-title {
-        font-size: clamp(52px, 5.2vw, 78px);
-      }
-
-      .material .panel-text {
-        max-width: 560px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-
-      /* -----------------------------------------------
-         DISEÑO
-      ----------------------------------------------- */
-
-      .design .panel-content {
-        top: 10vh;
-        left: 50%;
-
-        transform: translateX(-50%);
-
-        text-align: center;
-
-        width: min(680px, 58vw);
-      }
-
-      .design .panel-title {
-        font-size: clamp(50px, 5vw, 74px);
-      }
-
-      .design .panel-text {
-        max-width: 500px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-
-      /* -----------------------------------------------
-         CIERRE
-      ----------------------------------------------- */
-
-      .closing .panel-content {
-        top: 13vh;
-        left: 50%;
-
-        transform: translateX(-50%);
-
-        text-align: center;
-
-        width: min(650px, 58vw);
-      }
-
-      .closing .panel-title {
-        font-size: clamp(52px, 5.2vw, 78px);
-      }
-
-      .closing .panel-text {
-        max-width: 500px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .closing .panel-button {
-        margin-top: 28px;
-        min-width: 250px;
-        min-height: 58px;
-      }
-
-      .closing-whatsapp {
-        min-width: 250px;
-        min-height: 58px;
-      }
-
-
-      /* -----------------------------------------------
-         BOTONES FLOTANTES DESKTOP
-      ----------------------------------------------- */
-
-      .floating-button {
-        bottom: 30px;
-
-        height: 54px;
-        min-width: 190px;
-
-        padding: 0 28px;
-
-        font-size: 10px;
-        letter-spacing: .20em;
-      }
-
-      .floating-collection {
-        left: 30px;
-      }
-
-      .floating-whatsapp {
-        right: 30px;
-      }
-
-
-      /* -----------------------------------------------
-         NAVEGACIÓN DESKTOP
-      ----------------------------------------------- */
-
-      .panel-navigation {
-        right: 28px;
-        gap: 11px;
-      }
-
-      .nav-dot {
-        width: 8px;
-        height: 8px;
-      }
-
-
-      /* -----------------------------------------------
-         FLECHAS DESKTOP
-      ----------------------------------------------- */
-
-      .panel-arrows {
-        display: flex;
-        bottom: 30px;
-        gap: 10px;
-      }
-
-      .arrow-button {
-        width: 44px;
-        height: 44px;
-      }
-
-    }
-
-
-    /* =====================================================
        MOBILE
-       NO TOCAR
     ===================================================== */
 
     @media (max-width: 700px) {
@@ -680,6 +477,7 @@
       }
 
       .panel {
+
         height: 100svh;
         min-height: 100svh;
 
@@ -687,32 +485,50 @@
         scroll-snap-stop: always;
       }
 
+
+      /* -------------------------
+         CONTENIDO
+      ------------------------- */
+
       .panel-content {
+
         width: calc(100vw - 40px);
       }
 
       .panel-kicker {
+
         font-size: 9px;
         letter-spacing: .25em;
         margin-bottom: 13px;
       }
 
       .panel-title {
+
         font-size: clamp(37px, 11.2vw, 55px);
+
         font-weight: 600;
         line-height: .95;
         letter-spacing: -.045em;
+
         margin-bottom: 15px;
       }
 
       .panel-text {
+
         max-width: 330px;
+
         font-size: 15px;
         font-weight: 400;
         line-height: 1.48;
       }
 
+
+      /* -------------------------
+         HERO
+      ------------------------- */
+
       .hero .panel-content {
+
         left: 50%;
         right: auto;
 
@@ -725,49 +541,85 @@
       }
 
       .hero-title {
+
         font-size: clamp(35px, 10.5vw, 51px);
       }
 
       .hero-text {
+
         margin-top: 20px;
+
         margin-left: auto;
         margin-right: auto;
+
         max-width: 330px;
+
         text-align: center;
       }
+
+
+      /* -------------------------
+         CENTRADO GENERAL
+      ------------------------- */
 
       .philosophy .panel-content,
       .material .panel-content,
       .design .panel-content,
       .closing .panel-content {
+
         left: 50%;
+
         transform: translateX(-50%);
+
         text-align: center;
       }
+
+
+      /* -------------------------
+         FILOSOFÍA
+      ------------------------- */
 
       .philosophy .panel-content {
         top: 14vh;
       }
 
+
+      /* -------------------------
+         MATERIAL
+      ------------------------- */
+
       .material .panel-content {
         top: 14vh;
       }
+
+
+      /* -------------------------
+         DISEÑO
+      ------------------------- */
 
       .design .panel-content {
         top: 12.5vh;
       }
 
+
+      /* -------------------------
+         CIERRE
+      ------------------------- */
+
       .closing .panel-content {
         top: 14vh;
       }
 
+
       .philosophy .panel-title,
       .material .panel-title,
       .closing .panel-title {
+
         font-size: clamp(37px, 10.8vw, 53px);
       }
 
       .design .panel-title {
+
         font-size: clamp(36px, 10.4vw, 51px);
       }
 
@@ -775,37 +627,29 @@
         max-width: 320px;
       }
 
+
+      /* -------------------------
+         BOTONES
+      ------------------------- */
+
       .panel-button {
+
         margin-top: 23px;
+
         min-height: 48px;
+
         padding: 14px 25px;
+
         font-size: 9px;
       }
 
-      .closing .panel-button {
-        margin-bottom: 0;
-      }
 
-      .closing-whatsapp {
-        position: static;
-        display: none;
-
-        margin-top: 14px;
-
-        transform: none;
-
-        min-width: 210px;
-        min-height: 54px;
-
-        padding: 0 25px;
-      }
-
-      .landing.is-closing
-      .closing-whatsapp {
-        display: inline-flex;
-      }
+      /* -------------------------
+         BOTONES FLOTANTES
+      ------------------------- */
 
       .floating-button {
+
         bottom: 18px;
 
         height: 46px;
@@ -825,34 +669,48 @@
         right: 15px;
       }
 
+
+      /* -------------------------
+         NAVEGACIÓN
+      ------------------------- */
+
       .panel-navigation {
+
         right: 13px;
+
         gap: 8px;
       }
 
       .nav-dot {
+
         width: 6px;
         height: 6px;
       }
 
+
+      /* -------------------------
+         FLECHAS
+      ------------------------- */
+
       .panel-arrows {
         display: none;
       }
-
     }
 
 
     /* =====================================================
-       MOBILE MUY PEQUEÑO
+       MOBILE PEQUEÑO
     ===================================================== */
 
     @media (max-width: 380px) {
 
       .panel-content {
+
         width: calc(100vw - 34px);
       }
 
       .hero .panel-content {
+
         left: 50%;
         right: auto;
 
@@ -868,6 +726,7 @@
       .material .panel-content,
       .design .panel-content,
       .closing .panel-content {
+
         left: 50%;
       }
 
@@ -880,15 +739,13 @@
       }
 
       .floating-button {
+
         min-width: 130px;
+
         padding: 0 12px;
+
         font-size: 8px;
       }
-
-      .closing-whatsapp {
-        min-width: 200px;
-      }
-
     }
 
 
@@ -905,7 +762,6 @@
       * {
         transition: none !important;
       }
-
     }
 
   </style>
@@ -930,7 +786,7 @@
       <picture class="panel-picture">
 
         <source
-          media="(max-width:700px)"
+          media="(max-width: 700px)"
           srcset="hero-mangle-mobil.png"
         >
 
@@ -973,7 +829,7 @@
       <picture class="panel-picture">
 
         <source
-          media="(max-width:700px)"
+          media="(max-width: 700px)"
           srcset="filosofia-mangle-mobil.png"
         >
 
@@ -1021,7 +877,7 @@
       <picture class="panel-picture">
 
         <source
-          media="(max-width:700px)"
+          media="(max-width: 700px)"
           srcset="material-mangle-mobil.png"
         >
 
@@ -1070,7 +926,7 @@
       <picture class="panel-picture">
 
         <source
-          media="(max-width:700px)"
+          media="(max-width: 700px)"
           srcset="mangle-diseno-mobil.png"
         >
 
@@ -1118,7 +974,7 @@
       <picture class="panel-picture">
 
         <source
-          media="(max-width:700px)"
+          media="(max-width: 700px)"
           srcset="cierre-mangle-mobil.png"
         >
 
@@ -1146,23 +1002,6 @@
           Descubre nuestra colección.
         </p>
 
-        <a
-          href="coleccion.html"
-          class="panel-button"
-        >
-          Ver colección
-        </a>
-
-        <a
-          href="https://wa.me/529982655834"
-          class="panel-button closing-whatsapp"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Contactar por WhatsApp"
-        >
-          WhatsApp
-        </a>
-
       </div>
 
     </section>
@@ -1171,9 +1010,9 @@
 
 
 
-  <!-- =================================================
-       BOTONES FLOTANTES
-  ================================================== -->
+  <!-- =====================================================
+       BOTONES FIJOS
+  ====================================================== -->
 
   <a
     href="coleccion.html"
@@ -1196,9 +1035,9 @@
 
 
 
-  <!-- =================================================
+  <!-- =====================================================
        NAVEGACIÓN LATERAL
-  ================================================== -->
+  ====================================================== -->
 
   <nav
     class="panel-navigation"
@@ -1239,9 +1078,9 @@
 
 
 
-  <!-- =================================================
-       FLECHAS
-  ================================================== -->
+  <!-- =====================================================
+       FLECHAS DESKTOP
+  ====================================================== -->
 
   <div
     class="panel-arrows"
@@ -1268,39 +1107,35 @@
 
 
 
-  <!-- =================================================
+  <!-- =====================================================
        JAVASCRIPT
-  ================================================== -->
+  ====================================================== -->
 
   <script>
 
     const panels =
-      Array.from(document.querySelectorAll('.panel'));
+      Array.from(
+        document.querySelectorAll(".panel")
+      );
 
     const dots =
-      Array.from(document.querySelectorAll('.nav-dot'));
-
-    const landing =
-      document.getElementById('landing');
+      Array.from(
+        document.querySelectorAll(".nav-dot")
+      );
 
     const prevButton =
-      document.getElementById('prevPanel');
+      document.getElementById("prevPanel");
 
     const nextButton =
-      document.getElementById('nextPanel');
+      document.getElementById("nextPanel");
 
     let currentPanel = 0;
 
 
-    function updateClosingState(index) {
 
-      landing.classList.toggle(
-        'is-closing',
-        index === panels.length - 1
-      );
-
-    }
-
+    /* =====================================================
+       IR A PANEL
+    ===================================================== */
 
     function goToPanel(index) {
 
@@ -1315,55 +1150,74 @@
       currentPanel = index;
 
       panels[index].scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
+        behavior: "smooth",
+        block: "start"
       });
 
       updateNavigation(index);
-      updateClosingState(index);
-
     }
 
+
+
+    /* =====================================================
+       ACTUALIZAR PUNTOS
+    ===================================================== */
 
     function updateNavigation(index) {
 
       dots.forEach((dot, i) => {
 
         dot.classList.toggle(
-          'active',
+          "active",
           i === index
         );
 
       });
 
-      updateClosingState(index);
-
     }
 
+
+
+    /* =====================================================
+       CLIC EN PUNTOS
+    ===================================================== */
 
     dots.forEach(dot => {
 
       dot.addEventListener(
-        'click',
-        () => goToPanel(
-          Number(dot.dataset.target)
-        )
+        "click",
+        () => {
+
+          goToPanel(
+            Number(dot.dataset.target)
+          );
+
+        }
       );
 
     });
 
 
+
+    /* =====================================================
+       FLECHAS
+    ===================================================== */
+
     prevButton.addEventListener(
-      'click',
+      "click",
       () => goToPanel(currentPanel - 1)
     );
 
-
     nextButton.addEventListener(
-      'click',
+      "click",
       () => goToPanel(currentPanel + 1)
     );
 
+
+
+    /* =====================================================
+       DETECTAR PANEL ACTIVO
+    ===================================================== */
 
     const observer =
       new IntersectionObserver(
@@ -1377,7 +1231,9 @@
             ) {
 
               const index =
-                Number(entry.target.dataset.index);
+                Number(
+                  entry.target.dataset.index
+                );
 
               currentPanel = index;
 
@@ -1394,16 +1250,23 @@
       );
 
 
-    panels.forEach(panel =>
-      observer.observe(panel)
-    );
+    panels.forEach(panel => {
 
+      observer.observe(panel);
+
+    });
+
+
+
+    /* =====================================================
+       RUEDA DEL MOUSE
+       UN PANEL POR MOVIMIENTO
+    ===================================================== */
 
     let wheelLocked = false;
 
-
     window.addEventListener(
-      'wheel',
+      "wheel",
       event => {
 
         if (window.innerWidth <= 700) {
@@ -1411,8 +1274,10 @@
         }
 
         if (wheelLocked) {
+
           event.preventDefault();
           return;
+
         }
 
         if (Math.abs(event.deltaY) < 15) {
@@ -1425,16 +1290,22 @@
 
         if (event.deltaY > 0) {
 
-          goToPanel(currentPanel + 1);
+          goToPanel(
+            currentPanel + 1
+          );
 
         } else {
 
-          goToPanel(currentPanel - 1);
+          goToPanel(
+            currentPanel - 1
+          );
 
         }
 
         setTimeout(
-          () => wheelLocked = false,
+          () => {
+            wheelLocked = false;
+          },
           700
         );
 
@@ -1445,35 +1316,44 @@
     );
 
 
+
+    /* =====================================================
+       TECLADO
+    ===================================================== */
+
     window.addEventListener(
-      'keydown',
+      "keydown",
       event => {
 
         if (
-          event.key === 'ArrowDown' ||
-          event.key === 'PageDown'
+          event.key === "ArrowDown" ||
+          event.key === "PageDown"
         ) {
 
           event.preventDefault();
 
-          goToPanel(currentPanel + 1);
+          goToPanel(
+            currentPanel + 1
+          );
 
         }
 
 
         if (
-          event.key === 'ArrowUp' ||
-          event.key === 'PageUp'
+          event.key === "ArrowUp" ||
+          event.key === "PageUp"
         ) {
 
           event.preventDefault();
 
-          goToPanel(currentPanel - 1);
+          goToPanel(
+            currentPanel - 1
+          );
 
         }
 
 
-        if (event.key === 'Home') {
+        if (event.key === "Home") {
 
           event.preventDefault();
 
@@ -1482,11 +1362,13 @@
         }
 
 
-        if (event.key === 'End') {
+        if (event.key === "End") {
 
           event.preventDefault();
 
-          goToPanel(panels.length - 1);
+          goToPanel(
+            panels.length - 1
+          );
 
         }
 
