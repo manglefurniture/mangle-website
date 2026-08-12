@@ -26,7 +26,8 @@
     }
 
 
-    html {
+    html,
+    body {
       width: 100%;
       height: 100%;
       overflow: hidden;
@@ -35,9 +36,6 @@
 
     body {
 
-      width: 100%;
-      height: 100%;
-
       font-family:
         Arial,
         Helvetica,
@@ -45,15 +43,13 @@
 
       background: #f5f4f0;
 
-      color: #1a1a1a;
-
-      overflow: hidden;
+      color: #171717;
 
     }
 
 
     /* =====================================================
-       CONTENEDOR PRINCIPAL DEL SCROLL
+       CONTENEDOR PRINCIPAL
     ===================================================== */
 
     .panels {
@@ -76,7 +72,7 @@
 
 
     /* =====================================================
-       CADA PANEL
+       PANEL
     ===================================================== */
 
     .panel {
@@ -93,6 +89,7 @@
       scroll-snap-stop: always;
 
       display: flex;
+
       align-items: center;
       justify-content: center;
 
@@ -102,14 +99,24 @@
 
 
     /* =====================================================
-       IMÁGENES
+       IMAGEN / PICTURE
     ===================================================== */
 
-    .panel-image {
+    .panel-picture {
 
       position: absolute;
 
       inset: 0;
+
+      width: 100%;
+      height: 100%;
+
+      z-index: -2;
+
+    }
+
+
+    .panel-picture img {
 
       width: 100%;
       height: 100%;
@@ -120,26 +127,11 @@
 
       object-position: center center;
 
-      z-index: -2;
-
-      transform: scale(1.02);
-
-      transition:
-        transform 1.2s ease;
-
-    }
-
-
-    .panel.visible
-    .panel-image {
-
-      transform: scale(1);
-
     }
 
 
     /* =====================================================
-       OSCURECIMIENTO
+       CAPA DE LUZ
     ===================================================== */
 
     .panel-overlay {
@@ -155,8 +147,8 @@
       background:
         linear-gradient(
           to bottom,
-          rgba(0,0,0,0.04),
-          rgba(0,0,0,0.20)
+          rgba(255,255,255,0.02),
+          rgba(255,255,255,0.08)
         );
 
     }
@@ -172,28 +164,37 @@
 
       z-index: 5;
 
-      width: min(850px, 90%);
+      width: min(800px, 88%);
 
       padding: 30px;
 
       text-align: center;
 
-      color: #ffffff;
+      color: #171717;
 
       opacity: 0;
 
       transform:
-        translateY(30px);
+        translateY(25px);
 
       transition:
         opacity .8s ease,
         transform .8s ease;
 
+      /*
+        Sombra clara para levantar
+        el texto oscuro sobre las
+        fotografías.
+      */
+
+      text-shadow:
+        0 2px 12px rgba(255,255,255,.75),
+        0 0 3px rgba(255,255,255,.55);
+
     }
 
 
-    .panel.visible
-    .panel-content {
+    .panel.visible .panel-content {
 
       opacity: 1;
 
@@ -209,13 +210,15 @@
 
     .eyebrow {
 
-      font-size: 10px;
+      font-size: 11px;
 
-      letter-spacing: 5px;
+      font-weight: 600;
+
+      letter-spacing: 4px;
 
       text-transform: uppercase;
 
-      margin-bottom: 25px;
+      margin-bottom: 22px;
 
     }
 
@@ -225,13 +228,13 @@
       font-size:
         clamp(
           42px,
-          7vw,
-          88px
+          6vw,
+          82px
         );
 
-      font-weight: 300;
+      font-weight: 400;
 
-      letter-spacing: 2px;
+      letter-spacing: -1px;
 
       line-height: 1.05;
 
@@ -242,22 +245,24 @@
 
     .subtitle {
 
-      max-width: 600px;
+      max-width: 580px;
 
       margin:
-        0 auto 35px;
+        0 auto 32px;
 
       font-size: 16px;
 
       line-height: 1.7;
 
-      letter-spacing: .3px;
+      letter-spacing: .2px;
+
+      font-weight: 400;
 
     }
 
 
     /* =====================================================
-       BOTONES
+       BOTÓN
     ===================================================== */
 
     .button {
@@ -265,16 +270,21 @@
       display: inline-block;
 
       padding:
-        16px 34px;
+        15px 32px;
 
       border:
-        1px solid currentColor;
+        1px solid #171717;
 
-      color: inherit;
+      color: #171717;
+
+      background:
+        rgba(255,255,255,.12);
 
       text-decoration: none;
 
       font-size: 10px;
+
+      font-weight: 600;
 
       letter-spacing: 3px;
 
@@ -285,14 +295,16 @@
         color .3s ease,
         transform .3s ease;
 
+      text-shadow: none;
+
     }
 
 
     .button:hover {
 
-      background: #1a1a1a;
+      background: #171717;
 
-      color: #f5f4f0;
+      color: #ffffff;
 
       transform:
         translateY(-2px);
@@ -301,7 +313,7 @@
 
 
     /* =====================================================
-       INDICADOR DE SCROLL
+       INDICADOR "DESLIZA"
     ===================================================== */
 
     .scroll-hint {
@@ -329,7 +341,7 @@
 
       gap: 10px;
 
-      color: #ffffff;
+      color: #171717;
 
       font-size: 9px;
 
@@ -337,26 +349,24 @@
 
       text-transform: uppercase;
 
-      opacity: .85;
+      text-shadow:
+        0 2px 10px rgba(255,255,255,.9);
 
       pointer-events: none;
-
-      transition:
-        opacity .5s ease;
 
     }
 
 
     .scroll-arrow {
 
-      width: 13px;
-      height: 13px;
+      width: 12px;
+      height: 12px;
 
       border-right:
-        1px solid currentColor;
+        1px solid #171717;
 
       border-bottom:
-        1px solid currentColor;
+        1px solid #171717;
 
       transform:
         rotate(45deg);
@@ -403,7 +413,7 @@
 
       position: fixed;
 
-      right: 25px;
+      right: 24px;
 
       top: 50%;
 
@@ -423,18 +433,18 @@
 
     .nav-dot {
 
-      width: 7px;
-      height: 7px;
+      width: 8px;
+      height: 8px;
 
       padding: 0;
 
       border:
-        1px solid #ffffff;
+        1px solid #171717;
 
       border-radius: 50%;
 
       background:
-        transparent;
+        rgba(255,255,255,.25);
 
       cursor: pointer;
 
@@ -447,22 +457,23 @@
 
     .nav-dot.active {
 
-      background: #ffffff;
+      background: #171717;
 
       transform:
-        scale(1.6);
+        scale(1.45);
 
     }
 
 
     /* =====================================================
-       PANEL CATEY
+       CATEY
     ===================================================== */
 
     .catey-panel {
 
-      justify-content:
-        flex-end;
+      align-items: center;
+
+      justify-content: center;
 
     }
 
@@ -475,21 +486,22 @@
 
       width: 100%;
 
-      padding:
-        60px 8vw;
-
       display: flex;
 
-      justify-content: flex-end;
+      justify-content: center;
 
       align-items: center;
 
-      color: #ffffff;
+      text-align: center;
+
+      padding: 30px;
+
+      color: #171717;
 
       opacity: 0;
 
       transform:
-        translateY(30px);
+        translateY(25px);
 
       transition:
         opacity .8s ease,
@@ -513,15 +525,21 @@
 
       width:
         min(
-          390px,
-          100%
+          500px,
+          90%
         );
 
-      text-align: left;
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      text-align: center;
 
       text-shadow:
-        0 2px 18px
-        rgba(0,0,0,.25);
+        0 2px 12px rgba(255,255,255,.8),
+        0 0 3px rgba(255,255,255,.55);
 
     }
 
@@ -552,16 +570,16 @@
 
       line-height: 1.7;
 
-      margin-bottom: 20px;
+      margin-bottom: 18px;
 
     }
 
 
     .catey-price {
 
-      font-size: 25px;
+      font-size: 24px;
 
-      margin-bottom: 30px;
+      margin-bottom: 28px;
 
     }
 
@@ -585,14 +603,12 @@
 
       .panel {
 
-        width: 100%;
-
         height: 100dvh;
 
         min-height: 100dvh;
 
         scroll-snap-align:
-          start center;
+          start;
 
         scroll-snap-stop:
           always;
@@ -600,33 +616,28 @@
       }
 
 
-      /*
-        Las imágenes 16:9 se
-        comportan como fondos.
-        No se deforman.
-        Se recortan para llenar
-        la pantalla vertical.
-      */
+      /* ---------------------------------------------
+         IMÁGENES MÓVILES
+      --------------------------------------------- */
 
-      .panel-image {
-
-        width: 100%;
-        height: 100%;
+      .panel-picture img {
 
         object-fit: cover;
 
-        object-position:
-          center center;
+        object-position: center center;
 
       }
 
+
+      /* ---------------------------------------------
+         TEXTO
+      --------------------------------------------- */
 
       .panel-content {
 
         width: 92%;
 
-        padding:
-          25px;
+        padding: 24px;
 
       }
 
@@ -635,9 +646,9 @@
 
         font-size: 9px;
 
-        letter-spacing: 4px;
+        letter-spacing: 3px;
 
-        margin-bottom: 20px;
+        margin-bottom: 18px;
 
       }
 
@@ -646,9 +657,9 @@
 
         font-size: 38px;
 
-        letter-spacing: 1px;
+        line-height: 1.08;
 
-        line-height: 1.1;
+        letter-spacing: 0;
 
       }
 
@@ -662,37 +673,22 @@
       }
 
 
-      .button {
-
-        padding:
-          15px 28px;
-
-      }
-
-
-      /* -------------------------
+      /* ---------------------------------------------
          CATEY MÓVIL
-      ------------------------- */
-
-      .catey-panel {
-
-        align-items:
-          flex-end;
-
-      }
-
+      --------------------------------------------- */
 
       .catey-content {
 
+        width: 100%;
+
         padding:
-          30px 22px
+          25px 18px
           max(
-            45px,
+            35px,
             env(safe-area-inset-bottom)
           );
 
-        justify-content:
-          center;
+        justify-content: center;
 
       }
 
@@ -701,6 +697,10 @@
 
         width: 100%;
 
+        max-width: 420px;
+
+        align-items: center;
+
         text-align: center;
 
       }
@@ -708,7 +708,7 @@
 
       .catey-title {
 
-        font-size: 72px;
+        font-size: 70px;
 
         letter-spacing: -4px;
 
@@ -719,19 +719,21 @@
 
         font-size: 15px;
 
+        max-width: 280px;
+
       }
 
 
       .catey-price {
 
-        font-size: 23px;
+        font-size: 22px;
 
       }
 
 
-      /* -------------------------
-         NAVEGACIÓN MÓVIL
-      ------------------------- */
+      /* ---------------------------------------------
+         NAVEGACIÓN
+      --------------------------------------------- */
 
       .navigation {
 
@@ -744,11 +746,15 @@
 
       .nav-dot {
 
-        width: 6px;
-        height: 6px;
+        width: 7px;
+        height: 7px;
 
       }
 
+
+      /* ---------------------------------------------
+         SCROLL HINT
+      --------------------------------------------- */
 
       .scroll-hint {
 
@@ -761,7 +767,6 @@
       }
 
     }
-
 
   </style>
 
@@ -818,11 +823,14 @@
        PANELES
   ===================================================== -->
 
-  <main class="panels" id="panels">
+  <main
+    class="panels"
+    id="panels"
+  >
 
 
     <!-- =================================================
-         PANEL 1 — IDENTIDAD
+         1. HERO
     ================================================= -->
 
     <section
@@ -830,11 +838,22 @@
       id="panel-1"
     >
 
-      <img
-        class="panel-image"
-        src="hero-mangle.png"
-        alt="MANGLE — Muebles minimalistas"
-      >
+      <picture class="panel-picture">
+
+        <!-- MÓVIL -->
+        <source
+          media="(max-width: 700px)"
+          srcset="hero-mangle-mobil.png"
+        >
+
+        <!-- PC -->
+        <img
+          src="hero-mangle.png"
+          alt="MANGLE — Muebles minimalistas"
+        >
+
+      </picture>
+
 
       <div class="panel-overlay"></div>
 
@@ -856,7 +875,7 @@
 
 
     <!-- =================================================
-         PANEL 2 — FILOSOFÍA
+         2. FILOSOFÍA
     ================================================= -->
 
     <section
@@ -864,11 +883,22 @@
       id="panel-2"
     >
 
-      <img
-        class="panel-image"
-        src="mangle-filosofia.png"
-        alt="Filosofía MANGLE"
-      >
+      <picture class="panel-picture">
+
+        <!-- MÓVIL -->
+        <source
+          media="(max-width: 700px)"
+          srcset="filosofia-mangle-mobil.png"
+        >
+
+        <!-- PC -->
+        <img
+          src="mangle-filosofia.png"
+          alt="Nuestra filosofía MANGLE"
+        >
+
+      </picture>
+
 
       <div class="panel-overlay"></div>
 
@@ -879,12 +909,14 @@
           Nuestra filosofía
         </div>
 
+
         <h1 class="title">
 
           MENOS MUEBLE.<br>
           MÁS ESPACIO.
 
         </h1>
+
 
         <p class="subtitle">
 
@@ -901,7 +933,7 @@
 
 
     <!-- =================================================
-         PANEL 3 — MATERIAL
+         3. MATERIALES
     ================================================= -->
 
     <section
@@ -909,11 +941,22 @@
       id="panel-3"
     >
 
-      <img
-        class="panel-image"
-        src="mangle-material.png"
-        alt="Materiales MANGLE"
-      >
+      <picture class="panel-picture">
+
+        <!-- MÓVIL -->
+        <source
+          media="(max-width: 700px)"
+          srcset="material-mangle-mobil.png"
+        >
+
+        <!-- PC -->
+        <img
+          src="mangle-material.png"
+          alt="Materiales MANGLE"
+        >
+
+      </picture>
+
 
       <div class="panel-overlay"></div>
 
@@ -924,6 +967,7 @@
           Materiales
         </div>
 
+
         <h1 class="title">
 
           COLOR.<br>
@@ -931,6 +975,7 @@
           FORMA.
 
         </h1>
+
 
         <p class="subtitle">
 
@@ -946,7 +991,7 @@
 
 
     <!-- =================================================
-         PANEL 4 — CATEY
+         4. CATEY
     ================================================= -->
 
     <section
@@ -954,11 +999,22 @@
       id="panel-4"
     >
 
-      <img
-        class="panel-image"
-        src="mangle-catey-editorial.png"
-        alt="Catey — MANGLE"
-      >
+      <picture class="panel-picture">
+
+        <!-- MÓVIL -->
+        <source
+          media="(max-width: 700px)"
+          srcset="catey-mangle-mobil.png"
+        >
+
+        <!-- PC -->
+        <img
+          src="mangle-catey-editorial.png"
+          alt="Catey — MANGLE"
+        >
+
+      </picture>
+
 
       <div class="panel-overlay"></div>
 
@@ -971,9 +1027,11 @@
             Colección
           </div>
 
+
           <h1 class="catey-title">
             CATEY
           </h1>
+
 
           <p class="catey-description">
 
@@ -982,9 +1040,11 @@
 
           </p>
 
+
           <div class="catey-price">
             $599 MXN
           </div>
+
 
           <a
             href="producto.html?producto=catey"
@@ -1002,7 +1062,7 @@
 
 
     <!-- =================================================
-         PANEL 5 — CIERRE
+         5. CIERRE
     ================================================= -->
 
     <section
@@ -1010,11 +1070,22 @@
       id="panel-5"
     >
 
-      <img
-        class="panel-image"
-        src="mangle-cierre.png"
-        alt="Espacio MANGLE"
-      >
+      <picture class="panel-picture">
+
+        <!-- MÓVIL -->
+        <source
+          media="(max-width: 700px)"
+          srcset="cierre-mangle-mobil.png"
+        >
+
+        <!-- PC -->
+        <img
+          src="mangle-cierre.png"
+          alt="MANGLE — Muebles minimalistas"
+        >
+
+      </picture>
+
 
       <div class="panel-overlay"></div>
 
@@ -1025,12 +1096,14 @@
           MANGLE
         </div>
 
+
         <h1 class="title">
 
           HAZ ESPACIO<br>
           PARA LO QUE IMPORTA.
 
         </h1>
+
 
         <p class="subtitle">
 
@@ -1077,11 +1150,8 @@
       );
 
 
-    let currentPanel = 0;
-
-
     /* =====================================================
-       DETECTAR PANEL VISIBLE
+       OBSERVADOR DE PANELES
     ===================================================== */
 
     const observer =
@@ -1106,12 +1176,10 @@
                 if (
                   index === -1
                 ) {
+
                   return;
+
                 }
-
-
-                currentPanel =
-                  index;
 
 
                 panels.forEach(
@@ -1146,6 +1214,7 @@
         },
 
         {
+
           root: container,
 
           threshold: [
@@ -1188,13 +1257,20 @@
             if (
               !panels[index]
             ) {
+
               return;
+
             }
 
 
             panels[index].scrollIntoView({
-              behavior: "smooth",
-              block: "start"
+
+              behavior:
+                "smooth",
+
+              block:
+                "start"
+
             });
 
           }
