@@ -3,29 +3,20 @@
 <head>
   <meta charset="UTF-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-  >
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-  <meta
-    name="description"
-    content="MANGLE — Minimal Furniture. Diseño de mobiliario contemporáneo."
-  >
+  <meta name="description"
+        content="MANGLE — Minimal Furniture. Diseño de mobiliario contemporáneo.">
 
   <title>MANGLE — Minimal Furniture</title>
 
-  <!-- TIPOGRAFÍA -->
   <link
     rel="stylesheet"
     href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700&display=swap"
   >
 
   <style>
-
-    /* =====================================================
-       RESET
-    ===================================================== */
 
     * {
       margin: 0;
@@ -42,62 +33,33 @@
       margin: 0;
       background: #f5f3ee;
       color: #171717;
-
-      font-family:
-        "Satoshi",
-        Arial,
-        Helvetica,
-        sans-serif;
-
+      font-family: "Satoshi", Arial, Helvetica, sans-serif;
       overflow-x: hidden;
     }
-
-
-    /* =====================================================
-       LANDING
-    ===================================================== */
 
     .landing {
       width: 100%;
     }
 
-
-    /* =====================================================
-       PANELES
-    ===================================================== */
-
     .panel {
       position: relative;
-
       width: 100%;
       height: 100vh;
       height: 100svh;
-
       min-height: 100vh;
       min-height: 100svh;
-
       overflow: hidden;
-
       scroll-snap-align: start;
       scroll-snap-stop: always;
-
       isolation: isolate;
     }
-
-
-    /* =====================================================
-       IMÁGENES
-    ===================================================== */
 
     .panel-picture,
     .panel-picture img {
       position: absolute;
-
       inset: 0;
-
       width: 100%;
       height: 100%;
-
       display: block;
     }
 
@@ -106,103 +68,48 @@
       object-position: center center;
     }
 
-
-    /* =====================================================
-       CONTENIDO
-    ===================================================== */
-
     .panel-content {
       position: absolute;
-
       z-index: 3;
-
       width: min(620px, 82vw);
-
       color: #171717;
-
       text-align: left;
     }
 
-
-    /* =====================================================
-       KICKER
-    ===================================================== */
-
     .panel-kicker {
       margin-bottom: 17px;
-
-      font-family:
-        "Satoshi",
-        Arial,
-        sans-serif;
-
+      font-family: "Satoshi", Arial, sans-serif;
       font-size: 11px;
-
       font-weight: 500;
-
       line-height: 1;
-
       letter-spacing: 0.30em;
-
       text-transform: uppercase;
-
       color: #171717;
     }
-
-
-    /* =====================================================
-       TÍTULOS
-    ===================================================== */
 
     .panel-title {
       margin: 0 0 17px;
-
-      font-family:
-        "Satoshi",
-        Arial,
-        Helvetica,
-        sans-serif;
-
+      font-family: "Satoshi", Arial, Helvetica, sans-serif;
       font-size: clamp(43px, 6.2vw, 82px);
-
       font-weight: 600;
-
       line-height: 0.94;
-
       letter-spacing: -0.045em;
-
       color: #171717;
     }
-
 
     .panel-title.small {
       font-size: clamp(36px, 5vw, 66px);
     }
 
-
-    /* =====================================================
-       TEXTO SECUNDARIO
-    ===================================================== */
-
     .panel-text {
       max-width: 470px;
-
       margin-left: auto;
       margin-right: auto;
-
-      font-family:
-        "Satoshi",
-        Arial,
-        sans-serif;
-
+      font-family: "Satoshi", Arial, sans-serif;
       font-size: clamp(16px, 1.35vw, 20px);
-
       font-weight: 400;
-
       line-height: 1.48;
-
       letter-spacing: 0.005em;
-
       color: #202020;
     }
 
@@ -214,22 +121,17 @@
     .hero .panel-content {
       left: 7vw;
       bottom: 10vh;
-
       text-align: left;
     }
-
 
     .hero-title {
       font-size: clamp(43px, 5.7vw, 76px);
     }
 
-
     .hero-text {
       margin-top: 20px;
-
       margin-left: 0;
       margin-right: 0;
-
       max-width: 420px;
     }
 
@@ -241,12 +143,9 @@
     .philosophy .panel-content {
       top: 20vh;
       left: 50%;
-
       transform: translateX(-50%);
-
       text-align: center;
     }
-
 
     .philosophy .panel-title {
       font-size: clamp(42px, 5.7vw, 76px);
@@ -260,12 +159,9 @@
     .material .panel-content {
       top: 20vh;
       left: 50%;
-
       transform: translateX(-50%);
-
       text-align: center;
     }
-
 
     .material .panel-title {
       font-size: clamp(42px, 5.7vw, 76px);
@@ -279,17 +175,13 @@
     .design .panel-content {
       top: 17vh;
       left: 50%;
-
       transform: translateX(-50%);
-
       text-align: center;
     }
-
 
     .design .panel-title {
       font-size: clamp(40px, 5.4vw, 72px);
     }
-
 
     .design .panel-text {
       max-width: 430px;
@@ -303,12 +195,9 @@
     .closing .panel-content {
       top: 20vh;
       left: 50%;
-
       transform: translateX(-50%);
-
       text-align: center;
     }
-
 
     .closing .panel-title {
       font-size: clamp(42px, 5.7vw, 76px);
@@ -316,40 +205,28 @@
 
 
     /* =====================================================
-       BOTONES INTERNOS
+       BOTÓN INTERNO
     ===================================================== */
 
     .panel-button {
       display: inline-flex;
-
       align-items: center;
       justify-content: center;
 
       margin-top: 27px;
-
       min-height: 50px;
-
       padding: 15px 30px;
 
       border: 1px solid #171717;
-
       background: #171717;
-
       color: #f7f5ef;
 
       text-decoration: none;
 
-      font-family:
-        "Satoshi",
-        Arial,
-        sans-serif;
-
+      font-family: "Satoshi", Arial, sans-serif;
       font-size: 10px;
-
       font-weight: 500;
-
       letter-spacing: 0.20em;
-
       text-transform: uppercase;
 
       transition:
@@ -358,11 +235,9 @@
         transform 0.3s ease;
     }
 
-
     .panel-button:hover {
       background: #2a2a2a;
       color: #ffffff;
-
       transform: translateY(-2px);
     }
 
@@ -373,41 +248,27 @@
 
     .floating-button {
       position: fixed;
-
       z-index: 100;
-
       bottom: 28px;
 
       display: flex;
-
       align-items: center;
       justify-content: center;
 
       height: 48px;
-
       min-width: 142px;
-
       padding: 0 22px;
 
       border: 1px solid #171717;
-
       background: #171717;
-
       color: #f7f5ef;
 
       text-decoration: none;
 
-      font-family:
-        "Satoshi",
-        Arial,
-        sans-serif;
-
+      font-family: "Satoshi", Arial, sans-serif;
       font-size: 10px;
-
       font-weight: 500;
-
       letter-spacing: 0.18em;
-
       text-transform: uppercase;
 
       transition:
@@ -416,19 +277,15 @@
         transform 0.3s ease;
     }
 
-
     .floating-button:hover {
       background: #2a2a2a;
       color: #ffffff;
-
       transform: translateY(-2px);
     }
-
 
     .floating-collection {
       left: 28px;
     }
-
 
     .floating-whatsapp {
       right: 28px;
@@ -441,32 +298,25 @@
 
     .panel-navigation {
       position: fixed;
-
       z-index: 90;
-
       right: 24px;
       top: 50%;
-
       transform: translateY(-50%);
 
       display: flex;
       flex-direction: column;
-
       gap: 9px;
     }
-
 
     .nav-dot {
       width: 7px;
       height: 7px;
-
       padding: 0;
 
       border: 0;
       border-radius: 50%;
 
       background: rgba(23,23,23,0.28);
-
       cursor: pointer;
 
       transition:
@@ -474,10 +324,8 @@
         background 0.25s ease;
     }
 
-
     .nav-dot.active {
       background: #171717;
-
       transform: scale(1.55);
     }
 
@@ -488,31 +336,25 @@
 
     .panel-arrows {
       position: fixed;
-
       z-index: 90;
 
       left: 50%;
       bottom: 28px;
-
       transform: translateX(-50%);
 
       display: flex;
-
       gap: 8px;
     }
-
 
     .arrow-button {
       width: 42px;
       height: 42px;
 
       display: flex;
-
       align-items: center;
       justify-content: center;
 
       border: 1px solid rgba(23,23,23,0.35);
-
       border-radius: 50%;
 
       background: rgba(247,245,239,0.78);
@@ -521,16 +363,13 @@
       -webkit-backdrop-filter: blur(10px);
 
       color: #171717;
-
       cursor: pointer;
-
       font-size: 18px;
 
       transition:
         background 0.25s ease,
         color 0.25s ease;
     }
-
 
     .arrow-button:hover {
       background: #171717;
@@ -552,223 +391,179 @@
         overflow-x: hidden;
       }
 
-
       .panel {
         height: 100svh;
         min-height: 100svh;
-
         scroll-snap-align: start;
         scroll-snap-stop: always;
       }
-
 
       .panel-content {
         width: calc(100vw - 40px);
       }
 
-
-      /* -------------------------
-         TIPOGRAFÍA MOBILE
-      ------------------------- */
-
       .panel-kicker {
         font-size: 9px;
-
         letter-spacing: 0.25em;
-
         margin-bottom: 13px;
       }
 
-
       .panel-title {
         font-size: clamp(37px, 11.2vw, 55px);
-
         font-weight: 600;
-
         line-height: 0.95;
-
         letter-spacing: -0.045em;
-
         margin-bottom: 15px;
       }
 
-
       .panel-text {
         max-width: 330px;
-
         font-size: 15px;
-
         font-weight: 400;
-
         line-height: 1.48;
       }
 
 
-      /* -------------------------
-         HERO
-      ------------------------- */
+      /* =================================================
+         HERO MOBILE — TEXTO A LA DERECHA
+      ================================================= */
 
       .hero .panel-content {
-        left: 20px;
+        left: auto;
+        right: 20px;
 
         /*
-          Subimos el bloque del Hero
-          para separarlo de la planta
-          y del jarrón.
+          El texto queda sobre la pared limpia
+          del lado derecho y evita el florero.
         */
         bottom: 21vh;
 
-        text-align: left;
+        text-align: right;
       }
-
 
       .hero-title {
         font-size: clamp(35px, 10.5vw, 51px);
       }
 
-
       .hero-text {
         margin-top: 20px;
-
+        margin-left: auto;
+        margin-right: 0;
         max-width: 330px;
+        text-align: right;
       }
 
 
-      /* -------------------------
+      /* =================================================
          FILOSOFÍA
-      ------------------------- */
+      ================================================= */
 
       .philosophy .panel-content {
         top: 14vh;
         left: 50%;
-
         transform: translateX(-50%);
-
         text-align: center;
       }
-
 
       .philosophy .panel-title {
         font-size: clamp(37px, 10.8vw, 53px);
       }
 
 
-      /* -------------------------
+      /* =================================================
          MATERIAL
-      ------------------------- */
+      ================================================= */
 
       .material .panel-content {
         top: 14vh;
         left: 50%;
-
         transform: translateX(-50%);
-
         text-align: center;
       }
-
 
       .material .panel-title {
         font-size: clamp(37px, 10.8vw, 53px);
       }
 
 
-      /* -------------------------
+      /* =================================================
          DISEÑO
-      ------------------------- */
+      ================================================= */
 
       .design .panel-content {
         top: 12.5vh;
         left: 50%;
-
         transform: translateX(-50%);
-
         text-align: center;
       }
-
 
       .design .panel-title {
         font-size: clamp(36px, 10.4vw, 51px);
       }
-
 
       .design .panel-text {
         max-width: 320px;
       }
 
 
-      /* -------------------------
+      /* =================================================
          CIERRE
-      ------------------------- */
+      ================================================= */
 
       .closing .panel-content {
         top: 14vh;
         left: 50%;
-
         transform: translateX(-50%);
-
         text-align: center;
       }
-
 
       .closing .panel-title {
         font-size: clamp(37px, 10.8vw, 53px);
       }
 
 
-      /* -------------------------
+      /* =================================================
          BOTÓN INTERNO
-      ------------------------- */
+      ================================================= */
 
       .panel-button {
         margin-top: 23px;
-
         min-height: 48px;
-
         padding: 14px 25px;
-
         font-size: 9px;
       }
 
 
-      /* -------------------------
+      /* =================================================
          BOTONES FLOTANTES
-      ------------------------- */
+      ================================================= */
 
       .floating-button {
         bottom: 18px;
-
         height: 46px;
-
         min-width: 138px;
-
         padding: 0 17px;
-
         font-size: 9px;
-
         letter-spacing: 0.14em;
       }
-
 
       .floating-collection {
         left: 15px;
       }
-
 
       .floating-whatsapp {
         right: 15px;
       }
 
 
-      /* -------------------------
+      /* =================================================
          NAVEGACIÓN
-      ------------------------- */
+      ================================================= */
 
       .panel-navigation {
         right: 13px;
-
         gap: 8px;
       }
-
 
       .nav-dot {
         width: 6px;
@@ -776,14 +571,13 @@
       }
 
 
-      /* -------------------------
+      /* =================================================
          FLECHAS
-      ------------------------- */
+      ================================================= */
 
       .panel-arrows {
         display: none;
       }
-
     }
 
 
@@ -797,11 +591,10 @@
         width: calc(100vw - 34px);
       }
 
-
       .hero .panel-content {
-        left: 17px;
+        left: auto;
+        right: 17px;
       }
-
 
       .philosophy .panel-content,
       .material .panel-content,
@@ -810,25 +603,19 @@
         left: 50%;
       }
 
-
       .panel-title {
         font-size: 36px;
       }
-
 
       .panel-text {
         font-size: 14px;
       }
 
-
       .floating-button {
         min-width: 130px;
-
         padding: 0 12px;
-
         font-size: 8px;
       }
-
     }
 
 
@@ -1177,4 +964,65 @@
 
   <!-- ===================================================
        FLECHAS ESCRITORIO
-  ==========================================
+  ==================================================== -->
+
+  <div
+    class="panel-arrows"
+    aria-label="Navegación entre paneles"
+  >
+
+    <button
+      class="arrow-button"
+      id="prevPanel"
+      aria-label="Panel anterior"
+    >
+      ↑
+    </button>
+
+    <button
+      class="arrow-button"
+      id="nextPanel"
+      aria-label="Panel siguiente"
+    >
+      ↓
+    </button>
+
+  </div>
+
+
+
+  <script>
+
+    const panels = Array.from(
+      document.querySelectorAll(".panel")
+    );
+
+    const dots = Array.from(
+      document.querySelectorAll(".nav-dot")
+    );
+
+    const prevButton =
+      document.getElementById("prevPanel");
+
+    const nextButton =
+      document.getElementById("nextPanel");
+
+    let currentPanel = 0;
+
+
+    function goToPanel(index) {
+
+      if (index < 0) {
+        index = 0;
+      }
+
+      if (index > panels.length - 1) {
+        index = panels.length - 1;
+      }
+
+      currentPanel = index;
+
+      panels[index].scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+     
