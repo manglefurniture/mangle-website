@@ -113,9 +113,7 @@
 
 
     /* =====================================================
-       CAPA MUY SUTIL DE LECTURA
-       No es sombra de texto.
-       Solo ayuda cuando la fotografía tiene zonas demasiado claras.
+       CAPA DE LECTURA
     ===================================================== */
 
     .panel::after {
@@ -209,6 +207,9 @@
     .panel-text {
       max-width: 470px;
 
+      margin-left: auto;
+      margin-right: auto;
+
       font-family:
         "Instrument Sans",
         Arial,
@@ -228,11 +229,14 @@
 
     /* =====================================================
        HERO
+       SE MANTIENE EN SU POSICIÓN ORIGINAL
     ===================================================== */
 
     .hero .panel-content {
       left: 7vw;
       bottom: 10vh;
+
+      text-align: left;
     }
 
     .hero-title {
@@ -242,6 +246,9 @@
     .hero-text {
       margin-top: 18px;
 
+      margin-left: 0;
+      margin-right: 0;
+
       font-size: clamp(16px, 1.4vw, 20px);
 
       max-width: 420px;
@@ -250,37 +257,49 @@
 
     /* =====================================================
        FILOSOFÍA
+       CENTRADO SUPERIOR
     ===================================================== */
 
     .philosophy .panel-content {
-      left: 8vw;
-      top: 50%;
-      transform: translateY(-50%);
+      top: 20vh;
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      text-align: center;
     }
 
 
     /* =====================================================
        MATERIAL
+       CENTRADO SUPERIOR
     ===================================================== */
 
     .material .panel-content {
-      left: 8vw;
-      bottom: 12vh;
+      top: 20vh;
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      text-align: center;
     }
 
 
     /* =====================================================
        DISEÑO
+       CENTRADO SUPERIOR
     ===================================================== */
 
     .design .panel-content {
-      right: 7vw;
-      top: 50%;
+      top: 20vh;
+      left: 50%;
+      right: auto;
 
-      transform: translateY(-50%);
+      transform: translateX(-50%);
 
-      text-align: left;
+      text-align: center;
     }
+
 
     .design .panel-text {
       max-width: 430px;
@@ -289,13 +308,16 @@
 
     /* =====================================================
        CIERRE
+       CENTRADO SUPERIOR
     ===================================================== */
 
     .closing .panel-content {
-      left: 8vw;
-      top: 50%;
+      top: 20vh;
+      left: 50%;
 
-      transform: translateY(-50%);
+      transform: translateX(-50%);
+
+      text-align: center;
     }
 
 
@@ -596,6 +618,8 @@
       .hero .panel-content {
         left: 20px;
         bottom: 14vh;
+
+        text-align: left;
       }
 
 
@@ -607,34 +631,43 @@
       /* ---------- FILOSOFÍA ---------- */
 
       .philosophy .panel-content {
-        left: 20px;
-        top: auto;
-        bottom: 14vh;
+        top: 14vh;
+        left: 50%;
 
-        transform: none;
+        bottom: auto;
+
+        transform: translateX(-50%);
+
+        text-align: center;
       }
 
 
       /* ---------- MATERIAL ---------- */
 
       .material .panel-content {
-        left: 20px;
-        bottom: 14vh;
+        top: 14vh;
+        left: 50%;
+
+        bottom: auto;
+
+        transform: translateX(-50%);
+
+        text-align: center;
       }
 
 
       /* ---------- DISEÑO ---------- */
 
       .design .panel-content {
-        left: 20px;
+        top: 14vh;
+        left: 50%;
         right: auto;
 
-        top: auto;
-        bottom: 14vh;
+        bottom: auto;
 
-        transform: none;
+        transform: translateX(-50%);
 
-        text-align: left;
+        text-align: center;
       }
 
 
@@ -646,12 +679,14 @@
       /* ---------- CIERRE ---------- */
 
       .closing .panel-content {
-        left: 20px;
+        top: 14vh;
+        left: 50%;
 
-        top: auto;
-        bottom: 16vh;
+        bottom: auto;
 
-        transform: none;
+        transform: translateX(-50%);
+
+        text-align: center;
       }
 
 
@@ -725,12 +760,15 @@
         width: calc(100vw - 34px);
       }
 
-      .hero .panel-content,
+      .hero .panel-content {
+        left: 17px;
+      }
+
       .philosophy .panel-content,
       .material .panel-content,
       .design .panel-content,
       .closing .panel-content {
-        left: 17px;
+        left: 50%;
       }
 
       .panel-title {
@@ -920,7 +958,7 @@
 
 
     <!-- =================================================
-         PANEL 4 — DISEÑO / PRECISIÓN
+         PANEL 4 — DISEÑO
     ================================================== -->
 
     <section
@@ -1129,27 +1167,4 @@
   <script>
 
     /* =====================================================
-       NAVEGACIÓN DE PANELES
-    ===================================================== */
-
-    const panels = Array.from(
-      document.querySelectorAll(".panel")
-    );
-
-    const dots = Array.from(
-      document.querySelectorAll(".nav-dot")
-    );
-
-    const prevButton =
-      document.getElementById("prevPanel");
-
-    const nextButton =
-      document.getElementById("nextPanel");
-
-
-    let currentPanel = 0;
-
-
-    /* =====================================================
-       IR A UN PANEL
-    ===================================
+       NAVEGACIÓN D
